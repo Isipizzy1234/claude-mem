@@ -1,0 +1,88 @@
+{
+  "series": "series.json",
+  "episode": 2,
+  "daysLeft": 29,
+  "progress": 0,
+  "progressText": "0%",
+  "scenes": [
+    {
+      "kind": "recap",
+      "say": ["Last episode, you decided.", "Doug flips burgers!"],
+      "face": "grin",
+      "a": { "text": "Sell comics", "icon": "comic", "pct": 38 },
+      "b": { "text": "Flip burgers", "icon": "burger", "pct": 62 },
+      "winner": "b",
+      "winnerAt": "L1"
+    },
+    {
+      "say": "His first shift at Burger Barn starts at six a.m.",
+      "text": "His first shift at Burger Barn starts at 6 a.m.",
+      "bg": { "type": "night" },
+      "cast": [{ "who": "doug", "x": 540, "y": 1640, "face": "sleepy", "faces": [["w:six", "shock"]] }],
+      "props": [{ "type": "burst", "text": "RIIING!", "x": 300, "y": 600, "rot": -10, "at": "w:six", "sfx": "notification" }]
+    },
+    {
+      "say": "The manager gives him a hat shaped like a burger.",
+      "bg": { "type": "kitchen", "wall": "#c4573a" },
+      "cast": [{ "who": "doug", "x": 540, "y": 1640, "face": "neutral", "faces": [["w:burger", "sad"]] }],
+      "props": [
+        { "type": "icon", "name": "burger", "size": 300, "x": 540, "y": 660, "at": "w:hat", "anim": "drop", "sfx": "pop" },
+        { "type": "label", "text": "mandatory", "x": 820, "y": 560, "toX": -120, "toY": 140, "at": "w:shaped" }
+      ]
+    },
+    {
+      "say": "He flips forty burgers. Only three land on the grill.",
+      "text": "He flips 40 burgers. Only 3 land on the grill.",
+      "bg": { "type": "kitchen", "wall": "#c4573a" },
+      "shake": ["w:only"],
+      "cast": [{ "who": "doug", "x": 540, "y": 1640, "face": "grin", "pose": "armsUp", "faces": [["w:only", "panic"]] }],
+      "props": [
+        { "type": "bigText", "text": "40", "x": 270, "y": 600, "at": "w:forty" },
+        { "type": "bigText", "text": "3", "color": "#36c26b", "x": 810, "y": 600, "at": "w:three" }
+      ]
+    },
+    {
+      "say": "But at the end of the day, he earns eighty-four dollars.",
+      "text": "But at the end of the day, he earns $84.",
+      "bg": { "type": "sunburst", "color": "#2f9e5b" },
+      "camera": "punch",
+      "hudProgress": [{ "at": "w:eighty", "to": 2, "text": "2%", "pop": "+2%" }],
+      "cast": [{ "who": "doug", "x": 540, "y": 1700, "scale": 1.05, "face": "joy", "pose": "armsUp" }],
+      "props": [{ "type": "money", "x": 540, "y": 560, "at": "w:eighty", "anim": "drop", "sfx": "chime" }]
+    },
+    {
+      "say": "Then his phone buzzes. It's Brad from the reunion group.",
+      "bg": { "type": "plain", "color": "#1d1834" },
+      "camera": "none",
+      "props": [{
+        "type": "phone", "screen": "chat", "name": "Brad", "clock": "21:47", "avatarColor": "#3466f0",
+        "x": 540, "y": 1010, "scale": 0.8,
+        "messages": [
+          { "from": "them", "text": "Hey Doug! Saw you at Burger Barn today", "at": "w:brad" },
+          { "from": "them", "text": "Nice hat lol", "at": "end-0.6" }
+        ]
+      }]
+    },
+    {
+      "say": "If Brad tells everyone, the CEO story is dead.",
+      "bg": { "type": "sunburst", "color": "#5a1f2a" },
+      "camera": "pull",
+      "cast": [{ "who": "doug", "x": 540, "y": 1760, "scale": 1.15, "face": "shock", "faces": [["w:dead", "cry"]] }],
+      "props": [{ "type": "burst", "text": "!!!", "shape": "none", "color": "#e8414b", "x": 540, "y": 560, "size": 140, "at": "w:dead" }]
+    },
+    {
+      "kind": "vote",
+      "say": [
+        "What should Doug do?",
+        "Option A: say it was an undercover boss episode.",
+        "Option B: invite Brad for a free burger to keep him quiet.",
+        "Comment A or B. Your comment decides!"
+      ],
+      "face": "panic",
+      "questionAt": "w:what",
+      "a": { "text": "Undercover boss story", "icon": "suit", "at": "L1" },
+      "b": { "text": "Bribe Brad with a burger", "icon": "burger", "at": "L2" },
+      "ctaAt": "L3"
+    }
+  ]
+}

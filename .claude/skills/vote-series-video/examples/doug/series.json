@@ -1,0 +1,41 @@
+{
+  "title": "Doug's Comeback",
+  "handle": "@dougs.comeback",
+  "hero": "doug",
+  "heroName": "Doug",
+  "premise": "Doug (32) told his whole class he is a millionaire CEO. In 30 days is the 10-year class reunion. In reality he lives in his mom's garage with $4.12. Every episode the comments decide his next move.",
+  "goal": "Show up at the reunion looking like a real success.",
+  "voice": { "id": "am_michael", "speed": 1.12 },
+  "hud": {
+    "episodeLabel": "EPISODE",
+    "countdownIcon": "heart",
+    "countdownLabel": "DAYS LEFT",
+    "progressLabel": "RICH LEVEL"
+  },
+  "cast": {
+    "doug": {
+      "hair": "#4a2f1d",
+      "hairStyle": "messy",
+      "shirt": "#f4f4f6",
+      "print": "text",
+      "printText": "CEO",
+      "pants": "#5e6170",
+      "shoes": "#3466f0",
+      "build": "chubby",
+      "belly": true,
+      "pimples": true,
+      "stubble": true,
+      "flies": true
+    },
+    "mom": {
+      "hair": "#c4c4d0",
+      "hairStyle": "bun",
+      "shirt": "#8f6bd8",
+      "outfit": "dress",
+      "shoes": "#7a4b2a",
+      "build": "regular",
+      "lashes": true,
+      "accessory": ["glasses"]
+    }
+  }
+}

@@ -1,0 +1,552 @@
+{
+  "series": "series.json",
+  "episode": 1,
+  "daysLeft": 30,
+  "progress": 0,
+  "progressText": "0%",
+  "scenes": [
+    {
+      "say": "Thirty days.",
+      "text": "30 DAYS.",
+      "bg": {
+        "type": "garage"
+      },
+      "cast": [
+        {
+          "who": "doug",
+          "x": 540,
+          "y": 1620,
+          "face": "neutral"
+        }
+      ]
+    },
+    {
+      "say": "That's how long Doug has until his ten-year class reunion.",
+      "text": "That's how long Doug has until his 10-year class reunion.",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "props": [
+        {
+          "type": "phone",
+          "screen": "lock",
+          "time": "23:12",
+          "date": "Monday, May 4",
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8,
+          "notifications": [
+            {
+              "app": "R",
+              "title": "Class of 2016",
+              "text": "Reunion in 30 days!",
+              "color": "#ff6b9a",
+              "at": "w:class"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "And online, he told everyone he's a millionaire CEO.",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "props": [
+        {
+          "type": "phone",
+          "screen": "post",
+          "app": "Friendbook",
+          "name": "Doug Miller",
+          "meta": "CEO  \u00b7  2 min",
+          "text": "Just closed another million dollar deal. CEO life.",
+          "imgIcon": "money",
+          "imgColor": "#ffe2a8",
+          "likes": "1,204",
+          "comments": "88",
+          "likesAt": "w:millionaire",
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8
+        },
+        {
+          "type": "sticker",
+          "text": "LIE",
+          "x": 820,
+          "y": 640,
+          "rot": 10,
+          "size": 70,
+          "at": "w:ceo"
+        }
+      ]
+    },
+    {
+      "say": "The truth? Doug is thirty-two and lives in his mom's garage.",
+      "text": "The truth? Doug is 32 and lives in his mom's garage.",
+      "bg": {
+        "type": "garage"
+      },
+      "cast": [
+        {
+          "who": "doug",
+          "x": 540,
+          "y": 1620,
+          "face": "neutral",
+          "faces": [
+            [
+              "w:truth",
+              "panic"
+            ]
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "sticker",
+          "text": "AGE 32",
+          "x": 240,
+          "y": 640,
+          "rot": -8,
+          "at": "w:thirty"
+        },
+        {
+          "type": "label",
+          "text": "mom's garage",
+          "x": 790,
+          "y": 470,
+          "at": "w:garage",
+          "z": "front"
+        }
+      ]
+    },
+    {
+      "say": "His entire fortune: four dollars and twelve cents.",
+      "text": "His entire fortune: $4.12",
+      "bg": {
+        "type": "grid",
+        "color": "#cdeee6"
+      },
+      "cast": [
+        {
+          "who": "doug",
+          "x": 330,
+          "y": 1640,
+          "scale": 0.9,
+          "pose": "hold",
+          "face": "neutral",
+          "faces": [
+            [
+              "w:four",
+              "sad"
+            ]
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "wallet",
+          "text": "$4.12",
+          "x": 760,
+          "y": 900,
+          "scale": 0.85,
+          "rot": 6,
+          "at": "w:four"
+        }
+      ]
+    },
+    {
+      "say": "His company car? A bicycle with one pedal.",
+      "bg": {
+        "type": "street"
+      },
+      "cast": [
+        {
+          "who": "doug",
+          "x": 800,
+          "y": 1620,
+          "scale": 0.82,
+          "face": "smug"
+        }
+      ],
+      "props": [
+        {
+          "type": "bike",
+          "x": 330,
+          "y": 1390,
+          "scale": 0.85,
+          "at": "w:bicycle",
+          "anim": "slideRight",
+          "z": "back"
+        },
+        {
+          "type": "sticker",
+          "text": "1 PEDAL",
+          "x": 320,
+          "y": 1000,
+          "rot": -7,
+          "at": "w:pedal"
+        }
+      ]
+    },
+    {
+      "say": "His company? A lemonade stand. Closed since twenty nineteen.",
+      "text": "His company? A lemonade stand. Closed since 2019.",
+      "bg": {
+        "type": "street",
+        "sky": "#f6b98a"
+      },
+      "cast": [
+        {
+          "who": "doug",
+          "x": 210,
+          "y": 1640,
+          "scale": 0.72,
+          "face": "smug",
+          "faces": [
+            [
+              "w:closed",
+              "sad"
+            ]
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "stand",
+          "text": "DOUG INC.",
+          "x": 650,
+          "y": 1250,
+          "scale": 0.85,
+          "z": "back"
+        },
+        {
+          "type": "sign",
+          "text": "CLOSED SINCE 2019",
+          "x": 650,
+          "y": 1180,
+          "rot": -9,
+          "size": 56,
+          "at": "w:closed",
+          "sfx": "error"
+        }
+      ]
+    },
+    {
+      "say": "So Doug makes a plan. Step one: look rich.",
+      "bg": {
+        "type": "garage"
+      },
+      "cast": [
+        {
+          "who": "doug",
+          "x": 540,
+          "y": 1620,
+          "face": "neutral",
+          "faces": [
+            [
+              "w:plan",
+              "grin"
+            ]
+          ],
+          "poses": [
+            [
+              "w:step",
+              "armsUp"
+            ]
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "burst",
+          "text": "PLAN!",
+          "x": 260,
+          "y": 560,
+          "rot": -10,
+          "at": "w:plan"
+        },
+        {
+          "type": "thought",
+          "icon": "suit",
+          "text": "look rich",
+          "x": 790,
+          "y": 600,
+          "scale": 0.85,
+          "at": "w:look"
+        }
+      ]
+    },
+    {
+      "say": "He rents a suit. But the shop only has one left. Size: kids, XL.",
+      "text": "He rents a suit. But the shop only has one left. Size: kids XL.",
+      "bg": {
+        "type": "shop",
+        "sign": "SUIT RENTAL",
+        "signColor": "#2c2f45"
+      },
+      "cast": [
+        {
+          "who": "doug",
+          "x": 300,
+          "y": 1640,
+          "scale": 0.82,
+          "face": "happy",
+          "faces": [
+            [
+              "w:kids",
+              "shock"
+            ]
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "hanger",
+          "small": true,
+          "x": 760,
+          "y": 1050,
+          "scale": 1.1,
+          "at": "w:one",
+          "anim": "drop",
+          "sfx": "pop"
+        },
+        {
+          "type": "sticker",
+          "text": "KIDS XL",
+          "x": 770,
+          "y": 1240,
+          "rot": 8,
+          "size": 60,
+          "at": "w:kids"
+        }
+      ]
+    },
+    {
+      "say": [
+        "He squeezes in anyway.",
+        "Then he sneezes."
+      ],
+      "pauseAfter": 0.7,
+      "bg": {
+        "type": "shop",
+        "sign": "SUIT RENTAL",
+        "signColor": "#2c2f45"
+      },
+      "camera": "punch",
+      "shake": [
+        "L1+0.8"
+      ],
+      "flash": [
+        "L1+0.8"
+      ],
+      "cast": [
+        {
+          "who": "doug",
+          "x": 540,
+          "y": 1640,
+          "face": "gritted",
+          "lookOverride": {
+            "outfit": "suit",
+            "print": "none"
+          },
+          "faces": [
+            [
+              "L1",
+              "squint"
+            ],
+            [
+              "L1+0.8",
+              "shock"
+            ]
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "burst",
+          "text": "AH... AH...",
+          "shape": "none",
+          "x": 760,
+          "y": 560,
+          "rot": 8,
+          "size": 70,
+          "at": "L1+0.2",
+          "exit": "L1+0.78",
+          "sfx": false
+        },
+        {
+          "type": "burst",
+          "text": "RRRIP!",
+          "x": 540,
+          "y": 600,
+          "rot": -8,
+          "at": "L1+0.8",
+          "sfx": "impact-bass-1"
+        }
+      ]
+    },
+    {
+      "say": "Now his suit has a hole right in the butt.",
+      "bg": {
+        "type": "shop",
+        "sign": "SUIT RENTAL",
+        "signColor": "#2c2f45"
+      },
+      "cast": [
+        {
+          "who": "doug",
+          "x": 540,
+          "y": 1640,
+          "face": "panic",
+          "lookOverride": {
+            "outfit": "suit",
+            "print": "none"
+          },
+          "poses": [
+            [
+              "w:butt",
+              "facepalm"
+            ]
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "sticker",
+          "text": "FREE AIR CONDITIONING",
+          "x": 540,
+          "y": 560,
+          "rot": -5,
+          "size": 46,
+          "at": "w:butt"
+        }
+      ],
+      "pauseAfter": 0.7
+    },
+    {
+      "say": "And then, Mom calls.",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "sfx": [
+        {
+          "name": "notification",
+          "at": 0.05,
+          "vol": 0.4
+        }
+      ],
+      "props": [
+        {
+          "type": "phone",
+          "screen": "call",
+          "name": "MOM",
+          "label": "incoming call",
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8
+        }
+      ]
+    },
+    {
+      "say": "Doug! Take out the trash! And give me back my good towels!",
+      "voice": {
+        "id": "bf_emma",
+        "speed": 1.08
+      },
+      "bg": {
+        "type": "garage"
+      },
+      "shake": [
+        "w:doug"
+      ],
+      "cast": [
+        {
+          "who": "mom",
+          "x": 770,
+          "y": 1640,
+          "scale": 0.9,
+          "face": "angry",
+          "pose": "point",
+          "flip": true,
+          "enter": "slideLeft"
+        },
+        {
+          "who": "doug",
+          "x": 250,
+          "y": 1660,
+          "scale": 0.72,
+          "face": "shock",
+          "lookOverride": {
+            "outfit": "suit",
+            "print": "none"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "bubble",
+          "text": "DOUG! TAKE OUT THE TRASH!",
+          "maxChars": 14,
+          "size": 52,
+          "x": 600,
+          "y": 560,
+          "tailX": 120,
+          "at": "w:doug"
+        }
+      ]
+    },
+    {
+      "say": "And Doug realizes: alone, he will never make it.",
+      "bg": {
+        "type": "sunburst",
+        "color": "#3a2d72"
+      },
+      "camera": "pull",
+      "cast": [
+        {
+          "who": "doug",
+          "x": 540,
+          "y": 1780,
+          "scale": 1.15,
+          "face": "sad",
+          "faces": [
+            [
+              "w:alone",
+              "cry"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "vote",
+      "say": [
+        "And this is where you come in. What should Doug do?",
+        "Option A: sell his comic book collection.",
+        "Option B: flip burgers where his old classmates eat.",
+        "Comment A or B. Your comment decides!"
+      ],
+      "face": "sad",
+      "question": "WHAT SHOULD DOUG DO?",
+      "questionAt": "w:what",
+      "a": {
+        "text": "Sell his comic collection",
+        "icon": "comic",
+        "at": "L1"
+      },
+      "b": {
+        "text": "Flip burgers at Burger Barn",
+        "icon": "burger",
+        "at": "L2"
+      },
+      "cta": "Write A or B in the comments!",
+      "ctaAt": "L3"
+    }
+  ]
+}

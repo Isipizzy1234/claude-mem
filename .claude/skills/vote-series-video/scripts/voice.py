@@ -1,0 +1,193 @@
+#!/usr/bin/env python3
+"""Narration for a vote-series episode: Kokoro TTS line by line + word timings.
+
+Each line is synthesised on its own, its silence trimmed, and the lines are
+joined into one track. Line boundaries are therefore exact. Word times inside a
+line come from the phoneme count of each word, snapped to the pauses the voice
+actually makes at punctuation (no transcription model needed; works offline).
+
+usage: python3 voice.py --lines lines.json --out-dir <project>/assets \
+          [--voice am_michael] [--speed 1.1] [--lang en-us] [--gap 0.07]
+lines.json: [{"id": "s01-0", "text": "Thirty days.", "pauseAfter": 0.0}, ...]
+writes: <out-dir>/voice.wav and <out-dir>/timing.json
+"""
+import argparse
+import json
+import os
+import re
+import subprocess
+import sys
+import wave
+
+import numpy as np
+
+CACHE = os.path.expanduser("~/.cache/hyperframes/tts")
+MODEL = os.path.join(CACHE, "models", "kokoro-v1.0.onnx")
+VOICES = os.path.join(CACHE, "voices", "voices-v1.0.bin")
+FRAME = 0.01  # analysis hop, seconds
+PUNCT_END = re.compile(r"[,.;:!?—…]+[\"')\]]*$")
+
+
+def ensure_model():
+    if os.path.exists(MODEL) and os.path.exists(VOICES):
+        return
+    # Let the HyperFrames CLI download the model once.
+    tmp = os.path.join(os.getcwd(), ".warmup.wav")
+    subprocess.run(["npx", "hyperframes", "tts", "warm up", "-o", tmp], check=True)
+    if os.path.exists(tmp):
+        os.remove(tmp)
+
+
+def frames_db(x, sr):
+    hop = int(sr * FRAME)
+    n = len(x) // hop
+    if n == 0:
+        return np.array([-120.0])
+    seg = x[: n * hop].reshape(n, hop)
+    rms = np.sqrt(np.mean(seg ** 2, axis=1) + 1e-12)
+    return 20 * np.log10(rms + 1e-12)
+
+
+def voiced_regions(x, sr, min_pause=0.11):
+    db = frames_db(x, sr)
+    thr = max(db.max() - 38.0, -55.0)
+    voiced = db > thr
+    idx = np.where(voiced)[0]
+    if len(idx) == 0:
+        return 0.0, len(x) / sr, []
+    first, last = idx[0], idx[-1]
+    pauses = []
+    run_start = None
+    for i in range(first, last + 1):
+        if not voiced[i]:
+            if run_start is None:
+                run_start = i
+        else:
+            if run_start is not None and (i - run_start) * FRAME >= min_pause:
+                pauses.append((run_start * FRAME, i * FRAME))
+            run_start = None
+    return first * FRAME, (last + 1) * FRAME, pauses
+
+
+def clean_word(w):
+    return re.sub(r"[^\w'$%.,-]", "", w).strip(".,") or w
+
+
+def word_weights(kokoro, words, lang):
+    out = []
+    for w in words:
+        cw = clean_word(w)
+        try:
+            ph = kokoro.tokenizer.phonemize(cw, lang)
+            n = len(re.sub(r"\s", "", ph))
+        except Exception:
+            n = len(cw)
+        out.append(max(2, n))
+    return out
+
+
+def distribute(words, weights, t0, t1):
+    total = float(sum(weights)) or 1.0
+    res, t = [], t0
+    for w, k in zip(words, weights):
+        d = (t1 - t0) * k / total
+        res.append({"text": w, "start": round(t, 3), "end": round(t + d, 3)})
+        t += d
+    return res
+
+
+def time_words(kokoro, text, lang, v0, v1, pauses):
+    words = text.split()
+    if not words:
+        return []
+    weights = word_weights(kokoro, words, lang)
+    # groups split at punctuation
+    groups, cur = [], []
+    for i, w in enumerate(words):
+        cur.append(i)
+        if PUNCT_END.search(w) and i < len(words) - 1:
+            groups.append(cur)
+            cur = []
+    if cur:
+        groups.append(cur)
+    need = len(groups) - 1
+    if need > 0 and len(pauses) >= need:
+        chosen = sorted(sorted(pauses, key=lambda p: p[1] - p[0], reverse=True)[:need])
+        bounds = [v0] + [x for p in chosen for x in p] + [v1]
+        res = []
+        for gi, g in enumerate(groups):
+            a, b = bounds[gi * 2], bounds[gi * 2 + 1]
+            res += distribute([words[i] for i in g], [weights[i] for i in g], a, b)
+        return res
+    # fallback: one region, punctuation adds a little weight for the pause
+    adj = [w + (3 if PUNCT_END.search(words[i]) else 0) for i, w in enumerate(weights)]
+    return distribute(words, adj, v0, v1)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--lines", required=True)
+    ap.add_argument("--out-dir", required=True)
+    ap.add_argument("--voice", default="am_michael")
+    ap.add_argument("--speed", type=float, default=1.1)
+    ap.add_argument("--lang", default="en-us")
+    ap.add_argument("--gap", type=float, default=0.07)
+    ap.add_argument("--lead", type=float, default=0.15)
+    a = ap.parse_args()
+
+    ensure_model()
+    from kokoro_onnx import Kokoro
+
+    kokoro = Kokoro(MODEL, VOICES)
+    lines = json.load(open(a.lines))
+    sr_out = None
+    chunks = []
+    t = a.lead
+    out_lines = []
+    pad = 0.03
+    for ln in lines:
+        text = ln["text"].strip()
+        samples, sr = kokoro.create(text, voice=ln.get("voice", a.voice), speed=ln.get("speed", a.speed), lang=a.lang)
+        samples = np.asarray(samples, dtype=np.float32)
+        sr_out = sr_out or sr
+        v0, v1, pauses = voiced_regions(samples, sr)
+        s0 = max(0.0, v0 - pad)
+        s1 = min(len(samples) / sr, v1 + pad)
+        clip = samples[int(s0 * sr): int(s1 * sr)]
+        words = time_words(kokoro, text, a.lang, v0 - s0, v1 - s0, [(p0 - s0, p1 - s0) for p0, p1 in pauses])
+        for w in words:
+            w["start"] = round(w["start"] + t, 3)
+            w["end"] = round(w["end"] + t, 3)
+        dur = len(clip) / sr
+        out_lines.append({"id": ln["id"], "text": text, "start": round(t, 3), "end": round(t + dur, 3), "words": words})
+        chunks.append(clip)
+        gap = a.gap + float(ln.get("pauseAfter", 0) or 0)
+        chunks.append(np.zeros(int(gap * sr), dtype=np.float32))
+        t += dur + gap
+        print(f"  {ln['id']:>8}  {dur:5.2f}s  {text}", file=sys.stderr)
+
+    audio = np.concatenate([np.zeros(int(a.lead * sr_out), dtype=np.float32)] + chunks)
+    peak = float(np.max(np.abs(audio))) or 1.0
+    audio = audio / peak * 0.89  # about -1 dBFS peak
+    os.makedirs(a.out_dir, exist_ok=True)
+    wav_path = os.path.join(a.out_dir, "voice.wav")
+    with wave.open(wav_path, "wb") as wf:
+        wf.setnchannels(1)
+        wf.setsampwidth(2)
+        wf.setframerate(sr_out)
+        wf.writeframes((audio * 32767).astype(np.int16).tobytes())
+    # Loudness for social video: about -15 LUFS integrated, true peak <= -1.5 dBTP.
+    # Linear gain only (dynamic=false) so the word timings stay valid.
+    tmp = wav_path + ".norm.wav"
+    r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", wav_path, "-af", "loudnorm=I=-15:TP=-1.5:LRA=11:linear=true", "-ar", str(sr_out), tmp])
+    if r.returncode == 0 and os.path.exists(tmp):
+        os.replace(tmp, wav_path)
+    else:
+        print("  ! ffmpeg loudnorm failed; voice left at peak-normalised level", file=sys.stderr)
+    timing = {"sampleRate": sr_out, "total": round(len(audio) / sr_out, 3), "voice": a.voice, "speed": a.speed, "lines": out_lines}
+    json.dump(timing, open(os.path.join(a.out_dir, "timing.json"), "w"), indent=1)
+    print(f"voice.wav {timing['total']}s, {len(out_lines)} lines", file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()
