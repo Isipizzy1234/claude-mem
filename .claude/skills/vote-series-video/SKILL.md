@@ -17,7 +17,8 @@ Set `"lang": "de"` or `"en"` in `series.json`: narration, captions, HUD ("FOLGE 
 
 | provider | languages | word timings | needs |
 | --- | --- | --- | --- |
-| `heygen` | all, incl. German | from the API (exact) | HeyGen sign-in: `npx hyperframes auth status`; if not signed in ask the user to type `! npx hyperframes auth login` (free) or set `HEYGEN_API_KEY`. `voice.id`: `auto` or a Starfish voice id (`node .claude/skills/media-use/audio/scripts/heygen-tts.mjs --list`) |
+| `heygen` | all, incl. German | from the API (exact) | `api.heygen.com` allowed in the network settings, and HeyGen sign-in: `npx hyperframes auth status`; if not signed in ask the user to type `! npx hyperframes auth login` (free) or set `HEYGEN_API_KEY`. `voice.id`: `auto` or a Starfish voice id (`node .claude/skills/media-use/audio/scripts/heygen-tts.mjs --list`) |
+| `elevenlabs` | all, incl. German (best German quality) | from the API (character timestamps) | `ELEVENLABS_API_KEY` as an environment secret **and** `api.elevenlabs.io` allowed in the environment's network settings. `voice.id`: `auto` (premade "Adam") or any voice id from the user's ElevenLabs voice library |
 | `kokoro` | English (+ es, fr, it, pt-br, hi, ja, zh) — **no German** | estimated from phonemes + pauses | `pip install kokoro-onnx soundfile`, offline |
 | `silent` | any | estimated from word length | nothing; draft timing for a picture preview before the voice exists |
 

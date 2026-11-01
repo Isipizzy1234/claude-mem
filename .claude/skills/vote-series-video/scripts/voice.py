@@ -186,6 +186,57 @@ class HeyGen_:
         return [max(2, len(clean_word(w))) for w in words]
 
 
+class ElevenLabs_:
+    """ElevenLabs multilingual voices (great German), character timestamps -> words.
+    Needs ELEVENLABS_API_KEY and network access to api.elevenlabs.io."""
+
+    DEFAULT_VOICE = "pNInz6obpgDQGcFmaJgB"  # "Adam", a premade voice; any voice id works
+
+    def __init__(self, lang):
+        self.key = os.environ.get("ELEVENLABS_API_KEY")
+        if not self.key:
+            sys.exit("ELEVENLABS_API_KEY is not set (add it in the environment settings, never in chat)")
+        self.lang = lang.split("-")[0]
+
+    def synth(self, text, voice, speed, tmpdir, idx):
+        import base64
+        import urllib.request
+        vid = voice if voice and voice not in ("auto", "default") else self.DEFAULT_VOICE
+        body = json.dumps({
+            "text": text,
+            "model_id": "eleven_multilingual_v2",
+            "language_code": self.lang,
+            "voice_settings": {"stability": 0.45, "similarity_boost": 0.8, "speed": max(0.7, min(1.2, speed))},
+        }).encode()
+        req = urllib.request.Request(
+            f"https://api.elevenlabs.io/v1/text-to-speech/{vid}/with-timestamps?output_format=mp3_44100_128",
+            data=body, headers={"xi-api-key": self.key, "Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=120) as r:
+            data = json.loads(r.read())
+        mp3 = os.path.join(tmpdir, f"line{idx:03d}.mp3")
+        open(mp3, "wb").write(base64.b64decode(data["audio_base64"]))
+        samples, sr = read_wav_any(mp3)
+        al = data.get("alignment") or data.get("normalized_alignment") or {}
+        chars = al.get("characters", [])
+        st, en = al.get("character_start_times_seconds", []), al.get("character_end_times_seconds", [])
+        words, cur, ws, we = [], "", None, None
+        for c, a, b in zip(chars, st, en):
+            if c.isspace():
+                if cur:
+                    words.append({"text": cur, "start": ws, "end": we})
+                cur, ws = "", None
+                continue
+            cur += c
+            ws = a if ws is None else ws
+            we = b
+        if cur:
+            words.append({"text": cur, "start": ws, "end": we})
+        return samples, sr, (words or None)
+
+    def weights(self, words):
+        return [max(2, len(clean_word(w))) for w in words]
+
+
 class Silent_:
     """Draft timing without audio (for previews before a voice is available)."""
 
@@ -211,7 +262,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--lines", required=True)
     ap.add_argument("--out-dir", required=True)
-    ap.add_argument("--provider", default="kokoro", choices=["kokoro", "heygen", "silent"])
+    ap.add_argument("--provider", default="kokoro", choices=["kokoro", "heygen", "elevenlabs", "silent"])
     ap.add_argument("--voice", default="am_michael")
     ap.add_argument("--speed", type=float, default=1.1)
     ap.add_argument("--lang", default="en-us")
@@ -219,7 +270,7 @@ def main():
     ap.add_argument("--lead", type=float, default=0.15)
     a = ap.parse_args()
 
-    eng = {"kokoro": Kokoro_, "heygen": HeyGen_, "silent": Silent_}[a.provider](a.lang)
+    eng = {"kokoro": Kokoro_, "heygen": HeyGen_, "elevenlabs": ElevenLabs_, "silent": Silent_}[a.provider](a.lang)
     lines = json.load(open(a.lines))
     tmpdir = os.path.join(a.out_dir, ".voice-lines")
     os.makedirs(tmpdir, exist_ok=True)
