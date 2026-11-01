@@ -25,10 +25,20 @@ contract and CLI. This skill only adds the format, the engine and the workflow.
 | `references/style.md` | The visual bible: colours, type, layout px, what the frames look like |
 | `references/spec.md` | Every field of `video.json` (lineups, beats, moves, passes, cameras …) |
 | `references/script.md` | How to write the English script: hook, chapters, beat rhythm, wording |
+| `engine/sfx/`, `scripts/make_sfx.py` | Foley set (crowd bed, whooshes, kick, net, cheer) generated from seeded noise; rerun the script to regenerate |
 | `examples/man-marking.json` | A complete working 24 s video - copy it as the starting point |
+| `../../../videos/barca-high-line/video.json` | A full 80 s real-club breakdown (Flick's Barcelona, Nov 2026) with a goal, sound and current stats |
 
 ## Workflow
 
+0. **Current facts first.** Every real club, coach, player or number must be the
+   newest available: search the web (WebSearch, `extended` mode) for the current
+   season, last results, current squad and recent stats before writing the
+   script. Prefer the club's official site and major outlets; drop claims only
+   one weak source makes (transfer rumours, AI-looking pages). Don't name a full
+   XI unless a recent lineup confirms it - label only key players you verified.
+   List the facts you used with their sources for the user, and say which ones
+   are thin.
 1. **Idea → script.** Turn the user's topic into an English beat list following
    `references/script.md` (hook question in beat 1, 6–10 beats, 2–4 s each,
    chapters, payoff, follow CTA). Show the user the beat list (say + title per
@@ -83,5 +93,14 @@ contract and CLI. This skill only adds the format, the engine and the workflow.
 - Don't change the engine's look per video. If the user asks for a style change,
   change it in `engine/` or `references/style.md` so every future video gets it,
   and tell them.
+- **Sound is on by default** (`"sound"` in the spec, `references/spec.md`):
+  a low stadium-crowd bed under the whole video, a soft whoosh on every camera
+  move and fast sprint (max ~1/s, three rotating takes), a boot-on-ball kick on
+  every pass, and a quiet net ripple + crowd swell when a pass/shot ends inside
+  a goal (`to` behind the goal line between the posts). Extra cues per beat:
+  `"sfx": [{ "name": "cheer", "at": 1.2 }]`. The voice always stays on top.
+  The bundled foley is synthesised noise (this environment can't reach sound
+  libraries); if the user signs in to HeyGen or allows Openverse/Freesound,
+  swap in real recordings with the same file names in `engine/sfx/`.
 - Music: only if the user gives a track (`"music": "path.mp3"`) or signs in to
   HeyGen for the catalog (`/media-use`). Never synthesise music in code.

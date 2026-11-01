@@ -15,6 +15,8 @@ start**. Angles: radians, `0` = facing the top goal, `3.1416` = facing down.
   "voice": { "id": "am_michael", "speed": 1.05 }, // or null = silent (timing from word count)
   "music": "music.mp3",                         // optional, path relative to video.json
   "musicVolume": 0.14,
+  "sound": { "ambience": 0.09, "whoosh": 0.2, "kick": 0.32, "net": 0.38, "cheer": 0.2 },
+                                               // gains; 0 disables one layer, false disables all sound effects
   "colors": { "green": "#3ddc84" },            // optional token overrides (style.md)
   "teams": {
     "A": { "name": "ATTACK", "color": "#ece7dc" },
@@ -86,11 +88,17 @@ Explicit players: `{ "id": "you", "team": "B", "at": [8, -36], "label": "YOU",
   "rings":  ["b3", { "p": "a10", "color": "#3ddc84", "at": 0.5 }],
   "hide":   ["A"],                     // team keys or ids hidden (faded) during this beat
   "stats":  { "PASSES": 9, "SHOTS": 0 }, "statsAt": 0.2,   // counters animate to these
-  "badge":  "4-3-3"
+  "badge":  "4-3-3",
+  "sfx":    [ { "name": "cheer", "at": 1.2, "volume": 0.25 } ],  // extra cues: whoosh-1..3, kick, net, cheer
+  "whoosh": false                     // no automatic whoosh on this beat's camera move
 }
 ```
 
 Notes:
+
+- Automatic sound: whoosh on each camera change and fast run (`"whoosh": false`
+  on a move or beat skips it), kick on each pass with a passer, net + cheer when
+  a pass ends inside a goal (`"cheer": false` on the pass skips the cheer).
 
 - Moves of one player must not overlap in time; chain them with `at`.
 - Arrow/label/ring endpoints that are player ids are resolved at the arrow's

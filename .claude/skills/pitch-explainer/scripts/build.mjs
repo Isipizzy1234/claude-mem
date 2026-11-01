@@ -176,6 +176,20 @@ function resolveCamera(c, beat) {
   return { pos: pos.map(r2), look, fov };
 }
 
+// ---------------- sound design cues ----------------
+const SND = spec.sound === false ? null : {
+  ambience: 0.09, whoosh: 0.2, kick: 0.32, net: 0.38, cheer: 0.2, ...(spec.sound || {}),
+};
+const sfx = []; // { name, t, vol }
+let lastWhoosh = -9;
+let whooshN = 0;
+function addWhoosh(t, vol) {
+  if (!SND || !SND.whoosh || t - lastWhoosh < 1.0) return;
+  lastWhoosh = t;
+  sfx.push({ name: `whoosh-${(whooshN++ % 3) + 1}`, t: r2(Math.max(0, t)), vol: vol ?? SND.whoosh });
+}
+const isGoalPoint = (to) => Array.isArray(to) && Math.abs(to[1]) >= 52.4 && Math.abs(to[0]) <= 3.7;
+
 let holder = spec.ball?.holder ?? null;
 let lastStats = {};
 const statKeys = [];
@@ -189,6 +203,7 @@ for (const b of beats) {
   if (b.camera) {
     const c = resolveCamera(b.camera, b);
     cameras.push({ t: b.start, ...c, cut: !!b.camera.cut, dur: b.camera.dur ?? 1.1, drift: b.camera.drift ?? 0.06, orbit: b.camera.orbit ?? 0 });
+    if (b.start > 0 && b.whoosh !== false) addWhoosh(b.start - 0.08);
   }
 
   // moves (players run to a spot). `p` may be an id or a team key.
@@ -205,6 +220,9 @@ for (const b of beats) {
         to = [to[0] + (s - 0.5) * m.jitter * 2, to[1] + (((s * 7) % 1) - 0.5) * m.jitter * 2];
       }
       if (tr[tr.length - 1][0] < t0) tr.push([t0, r2(cur[0]), r2(cur[1])]);
+      // a quick sprint gets a soft swish (rate-limited, never more than ~1/s)
+      const runDist = Math.hypot(to[0] - cur[0], to[1] - cur[1]);
+      if (m.whoosh !== false && runDist / Math.max(0.1, t1 - t0) > 6 && runDist > 5) addWhoosh(t0 + 0.05, (SND?.whoosh ?? 0) * 0.7);
       tr.push([t1, r2(to[0]), r2(to[1])]);
     }
   }
@@ -219,6 +237,11 @@ for (const b of beats) {
       arrows.push({ t0, t1: untilOf(ps), draw: r2(t1 - t0), from, to: ps.to, color: ps.color || "red" });
     }
     holder = typeof ps.to === "string" ? ps.to : null;
+    if (SND && ps.kick !== false && (from || ps.from)) sfx.push({ name: "kick", t: t0, vol: SND.kick * (ps.lift > 2 ? 1 : 0.8) });
+    if (SND && isGoalPoint(ps.to)) {
+      sfx.push({ name: "net", t: r2(t1 - 0.02), vol: SND.net });
+      if (ps.cheer !== false) sfx.push({ name: "cheer", t: r2(t1 + 0.05), vol: SND.cheer });
+    }
   }
 
   for (const a of b.arrows || []) {
@@ -243,6 +266,10 @@ for (const b of beats) {
     rings.push({ t0: T(rr.at ?? 0), t1: untilOf(rr), player: rr.p, color: rr.color });
   }
   for (const id of expandRefs(b.hide)) (hidden[id] ||= []).push([b.start, b.end]);
+
+  for (const e of b.sfx || []) {
+    if (SND) sfx.push({ name: e.name, t: T(e.at ?? 0), vol: e.volume ?? SND[e.name.replace(/-\d$/, "")] ?? 0.3 });
+  }
 
   if (b.stats) {
     for (const k of Object.keys(b.stats)) if (!statKeys.includes(k)) statKeys.push(k);
@@ -363,6 +390,34 @@ const musicTag = musicRel
   ? `      <audio id="music-bed" class="clip" src="${musicRel}" data-start="0" data-duration="${DURATION}" data-track-index="22" data-volume="${spec.musicVolume ?? 0.14}" data-fade-in="0.3" data-fade-out="0.8"></audio>`
   : "";
 
+// sound effects + ambience bed
+const SFX_DIR = path.join(ENGINE, "sfx");
+const sfxDur = (name) => Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path.join(SFX_DIR, `${name}.wav`)]).toString().trim());
+const sfxTags = [];
+if (SND) {
+  fs.mkdirSync(path.join(outDir, "assets", "sfx"), { recursive: true });
+  const used = new Set(sfx.map((c) => c.name));
+  if (SND.ambience) used.add("crowd-loop");
+  const durs = {};
+  for (const n of used) {
+    fs.copyFileSync(path.join(SFX_DIR, `${n}.wav`), path.join(outDir, "assets/sfx", `${n}.wav`));
+    durs[n] = sfxDur(n);
+  }
+  sfx.sort((a, b) => a.t - b.t).forEach((c, i) => {
+    const d = r2(Math.min(durs[c.name], DURATION - c.t));
+    if (d <= 0.05) return;
+    sfxTags.push(`      <audio id="sfx-${i}-${c.name}" class="clip" src="assets/sfx/${c.name}.wav" data-start="${c.t}" data-duration="${d}" data-track-index="${24 + (i % 3)}" data-volume="${r2(c.vol)}"></audio>`);
+  });
+  if (SND.ambience) {
+    const L = durs["crowd-loop"];
+    for (let k = 0, t0 = 0; t0 < DURATION - 0.05; k++, t0 = r2(t0 + L)) {
+      const d = r2(Math.min(L, DURATION - t0));
+      const fades = `${k === 0 ? ' data-fade-in="0.6"' : ""}${t0 + L >= DURATION ? ' data-fade-out="1.2"' : ""}`;
+      sfxTags.push(`      <audio id="amb-${k}" class="clip" src="assets/sfx/crowd-loop.wav" data-start="${t0}" data-duration="${d}" data-track-index="23" data-volume="${SND.ambience}"${fades}></audio>`);
+    }
+  }
+}
+
 const clipHtml = clips.map((c) => {
   if (c.kind === "chapter") {
     const r = c.ref;
@@ -437,6 +492,7 @@ ${statsHtml}
       <div id="handle" class="clip handle" data-start="0" data-duration="${DURATION}" data-track-index="6" data-var-text="handle">${esc(handle)}</div>
 ${audioTags}
 ${musicTag}
+${sfxTags.join("\n")}
     </div>
 
     <script type="application/json" id="world">${JSON.stringify(world).replace(/</g, "\\u003c")}</script>

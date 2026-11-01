@@ -1,5 +1,5 @@
 {
-  "title": "Flick's Barcelona high line",
+  "title": "Flick's Barcelona high line (Nov 2026)",
   "handle": "@yourhandle",
   "voice": {
     "id": "am_michael",
@@ -25,17 +25,17 @@
       "line": 8,
       "front": -22,
       "names": [
-        "SZCZĘSNY",
-        "BALDE",
-        "IÑIGO",
+        "",
+        "",
+        "",
         "CUBARSÍ",
-        "KOUNDÉ",
+        "",
         "PEDRI",
-        "CASADÓ",
+        "",
         "RAPHINHA",
-        "OLMO",
+        "",
         "YAMAL",
-        "LEWANDOWSKI"
+        ""
       ]
     },
     {
@@ -100,7 +100,7 @@
         "FOUR-TWO-",
         "THREE-ONE."
       ],
-      "say": "The setup is a four two three one. Lewandowski up front, Lamine Yamal on the right wing.",
+      "say": "The base shape is a four two three one. Cubarsi leads the line, Pedri runs the midfield, Yamal and Raphinha the attack.",
       "badge": "4-2-3-1",
       "camera": {
         "preset": "top",
@@ -425,34 +425,43 @@
           "at": 1.6,
           "size": 34
         }
-      ],
-      "stats": {
-        "OFFSIDES": 1
-      },
-      "statsAt": 1.6
+      ]
     },
     {
       "id": "proof",
       "chapter": "THE PROOF",
       "title": [
-        "REAL MADRID:",
-        "12 TIMES OFFSIDE."
+        "100 WINS.",
+        "76% WIN RATE."
       ],
-      "say": "In the four nil win at the Bernabeu in October twenty twenty four, Real Madrid were caught offside twelve times.",
+      "say": "And it works. On Halloween, Barcelona beat Alaves six one, and Flick reached one hundred wins, the best win rate of any Barcelona coach.",
       "camera": {
-        "preset": "high",
+        "preset": "broadcast",
         "focus": [
-          4,
-          -14
+          -4,
+          40
         ],
-        "span": 40
+        "yaw": 180,
+        "span": 34,
+        "dur": 1.2
       },
       "passes": [
         {
-          "to": "b1",
-          "at": 0.3,
-          "dur": 1.2,
+          "to": "b10",
+          "at": 0.2,
+          "dur": 1.1,
+          "lift": 4,
           "arrow": false
+        },
+        {
+          "from": "b10",
+          "to": [
+            -1.5,
+            53.4
+          ],
+          "at": 3.4,
+          "dur": 0.45,
+          "lift": 1.2
         }
       ],
       "moves": [
@@ -496,51 +505,87 @@
           "p": "r11",
           "to": [
             12,
-            -12
+            -6
           ],
-          "at": 1.0,
+          "at": 0.5,
+          "dur": 3.0
+        },
+        {
+          "p": "b10",
+          "to": [
+            -7,
+            41
+          ],
+          "at": 1.3,
           "dur": 2.0
+        },
+        {
+          "p": "r3",
+          "to": [
+            -6,
+            44
+          ],
+          "at": 1.6,
+          "dur": 1.6
+        },
+        {
+          "p": "r1",
+          "to": [
+            -2.6,
+            51.2
+          ],
+          "at": 3.4,
+          "dur": 0.45
         }
       ],
       "stats": {
-        "OFFSIDES": 12
+        "WINS": 100,
+        "WIN %": 76
       },
-      "statsAt": 1.2
+      "statsAt": 2.2
     },
     {
-      "id": "mbappe",
+      "id": "stars",
       "title": [
-        "MBAPPÉ ALONE:",
-        "8 TIMES."
+        "YAMAL & RAPHINHA:",
+        "TWO GOALS EACH."
       ],
-      "say": "Kylian Mbappe alone: eight times.",
-      "min": 2.6,
+      "say": "Lamine Yamal and Raphinha scored two each.",
+      "min": 2.8,
       "camera": {
         "preset": "high",
-        "focus": "r11",
-        "span": 22
+        "focus": [
+          -6,
+          36
+        ],
+        "yaw": 180,
+        "span": 26
       },
-      "rings": [
+      "moves": [
         {
-          "p": "r11",
-          "color": "#ff4a4a"
+          "p": "b8",
+          "to": [
+            -4.5,
+            39
+          ],
+          "at": 0.1,
+          "dur": 2.2
         }
+      ],
+      "rings": [
+        "b10",
+        "b8"
       ],
       "labels": [
         {
-          "p": "r11",
-          "text": "MBAPPÉ"
-        }
-      ],
-      "moves": [
+          "p": "b10",
+          "text": "YAMAL",
+          "color": "green"
+        },
         {
-          "p": "r11",
-          "to": [
-            12,
-            -6
-          ],
-          "at": 0.2,
-          "dur": 2.0
+          "p": "b8",
+          "text": "RAPHINHA",
+          "color": "green"
         }
       ]
     },
@@ -562,12 +607,12 @@
       },
       "passes": [
         {
-          "from": "b1",
           "to": "r7",
           "at": 0.1,
-          "dur": 0.9,
+          "dur": 1.0,
           "arrow": false,
-          "lift": 2
+          "lift": 3,
+          "kick": false
         }
       ],
       "moves": [
@@ -577,8 +622,8 @@
             -3,
             9.5
           ],
-          "at": 1.0,
-          "dur": 1.0
+          "at": 0.6,
+          "dur": 1.5
         },
         {
           "p": "b7",
@@ -586,8 +631,8 @@
             -7.5,
             9
           ],
-          "at": 1.1,
-          "dur": 1.0
+          "at": 0.7,
+          "dur": 1.4
         },
         {
           "p": "b10",
@@ -595,8 +640,17 @@
             -8,
             14
           ],
-          "at": 1.0,
-          "dur": 1.1
+          "at": 0.0,
+          "dur": 2.2
+        },
+        {
+          "p": "b8",
+          "to": [
+            14,
+            10
+          ],
+          "at": 0.0,
+          "dur": 2.6
         }
       ],
       "arrows": [
@@ -606,7 +660,7 @@
             -3.5,
             10
           ],
-          "at": 1.0,
+          "at": 1.4,
           "draw": 0.6
         },
         {
@@ -615,7 +669,7 @@
             -7,
             9.5
           ],
-          "at": 1.1,
+          "at": 1.5,
           "draw": 0.6
         },
         {
@@ -624,7 +678,7 @@
             -7.5,
             13.5
           ],
-          "at": 1.0,
+          "at": 1.6,
           "draw": 0.6
         }
       ],
@@ -633,7 +687,7 @@
           "p": "r7",
           "text": "NO TIME",
           "color": "red",
-          "at": 1.6
+          "at": 2.0
         }
       ]
     },
@@ -763,7 +817,7 @@
         "HIGH RISK.",
         "HIGH REWARD."
       ],
-      "say": "High risk, high reward. And that season, this line helped Barcelona win La Liga.",
+      "say": "High risk, high reward. Back to back defeats against PSG and Real Madrid showed the risk. Six goals against Alaves showed the reward.",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -861,5 +915,8 @@
       ],
       "hold": 1.0
     }
-  ]
+  ],
+  "sound": {
+    "ambience": 0.09
+  }
 }
