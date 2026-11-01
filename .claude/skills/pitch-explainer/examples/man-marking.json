@@ -1,0 +1,339 @@
+{
+  "title": "Why man-marking gets you killed",
+  "handle": "@yourhandle",
+  "voice": {
+    "id": "am_michael",
+    "speed": 1.05
+  },
+  "teams": {
+    "A": {
+      "name": "ATTACK",
+      "color": "#ece7dc"
+    },
+    "B": {
+      "name": "YOU",
+      "color": "#5b647b",
+      "facing": 3.1416
+    }
+  },
+  "lineups": [
+    {
+      "team": "B",
+      "shape": "4-4-2",
+      "goal": "top",
+      "prefix": "b",
+      "line": 36,
+      "front": 14
+    },
+    {
+      "team": "A",
+      "shape": "4-3-3",
+      "goal": "bottom",
+      "prefix": "a",
+      "line": 36,
+      "front": 0,
+      "shift": [
+        0,
+        -30
+      ]
+    }
+  ],
+  "ball": {
+    "holder": "a7"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "chapter": "THE PROBLEM",
+      "title": [
+        "YOUR COACH YELLS:",
+        "“TAKE YOUR MAN!”"
+      ],
+      "say": "Your coach yells: take your man! But that is exactly how you concede.",
+      "camera": {
+        "preset": "high",
+        "focus": [
+          4,
+          -41
+        ],
+        "span": 22
+      },
+      "rings": [
+        "b3",
+        "a10"
+      ],
+      "labels": [
+        {
+          "p": "b3",
+          "text": "YOU",
+          "color": "green",
+          "below": true
+        },
+        {
+          "p": "a10",
+          "text": "YOUR MAN"
+        }
+      ]
+    },
+    {
+      "id": "follow",
+      "title": [
+        "HE RUNS.",
+        "YOU FOLLOW."
+      ],
+      "say": "He drifts wide. You follow him. Every single time.",
+      "moves": [
+        {
+          "p": "a10",
+          "to": [
+            21,
+            -41
+          ],
+          "at": 0.1,
+          "dur": 1.8
+        },
+        {
+          "p": "b3",
+          "to": [
+            18.5,
+            -42.5
+          ],
+          "at": 0.35,
+          "dur": 1.8
+        }
+      ],
+      "arrows": [
+        {
+          "from": "a10",
+          "to": [
+            21,
+            -41
+          ],
+          "at": 0.1,
+          "draw": 0.8
+        }
+      ],
+      "rings": [
+        "b3",
+        "a10"
+      ],
+      "labels": [
+        {
+          "p": "b3",
+          "text": "YOU",
+          "color": "green",
+          "below": true
+        },
+        {
+          "p": "a10",
+          "text": "YOUR MAN"
+        }
+      ],
+      "camera": {
+        "preset": "high",
+        "focus": [
+          11,
+          -40
+        ],
+        "span": 27,
+        "dur": 1.6
+      }
+    },
+    {
+      "id": "gap",
+      "title": [
+        "AND NOW",
+        "THERE IS A HOLE."
+      ],
+      "say": "And now there is a hole right in the middle of your defence.",
+      "camera": {
+        "preset": "high",
+        "focus": [
+          7,
+          -42
+        ],
+        "span": 25
+      },
+      "labels": [
+        {
+          "atPoint": [
+            5,
+            -38
+          ],
+          "text": "GAP",
+          "color": "green",
+          "at": 0.3,
+          "size": 36
+        }
+      ],
+      "moves": [
+        {
+          "p": "a9",
+          "to": [
+            4,
+            -42
+          ],
+          "at": 0.9,
+          "dur": 1.4
+        }
+      ],
+      "arrows": [
+        {
+          "from": "a9",
+          "to": [
+            4,
+            -42
+          ],
+          "at": 0.8,
+          "draw": 0.7
+        }
+      ],
+      "stats": {
+        "PASSES": 0,
+        "SHOTS": 0
+      }
+    },
+    {
+      "id": "goal",
+      "title": [
+        "ONE PASS.",
+        "ONE SHOT. GOAL."
+      ],
+      "say": "One pass. One shot. Goal.",
+      "min": 2.8,
+      "camera": {
+        "preset": "broadcast",
+        "focus": [
+          2,
+          -40
+        ],
+        "span": 28
+      },
+      "passes": [
+        {
+          "from": "a7",
+          "to": "a9",
+          "at": 0.15,
+          "dur": 0.7
+        },
+        {
+          "to": [
+            1.6,
+            -53.4
+          ],
+          "at": 1.15,
+          "dur": 0.45,
+          "lift": 1.4
+        }
+      ],
+      "moves": [
+        {
+          "p": "b1",
+          "to": [
+            2.6,
+            -51.5
+          ],
+          "at": 1.15,
+          "dur": 0.5
+        }
+      ],
+      "stats": {
+        "PASSES": 1,
+        "SHOTS": 1
+      },
+      "statsAt": 1.0
+    },
+    {
+      "id": "fix",
+      "chapter": "THE FIX",
+      "title": [
+        "DEFEND SPACE,",
+        "NOT PLAYERS."
+      ],
+      "say": "The fix: defend space, not players. Hold your zone and pass him on.",
+      "badge": "4-4-2",
+      "camera": {
+        "preset": "top",
+        "focus": [
+          0,
+          -21
+        ],
+        "span": 80,
+        "dur": 1.4
+      },
+      "hide": [
+        "A"
+      ],
+      "moves": [
+        {
+          "p": "b3",
+          "to": [
+            8,
+            -36
+          ],
+          "at": 0,
+          "dur": 1.2
+        },
+        {
+          "p": "b1",
+          "to": [
+            0,
+            -48
+          ],
+          "at": 0,
+          "dur": 1.2
+        }
+      ],
+      "links": [
+        [
+          "b2",
+          "b3"
+        ],
+        [
+          "b3",
+          "b4"
+        ],
+        [
+          "b4",
+          "b5"
+        ],
+        [
+          "b6",
+          "b7"
+        ],
+        [
+          "b7",
+          "b8"
+        ],
+        [
+          "b8",
+          "b9"
+        ],
+        [
+          "b10",
+          "b11"
+        ]
+      ],
+      "linksAt": 1.1
+    },
+    {
+      "id": "outro",
+      "chapter": "PART 2",
+      "title": [
+        "FOLLOW FOR",
+        "PART TWO."
+      ],
+      "say": "Follow for part two: how the pros break a zonal block.",
+      "camera": {
+        "preset": "broadcast",
+        "focus": [
+          0,
+          -36
+        ],
+        "span": 36,
+        "orbit": 0.35
+      },
+      "hold": 0.8
+    }
+  ]
+}
