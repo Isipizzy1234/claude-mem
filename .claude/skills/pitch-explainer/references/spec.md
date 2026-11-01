@@ -12,7 +12,8 @@ start**. Angles: radians, `0` = facing the top goal, `3.1416` = facing down.
 {
   "title": "Why man-marking gets you killed",   // project name only
   "handle": "@yourhandle",                      // watermark (the user's own)
-  "voice": { "id": "am_michael", "speed": 1.05 }, // or null = silent (timing from word count)
+  "voice": { "id": "am_puck:0.6,am_fenrir:0.4", "speed": 1.12, "fx": "punch" },
+                                                // id or blend; fx none|punch; null = silent
   "music": "music.mp3",                         // optional, path relative to video.json
   "musicVolume": 0.14,
   "sound": { "ambience": 0.09, "whoosh": 0.2, "kick": 0.32, "net": 0.38, "cheer": 0.2 },
@@ -62,6 +63,7 @@ Explicit players: `{ "id": "you", "team": "B", "at": [8, -36], "label": "YOU",
   "titleColor": "green",               // only for one-line titles
   "say": "And now there is a hole right in the middle of your defence.",
   "min": 2.0, "hold": 0.3, "dur": null, // beat length = max(min, voice + hold) unless dur is set
+  "pace": "hype",                       // hype (1.08x) | calm (0.93x) | a number: voice speed for this line
 
   "camera": { "preset": "high", "focus": [6, -42], "span": 24,
               "yaw": 0, "el": null, "fov": null,

@@ -53,13 +53,22 @@ contract and CLI. This skill only adds the format, the engine and the workflow.
    ```bash
    uv venv ~/.cache/pitch-explainer/tts-venv -q
    uv pip install -q --python ~/.cache/pitch-explainer/tts-venv/bin/python kokoro-onnx soundfile
-   export HYPERFRAMES_PYTHON=~/.cache/pitch-explainer/tts-venv/bin/python
+   export PITCH_PYTHON=~/.cache/pitch-explainer/tts-venv/bin/python HYPERFRAMES_PYTHON=$PITCH_PYTHON
+   npx hyperframes tts "warm up" -o /tmp/warmup.wav   # first time only: downloads the Kokoro model
    node .claude/skills/pitch-explainer/scripts/build.mjs videos/<slug>/video.json videos/<slug>/project
    ```
    Voice lines are cached by text+voice+speed, so rebuilding after a choreography
    change is instant. `timing.json` in the project lists each beat's start/end -
-   use it to pick snapshot times. Default voice `am_michael` at 1.05×; other
-   English voices: `am_adam`, `bm_george` (British), `af_heart`, `af_nova`.
+   use it to pick snapshot times.
+   **The voice must sound alive, never like a flat read** (`scripts/tts.py`):
+   default is a blend `am_puck:0.6,am_fenrir:0.4` at 1.12× with the `punch`
+   broadcast chain (presence EQ, compression, limiter). Other male voices:
+   am_michael, am_puck, am_fenrir, am_echo, am_eric, am_liam, am_onyx, bm_george,
+   bm_fable, bm_lewis, bm_daniel; blend any with `id:weight,id:weight`. Write `say`
+   like a hyped commentator: short bursts, `!`, `?`, `...` for dramatic pauses,
+   rhetorical questions ("Behind them? Forty-five metres of grass."), and set
+   `"pace": "hype"` (faster) or `"calm"` (slower punchline) per beat. Don't write
+   emphasis in CAPS (the phonemiser may spell it out); keep acronyms like PSG.
    If the user signs in to HeyGen (`npx hyperframes auth login`) better voices
    are available via `/media-use`; drop the files into `assets/vo/` with the
    same names or set `"voice": null` and add your own `<audio>`.

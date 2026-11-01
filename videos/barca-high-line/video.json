@@ -2,8 +2,9 @@
   "title": "Flick's Barcelona high line (Nov 2026)",
   "handle": "@yourhandle",
   "voice": {
-    "id": "am_michael",
-    "speed": 1.15
+    "id": "am_puck:0.6,am_fenrir:0.4",
+    "speed": 1.12,
+    "fx": "punch"
   },
   "teams": {
     "B": {
@@ -71,7 +72,7 @@
         "THE MOST DANGEROUS",
         "DEFENSIVE LINE"
       ],
-      "say": "Hansi Flick's Barcelona defends higher than almost anyone in Europe. On paper, it should not work.",
+      "say": "This is the craziest defensive line in Europe! Hansi Flick's Barcelona... and on paper? It should not work.",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -91,7 +92,8 @@
           "dur": 2.5,
           "jitter": 1.2
         }
-      ]
+      ],
+      "pace": "hype"
     },
     {
       "id": "lineup",
@@ -100,7 +102,7 @@
         "FOUR-TWO-",
         "THREE-ONE."
       ],
-      "say": "The base shape is a four two three one. Cubarsi leads the line, Pedri runs the midfield, Yamal and Raphinha the attack.",
+      "say": "Here's the setup. Four, two, three, one. Cubarsi at the back. Pedri pulling the strings. Yamal and Raphinha up top!",
       "badge": "4-2-3-1",
       "camera": {
         "preset": "top",
@@ -150,7 +152,7 @@
         "THE BACK FOUR",
         "STANDS HERE."
       ],
-      "say": "Now look at the back four. They are not near their own box. They stand almost on the halfway line.",
+      "say": "Now look at the back four. Not in their own box... no! They're standing almost on the halfway line!",
       "camera": {
         "preset": "high",
         "focus": [
@@ -179,7 +181,8 @@
           "b5"
         ]
       ],
-      "linksAt": 0.4
+      "linksAt": 0.4,
+      "pace": "hype"
     },
     {
       "id": "space",
@@ -187,7 +190,7 @@
         "45 METRES",
         "OF EMPTY GRASS."
       ],
-      "say": "That leaves forty five metres of empty grass behind them. One good ball, and a striker is through on goal.",
+      "say": "Behind them? Forty-five metres of empty grass. One good ball... and the striker is gone!",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -242,7 +245,7 @@
         "UNLESS…"
       ],
       "titleColor": "green",
-      "say": "Unless that striker is offside.",
+      "say": "Unless... he's offside.",
       "min": 2.4,
       "camera": {
         "preset": "high",
@@ -276,7 +279,8 @@
           "at": 0.1,
           "dur": 1.4
         }
-      ]
+      ],
+      "pace": "calm"
     },
     {
       "id": "step",
@@ -284,7 +288,7 @@
         "ALL FOUR",
         "STEP UP. TOGETHER."
       ],
-      "say": "The moment the passer lifts his head, all four defenders step up together.",
+      "say": "Watch this! The second the passer lifts his head... all four step up. Together!",
       "moves": [
         {
           "p": "b2",
@@ -377,7 +381,8 @@
           "p": "r11",
           "at": 1.3
         }
-      ]
+      ],
+      "pace": "hype"
     },
     {
       "id": "pass",
@@ -385,7 +390,7 @@
         "THE PASS COMES…",
         "TOO LATE."
       ],
-      "say": "The ball comes over the top, the striker sprints through, but he is already offside.",
+      "say": "Here comes the ball over the top! He's through... he's free... offside!",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -425,7 +430,8 @@
           "at": 1.6,
           "size": 34
         }
-      ]
+      ],
+      "pace": "hype"
     },
     {
       "id": "proof",
@@ -434,7 +440,7 @@
         "100 WINS.",
         "76% WIN RATE."
       ],
-      "say": "And it works. On Halloween, Barcelona beat Alaves six one, and Flick reached one hundred wins, the best win rate of any Barcelona coach.",
+      "say": "And it works! On Halloween, Barcelona smashed Alaves six-one... and Flick hit one hundred wins! The best win rate of any Barcelona coach. Ever!",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -542,7 +548,8 @@
         "WINS": 100,
         "WIN %": 76
       },
-      "statsAt": 2.2
+      "statsAt": 2.2,
+      "pace": "hype"
     },
     {
       "id": "stars",
@@ -550,7 +557,7 @@
         "YAMAL & RAPHINHA:",
         "TWO GOALS EACH."
       ],
-      "say": "Lamine Yamal and Raphinha scored two each.",
+      "say": "Yamal? Two goals. Raphinha? Two goals!",
       "min": 2.8,
       "camera": {
         "preset": "high",
@@ -587,7 +594,8 @@
           "text": "RAPHINHA",
           "color": "green"
         }
-      ]
+      ],
+      "pace": "hype"
     },
     {
       "id": "secret",
@@ -596,7 +604,7 @@
         "IT'S NOT THE LINE.",
         "IT'S THE PRESS."
       ],
-      "say": "But the real secret is not the line. It is the pressure on the ball.",
+      "say": "But here's the real secret. It's not the line... it's the press!",
       "camera": {
         "preset": "high",
         "focus": [
@@ -697,7 +705,7 @@
         "NO TIME",
         "= NO PERFECT PASS."
       ],
-      "say": "With no time on the ball, nobody can play the perfect pass over the top. Barcelona win it back.",
+      "say": "No time on the ball means no perfect pass. And boom... Barcelona win it back!",
       "passes": [
         {
           "from": "r7",
@@ -721,7 +729,8 @@
           0
         ],
         "span": 32
-      }
+      },
+      "pace": "hype"
     },
     {
       "id": "risk",
@@ -730,7 +739,7 @@
         "ONE DEFENDER",
         "SLEEPS…"
       ],
-      "say": "The risk? If just one defender forgets to step up, the striker is onside and gone.",
+      "say": "The danger? One defender switches off... just one... and the striker is onside and gone!",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -817,7 +826,7 @@
         "HIGH RISK.",
         "HIGH REWARD."
       ],
-      "say": "High risk, high reward. Back to back defeats against PSG and Real Madrid showed the risk. Six goals against Alaves showed the reward.",
+      "say": "High risk. High reward. Back-to-back defeats against PSG and Real Madrid? That's the risk. Six goals against Alaves? That's the reward!",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -880,7 +889,7 @@
         "WOULD YOU",
         "PLAY THIS HIGH?"
       ],
-      "say": "Would you play a line this high? Tell me in the comments.",
+      "say": "So... would you play a line this high? Tell me in the comments!",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -913,7 +922,8 @@
           "jitter": 1.5
         }
       ],
-      "hold": 1.0
+      "hold": 1.0,
+      "pace": "calm"
     }
   ],
   "sound": {

@@ -36,7 +36,8 @@ const opt = (name) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1
 const spec = JSON.parse(fs.readFileSync(specPath, "utf8"));
 const voiceCfg = spec.voice === null || flag("--no-voice") ? null : {
   id: opt("--voice") || spec.voice?.id || "am_michael",
-  speed: Number(opt("--speed") || spec.voice?.speed || 1.05),
+  speed: Number(opt("--speed") || spec.voice?.speed || 1.1),
+  fx: opt("--fx") || spec.voice?.fx || "punch",
 };
 
 fs.mkdirSync(path.join(outDir, "assets", "lib"), { recursive: true });
@@ -94,14 +95,18 @@ const teamOf = (key) => players.filter((p) => p.team === key).map((p) => p.id);
 const expandRefs = (refs) => (refs || []).flatMap((r) => (spec.teams?.[r] ? teamOf(r) : [r]));
 
 // ---------------- voiceover ----------------
-function ttsLine(text, beatId) {
-  const h = crypto.createHash("sha1").update(`${voiceCfg.id}|${voiceCfg.speed}|${text}`).digest("hex").slice(0, 10);
+// Voice: scripts/tts.py (Kokoro with blends, per-line pace and a broadcast "punch" chain).
+// Python comes from PITCH_PYTHON or HYPERFRAMES_PYTHON (a venv with kokoro-onnx + soundfile).
+const PY = process.env.PITCH_PYTHON || process.env.HYPERFRAMES_PYTHON || "python3";
+function ttsLine(text, beatId, pace = 1) {
+  const speed = r2(voiceCfg.speed * pace);
+  const h = crypto.createHash("sha1").update(`${voiceCfg.id}|${speed}|${voiceCfg.fx}|${text}`).digest("hex").slice(0, 10);
   const rel = `assets/vo/${slug(beatId)}-${h}.wav`;
   const file = path.join(outDir, rel);
   if (!fs.existsSync(file)) {
     process.stdout.write(`  tts  ${beatId}: "${text.slice(0, 60)}${text.length > 60 ? "…" : ""}"\n`);
-    execFileSync("npx", ["--yes", "hyperframes", "tts", text, "-v", voiceCfg.id, "-s", String(voiceCfg.speed), "-o", file, "--json"], {
-      stdio: ["ignore", "pipe", "inherit"],
+    execFileSync(PY, [path.join(HERE, "tts.py"), "--voice", voiceCfg.id, "--speed", String(speed), "--fx", voiceCfg.fx, "--text", text, "--out", file], {
+      stdio: ["ignore", "ignore", "inherit"],
     });
   }
   const dur = Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", file]).toString().trim());
@@ -114,7 +119,9 @@ let t = 0;
 const beats = spec.beats.map((b, i) => {
   const id = b.id || `b${i + 1}`;
   let vo = null;
-  if (voiceCfg && b.say) vo = ttsLine(b.say, id);
+  // pace: "hype" lines run faster, "calm" punchlines slower, or a number
+  const pace = typeof b.pace === "number" ? b.pace : b.pace === "hype" ? 1.08 : b.pace === "calm" ? 0.93 : 1;
+  if (voiceCfg && b.say) vo = ttsLine(b.say, id, pace);
   const words = (b.say || "").split(/\s+/).filter(Boolean).length;
   const spoken = vo ? vo.dur + LEAD : words / 2.7;
   const dur = r2(b.dur ?? Math.max(b.min ?? 1.8, spoken + (b.hold ?? 0.3)));
