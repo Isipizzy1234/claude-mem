@@ -6,7 +6,7 @@
   "heroName": "Timmy",
   "premise": "Timmy (30) wohnt bei seinen Eltern, hat keinen Job, 2,13 € auf dem Konto, ist dreckig, dick und voller Pickel. In 30 Tagen trifft er zum ersten Mal seine Discord-Freundin Jessi. Er hat ihr ein Foto von einem viel schöneren Mann geschickt und ihr einen Ring für 10.000 € versprochen. Jede Folge entscheiden die Kommentare, was er als Nächstes tut.",
   "goal": "Beim Date mit Jessi nicht auffliegen: halbwegs gut aussehen und den Ring haben.",
-  "voice": { "provider": "elevenlabs", "id": "auto", "speed": 1.05 },
+  "voice": { "provider": "auto", "id": "auto", "speed": 1.05 },
   "hud": {
     "countdownIcon": "heart",
     "progressLabel": "RING-GELD"

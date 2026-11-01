@@ -62,6 +62,15 @@ for (const s of scenes) {
 // ------------------------------------------------------------------ 2. voice
 const voice = { provider: "kokoro", id: "am_michael", speed: 1.12, lang: LANG === "en" ? "en-us" : LANG, ...(series.voice || {}), ...(ep.voice || {}) };
 if (opt("voice-provider")) voice.provider = opt("voice-provider");
+if (voice.provider === "auto") {
+  // first voice service whose key is available in this environment
+  const hasHeygen = process.env.HEYGEN_API_KEY || process.env.HEYGEN_ACCESS_TOKEN || fs.existsSync(path.join(process.env.HOME || "", ".hyperframes", "credentials")) || fs.existsSync(path.join(process.env.HOME || "", ".hyperframes", "credentials.json"));
+  voice.provider = process.env.ELEVENLABS_API_KEY ? "elevenlabs" : hasHeygen ? "heygen" : LANG === "en" ? "kokoro" : null;
+  if (!voice.provider) {
+    console.error("voice: no voice service for this language. Set ELEVENLABS_API_KEY or HEYGEN_API_KEY (environment secret) and allow api.elevenlabs.io / api.heygen.com in the network settings, or use --voice-provider silent for a picture preview.");
+    process.exit(2);
+  }
+}
 const voiceIn = lines.map(({ id, text, pauseAfter, voice: v, speed }) => ({ id, text, pauseAfter, ...(v ? { voice: v } : {}), ...(speed ? { speed } : {}) }));
 const hash = crypto.createHash("sha1").update(JSON.stringify({ voiceIn, voice })).digest("hex").slice(0, 12);
 const timingPath = path.join(OUT, "assets", "timing.json");

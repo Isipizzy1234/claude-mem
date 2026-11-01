@@ -15,6 +15,8 @@ Set `"lang": "de"` or `"en"` in `series.json`: narration, captions, HUD ("FOLGE 
 
 ## Voice providers (`series.json` → `voice.provider`)
 
+`auto` picks ElevenLabs if `ELEVENLABS_API_KEY` is set, else HeyGen if a HeyGen key/sign-in exists, else Kokoro for English. Keys are environment secrets, never pasted in chat; the API host must also be allowed in the environment's network settings. Settings changes only reach a **new** session.
+
 | provider | languages | word timings | needs |
 | --- | --- | --- | --- |
 | `heygen` | all, incl. German | from the API (exact) | `api.heygen.com` allowed in the network settings, and HeyGen sign-in: `npx hyperframes auth status`; if not signed in ask the user to type `! npx hyperframes auth login` (free) or set `HEYGEN_API_KEY`. `voice.id`: `auto` or a Starfish voice id (`node .claude/skills/media-use/audio/scripts/heygen-tts.mjs --list`) |
