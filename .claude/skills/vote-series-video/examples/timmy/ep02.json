@@ -9,8 +9,8 @@
       "kind": "recap",
       "say": ["Letzte Folge habt ihr entschieden.", "Timmy sucht sich einen Minijob!"],
       "face": "grin",
-      "a": { "text": "Minijob suchen", "icon": "cart", "pct": 62 },
-      "b": { "text": "Jessi die Wahrheit", "icon": "heart", "pct": 38 },
+      "a": { "text": "Minijob suchen", "icon": "cart", "pct": 52 },
+      "b": { "text": "Jessi die Wahrheit", "icon": "heart", "pct": 48 },
       "winner": "a",
       "winnerAt": "L1"
     },
