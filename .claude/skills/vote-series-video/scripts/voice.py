@@ -258,17 +258,81 @@ class Silent_:
         return [max(2, len(clean_word(w))) for w in words]
 
 
+def align_recording(path, lines, lead):
+    """Split one continuous voiceover (own recording or a TTS file made elsewhere)
+    into the script's lines. Pauses are the candidate cuts; dynamic programming picks
+    the cuts whose line lengths best match each line's share of the text."""
+    samples, sr = read_wav_any(path, 44100)
+    v0, v1, pauses = voiced_regions(samples, sr, min_pause=0.15)
+    n = len(lines)
+    cuts = [(a + b) / 2 for a, b in pauses]
+    plen = [b - a for a, b in pauses]
+    chars = [max(1, len(re.sub(r"\s", "", ln["text"]))) for ln in lines]
+    total_voiced = (v1 - v0) - sum(plen)
+    exp = [total_voiced * c / sum(chars) for c in chars]
+    pts = [v0] + cuts + [v1]  # boundary candidates; 0 and last are fixed
+    m = len(pts)
+    INF = float("inf")
+    # cost[i][j]: best cost for first i lines ending at boundary j
+    cost = [[INF] * m for _ in range(n + 1)]
+    back = [[-1] * m for _ in range(n + 1)]
+    cost[0][0] = 0.0
+    def seg_voiced(a, b):
+        return (pts[b] - pts[a]) - sum(l for c, l in zip(cuts, plen) if pts[a] < c < pts[b])
+    for i in range(1, n + 1):
+        for j in range(1, m):
+            if i == n and j != m - 1:
+                continue
+            bonus = 0.0 if j == m - 1 else -1.5 * plen[j - 1]
+            for k in range(0, j):
+                if cost[i - 1][k] == INF:
+                    continue
+                d = seg_voiced(k, j)
+                c = cost[i - 1][k] + (d - exp[i - 1]) ** 2 / max(exp[i - 1], 0.3) + bonus
+                if c < cost[i][j]:
+                    cost[i][j], back[i][j] = c, k
+    if cost[n][m - 1] == INF:
+        sys.exit(f"could not split the recording into {n} lines: it has only {len(cuts)} pauses")
+    bounds, j = [], m - 1
+    for i in range(n, 0, -1):
+        k = back[i][j]
+        bounds.append((k, j))
+        j = k
+    bounds.reverse()
+    eng = Silent_("de")
+    out = []
+    for ln, (k, j) in zip(lines, bounds):
+        a = pts[k] if k == 0 else pauses[k - 1][1]
+        b = pts[j] if j == m - 1 else pauses[j - 1][0]
+        inner = [p for p in pauses if a < p[0] and p[1] < b]
+        words = time_words_w(eng, ln["text"], a, b, inner)
+        for w in words:
+            w["start"] = round(w["start"] + lead, 3)
+            w["end"] = round(w["end"] + lead, 3)
+        out.append({"id": ln["id"], "text": ln["text"], "start": round(a + lead, 3), "end": round(b + lead, 3), "words": words})
+        print(f"  {ln['id']:>8}  {a + lead:6.2f}-{b + lead:6.2f}  ({b - a:4.2f}s, expected {exp[len(out) - 1]:4.2f}s)  {ln['text']}", file=sys.stderr)
+    return samples, sr, out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--lines", required=True)
     ap.add_argument("--out-dir", required=True)
-    ap.add_argument("--provider", default="kokoro", choices=["kokoro", "heygen", "elevenlabs", "silent"])
+    ap.add_argument("--provider", default="kokoro", choices=["kokoro", "heygen", "elevenlabs", "silent", "recording"])
     ap.add_argument("--voice", default="am_michael")
     ap.add_argument("--speed", type=float, default=1.1)
     ap.add_argument("--lang", default="en-us")
     ap.add_argument("--gap", type=float, default=0.07)
     ap.add_argument("--lead", type=float, default=0.15)
+    ap.add_argument("--audio", help="recording provider: the voiceover file")
     a = ap.parse_args()
+
+    if a.provider == "recording":
+        lines = json.load(open(a.lines))
+        samples, sr_out, out_lines = align_recording(a.audio, lines, a.lead)
+        audio = np.concatenate([np.zeros(int(a.lead * sr_out), dtype=np.float32), samples])
+        finish(a, audio, sr_out, out_lines)
+        return
 
     eng = {"kokoro": Kokoro_, "heygen": HeyGen_, "elevenlabs": ElevenLabs_, "silent": Silent_}[a.provider](a.lang)
     lines = json.load(open(a.lines))
@@ -309,6 +373,10 @@ def main():
         print(f"  {ln['id']:>8}  {dur:5.2f}s  {text}", file=sys.stderr)
 
     audio = np.concatenate([np.zeros(int(a.lead * sr_out), dtype=np.float32)] + chunks)
+    finish(a, audio, sr_out, out_lines)
+
+
+def finish(a, audio, sr_out, out_lines):
     peak = float(np.max(np.abs(audio))) or 1.0
     silent = a.provider == "silent"
     audio = audio / peak * 0.89  # about -1 dBFS peak
