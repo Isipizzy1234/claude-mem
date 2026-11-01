@@ -74,8 +74,10 @@ contract and CLI. This skill only adds the format, the engine and the workflow.
    lint warnings are expected: the generator keeps one root file on purpose.
 5. **Render.** `npx hyperframes render --quality delivery -o <slug>.mp4` (use
    `--quality draft` while iterating). Verify with
-   `ffprobe` that the duration matches `timing.json`, then send the MP4 to the
-   user (SendUserFile). On Linux without GPU a 25 s video takes a few minutes;
+   `ffprobe` that the duration matches `timing.json`. Then master the loudness
+   for social (the raw mix lands around -20 LUFS):
+   `ffmpeg -i <slug>.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.5:LRA=11 -c:a aac -b:a 192k -ar 48000 <slug>-final.mp4`
+   and send the `-final` MP4 to the user (SendUserFile). On Linux without GPU a 25 s video takes a few minutes;
    run it in the background.
 6. **Deliver.** Give the user: the MP4, a suggested English TikTok caption with
    3–5 hashtags, and the hook line as on-screen text for the cover.
