@@ -443,7 +443,7 @@ export async function mount({ glCanvas, overlayCanvas, world }) {
     ctx.shadowColor = "rgba(0,0,0,0.75)";
     ctx.shadowBlur = 8;
     ctx.fillStyle = color;
-    const dy = l.below ? 54 : (1 - vis) * 10;
+    const dy = l.below ? 34 + 26 * curFigScale : (1 - vis) * 10;
     ctx.fillText(l.text, p[0], p[1] + dy);
     ctx.restore();
   }

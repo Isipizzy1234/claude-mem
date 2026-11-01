@@ -1,0 +1,865 @@
+{
+  "title": "Flick's Barcelona high line",
+  "handle": "@yourhandle",
+  "voice": {
+    "id": "am_michael",
+    "speed": 1.15
+  },
+  "teams": {
+    "B": {
+      "name": "BARCELONA",
+      "color": "#b3164f",
+      "facing": 3.1416
+    },
+    "R": {
+      "name": "OPPONENT",
+      "color": "#ece7dc"
+    }
+  },
+  "lineups": [
+    {
+      "team": "B",
+      "shape": "4-2-3-1",
+      "goal": "top",
+      "prefix": "b",
+      "line": 8,
+      "front": -22,
+      "names": [
+        "SZCZĘSNY",
+        "BALDE",
+        "IÑIGO",
+        "CUBARSÍ",
+        "KOUNDÉ",
+        "PEDRI",
+        "CASADÓ",
+        "RAPHINHA",
+        "OLMO",
+        "YAMAL",
+        "LEWANDOWSKI"
+      ]
+    },
+    {
+      "team": "R",
+      "shape": "4-4-2",
+      "goal": "bottom",
+      "prefix": "r",
+      "line": 30,
+      "front": -6,
+      "shift": [
+        3,
+        0
+      ]
+    }
+  ],
+  "players": [
+    {
+      "id": "b1",
+      "at": [
+        0,
+        -42
+      ]
+    }
+  ],
+  "ball": {
+    "holder": "r8"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "chapter": "FLICK'S BARCELONA",
+      "title": [
+        "THE MOST DANGEROUS",
+        "DEFENSIVE LINE"
+      ],
+      "say": "Hansi Flick's Barcelona defends higher than almost anyone in Europe. On paper, it should not work.",
+      "camera": {
+        "preset": "broadcast",
+        "focus": [
+          0,
+          -16
+        ],
+        "span": 40
+      },
+      "moves": [
+        {
+          "p": "R",
+          "by": [
+            0,
+            -2
+          ],
+          "at": 0.2,
+          "dur": 2.5,
+          "jitter": 1.2
+        }
+      ]
+    },
+    {
+      "id": "lineup",
+      "chapter": "THE LINEUP",
+      "title": [
+        "FOUR-TWO-",
+        "THREE-ONE."
+      ],
+      "say": "The setup is a four two three one. Lewandowski up front, Lamine Yamal on the right wing.",
+      "badge": "4-2-3-1",
+      "camera": {
+        "preset": "top",
+        "focus": [
+          0,
+          -2
+        ],
+        "span": 78,
+        "dur": 1.4
+      },
+      "hide": [
+        "R"
+      ],
+      "names": "B",
+      "links": [
+        [
+          "b2",
+          "b3"
+        ],
+        [
+          "b3",
+          "b4"
+        ],
+        [
+          "b4",
+          "b5"
+        ],
+        [
+          "b6",
+          "b7"
+        ],
+        [
+          "b8",
+          "b9"
+        ],
+        [
+          "b9",
+          "b10"
+        ]
+      ],
+      "linksAt": 0.9
+    },
+    {
+      "id": "line",
+      "chapter": "THE LINE",
+      "title": [
+        "THE BACK FOUR",
+        "STANDS HERE."
+      ],
+      "say": "Now look at the back four. They are not near their own box. They stand almost on the halfway line.",
+      "camera": {
+        "preset": "high",
+        "focus": [
+          0,
+          -18
+        ],
+        "span": 46
+      },
+      "rings": [
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ],
+      "links": [
+        [
+          "b2",
+          "b3"
+        ],
+        [
+          "b3",
+          "b4"
+        ],
+        [
+          "b4",
+          "b5"
+        ]
+      ],
+      "linksAt": 0.4
+    },
+    {
+      "id": "space",
+      "title": [
+        "45 METRES",
+        "OF EMPTY GRASS."
+      ],
+      "say": "That leaves forty five metres of empty grass behind them. One good ball, and a striker is through on goal.",
+      "camera": {
+        "preset": "broadcast",
+        "focus": [
+          0,
+          -26
+        ],
+        "span": 44
+      },
+      "arrows": [
+        {
+          "from": [
+            6,
+            -9
+          ],
+          "to": [
+            6,
+            -51
+          ],
+          "at": 0.3,
+          "draw": 1.0,
+          "color": "green"
+        }
+      ],
+      "labels": [
+        {
+          "atPoint": [
+            12,
+            -30
+          ],
+          "text": "45 M",
+          "color": "green",
+          "size": 40,
+          "at": 0.8
+        }
+      ],
+      "moves": [
+        {
+          "p": "r11",
+          "to": [
+            12,
+            -7
+          ],
+          "at": 0.2,
+          "dur": 1.6
+        }
+      ]
+    },
+    {
+      "id": "unless",
+      "chapter": "THE TRAP",
+      "title": [
+        "UNLESS…"
+      ],
+      "titleColor": "green",
+      "say": "Unless that striker is offside.",
+      "min": 2.4,
+      "camera": {
+        "preset": "high",
+        "focus": [
+          9,
+          -3
+        ],
+        "span": 32
+      },
+      "rings": [
+        "r11",
+        "r8"
+      ],
+      "labels": [
+        {
+          "p": "r11",
+          "text": "STRIKER"
+        },
+        {
+          "p": "r8",
+          "text": "PASSER"
+        }
+      ],
+      "moves": [
+        {
+          "p": "b9",
+          "to": [
+            8,
+            9
+          ],
+          "at": 0.1,
+          "dur": 1.4
+        }
+      ]
+    },
+    {
+      "id": "step",
+      "title": [
+        "ALL FOUR",
+        "STEP UP. TOGETHER."
+      ],
+      "say": "The moment the passer lifts his head, all four defenders step up together.",
+      "moves": [
+        {
+          "p": "b2",
+          "by": [
+            0,
+            4.5
+          ],
+          "at": 0.5,
+          "dur": 0.8
+        },
+        {
+          "p": "b3",
+          "by": [
+            0,
+            4.5
+          ],
+          "at": 0.5,
+          "dur": 0.8
+        },
+        {
+          "p": "b4",
+          "by": [
+            0,
+            4.5
+          ],
+          "at": 0.5,
+          "dur": 0.8
+        },
+        {
+          "p": "b5",
+          "by": [
+            0,
+            4.5
+          ],
+          "at": 0.5,
+          "dur": 0.8
+        }
+      ],
+      "arrows": [
+        {
+          "from": "b3",
+          "to": [
+            8,
+            -3.5
+          ],
+          "at": 0.4,
+          "draw": 0.6,
+          "color": "white"
+        },
+        {
+          "from": "b4",
+          "to": [
+            -8,
+            -3.5
+          ],
+          "at": 0.4,
+          "draw": 0.6,
+          "color": "white"
+        },
+        {
+          "from": [
+            -30,
+            -3.5
+          ],
+          "to": [
+            30,
+            -3.5
+          ],
+          "at": 1.5,
+          "draw": 0.6,
+          "color": "green",
+          "head": false,
+          "width": 4
+        }
+      ],
+      "labels": [
+        {
+          "atPoint": [
+            -20,
+            -3.5
+          ],
+          "text": "OFFSIDE LINE",
+          "color": "green",
+          "at": 1.7,
+          "size": 28
+        }
+      ],
+      "rings": [
+        {
+          "p": "r11",
+          "at": 1.3
+        }
+      ]
+    },
+    {
+      "id": "pass",
+      "title": [
+        "THE PASS COMES…",
+        "TOO LATE."
+      ],
+      "say": "The ball comes over the top, the striker sprints through, but he is already offside.",
+      "camera": {
+        "preset": "broadcast",
+        "focus": [
+          9,
+          -16
+        ],
+        "span": 40
+      },
+      "passes": [
+        {
+          "from": "r8",
+          "to": [
+            12,
+            -30
+          ],
+          "at": 0.6,
+          "dur": 1.1,
+          "lift": 3
+        }
+      ],
+      "moves": [
+        {
+          "p": "r11",
+          "to": [
+            12,
+            -29
+          ],
+          "at": 0.6,
+          "dur": 1.3
+        }
+      ],
+      "labels": [
+        {
+          "p": "r11",
+          "text": "OFFSIDE",
+          "color": "red",
+          "at": 1.6,
+          "size": 34
+        }
+      ],
+      "stats": {
+        "OFFSIDES": 1
+      },
+      "statsAt": 1.6
+    },
+    {
+      "id": "proof",
+      "chapter": "THE PROOF",
+      "title": [
+        "REAL MADRID:",
+        "12 TIMES OFFSIDE."
+      ],
+      "say": "In the four nil win at the Bernabeu in October twenty twenty four, Real Madrid were caught offside twelve times.",
+      "camera": {
+        "preset": "high",
+        "focus": [
+          4,
+          -14
+        ],
+        "span": 40
+      },
+      "passes": [
+        {
+          "to": "b1",
+          "at": 0.3,
+          "dur": 1.2,
+          "arrow": false
+        }
+      ],
+      "moves": [
+        {
+          "p": "b2",
+          "by": [
+            0,
+            -4.5
+          ],
+          "at": 0.4,
+          "dur": 1.2
+        },
+        {
+          "p": "b3",
+          "by": [
+            0,
+            -4.5
+          ],
+          "at": 0.4,
+          "dur": 1.2
+        },
+        {
+          "p": "b4",
+          "by": [
+            0,
+            -4.5
+          ],
+          "at": 0.4,
+          "dur": 1.2
+        },
+        {
+          "p": "b5",
+          "by": [
+            0,
+            -4.5
+          ],
+          "at": 0.4,
+          "dur": 1.2
+        },
+        {
+          "p": "r11",
+          "to": [
+            12,
+            -12
+          ],
+          "at": 1.0,
+          "dur": 2.0
+        }
+      ],
+      "stats": {
+        "OFFSIDES": 12
+      },
+      "statsAt": 1.2
+    },
+    {
+      "id": "mbappe",
+      "title": [
+        "MBAPPÉ ALONE:",
+        "8 TIMES."
+      ],
+      "say": "Kylian Mbappe alone: eight times.",
+      "min": 2.6,
+      "camera": {
+        "preset": "high",
+        "focus": "r11",
+        "span": 22
+      },
+      "rings": [
+        {
+          "p": "r11",
+          "color": "#ff4a4a"
+        }
+      ],
+      "labels": [
+        {
+          "p": "r11",
+          "text": "MBAPPÉ"
+        }
+      ],
+      "moves": [
+        {
+          "p": "r11",
+          "to": [
+            12,
+            -6
+          ],
+          "at": 0.2,
+          "dur": 2.0
+        }
+      ]
+    },
+    {
+      "id": "secret",
+      "chapter": "THE SECRET",
+      "title": [
+        "IT'S NOT THE LINE.",
+        "IT'S THE PRESS."
+      ],
+      "say": "But the real secret is not the line. It is the pressure on the ball.",
+      "camera": {
+        "preset": "high",
+        "focus": [
+          -4,
+          3
+        ],
+        "span": 30
+      },
+      "passes": [
+        {
+          "from": "b1",
+          "to": "r7",
+          "at": 0.1,
+          "dur": 0.9,
+          "arrow": false,
+          "lift": 2
+        }
+      ],
+      "moves": [
+        {
+          "p": "b9",
+          "to": [
+            -3,
+            9.5
+          ],
+          "at": 1.0,
+          "dur": 1.0
+        },
+        {
+          "p": "b7",
+          "to": [
+            -7.5,
+            9
+          ],
+          "at": 1.1,
+          "dur": 1.0
+        },
+        {
+          "p": "b10",
+          "to": [
+            -8,
+            14
+          ],
+          "at": 1.0,
+          "dur": 1.1
+        }
+      ],
+      "arrows": [
+        {
+          "from": "b9",
+          "to": [
+            -3.5,
+            10
+          ],
+          "at": 1.0,
+          "draw": 0.6
+        },
+        {
+          "from": "b7",
+          "to": [
+            -7,
+            9.5
+          ],
+          "at": 1.1,
+          "draw": 0.6
+        },
+        {
+          "from": "b10",
+          "to": [
+            -7.5,
+            13.5
+          ],
+          "at": 1.0,
+          "draw": 0.6
+        }
+      ],
+      "labels": [
+        {
+          "p": "r7",
+          "text": "NO TIME",
+          "color": "red",
+          "at": 1.6
+        }
+      ]
+    },
+    {
+      "id": "notime",
+      "title": [
+        "NO TIME",
+        "= NO PERFECT PASS."
+      ],
+      "say": "With no time on the ball, nobody can play the perfect pass over the top. Barcelona win it back.",
+      "passes": [
+        {
+          "from": "r7",
+          "to": "b4",
+          "at": 0.5,
+          "dur": 0.9
+        }
+      ],
+      "labels": [
+        {
+          "p": "b4",
+          "text": "WON BACK",
+          "color": "green",
+          "at": 1.4
+        }
+      ],
+      "camera": {
+        "preset": "high",
+        "focus": [
+          -6,
+          0
+        ],
+        "span": 32
+      }
+    },
+    {
+      "id": "risk",
+      "chapter": "THE RISK",
+      "title": [
+        "ONE DEFENDER",
+        "SLEEPS…"
+      ],
+      "say": "The risk? If just one defender forgets to step up, the striker is onside and gone.",
+      "camera": {
+        "preset": "broadcast",
+        "focus": [
+          -8,
+          -14
+        ],
+        "span": 40
+      },
+      "passes": [
+        {
+          "from": "b4",
+          "to": "r8",
+          "at": 0.1,
+          "dur": 0.8,
+          "arrow": false
+        },
+        {
+          "from": "r8",
+          "to": "r10",
+          "at": 1.9,
+          "dur": 1.1,
+          "lift": 3
+        }
+      ],
+      "moves": [
+        {
+          "p": "b2",
+          "by": [
+            0,
+            4.5
+          ],
+          "at": 1.0,
+          "dur": 0.8
+        },
+        {
+          "p": "b3",
+          "by": [
+            0,
+            4.5
+          ],
+          "at": 1.0,
+          "dur": 0.8
+        },
+        {
+          "p": "b4",
+          "by": [
+            0,
+            4.5
+          ],
+          "at": 1.0,
+          "dur": 0.8
+        },
+        {
+          "p": "r10",
+          "to": [
+            -10,
+            -34
+          ],
+          "at": 1.8,
+          "dur": 1.3
+        }
+      ],
+      "rings": [
+        {
+          "p": "b5",
+          "color": "#ff4a4a",
+          "at": 1.0
+        }
+      ],
+      "labels": [
+        {
+          "p": "b5",
+          "text": "ASLEEP",
+          "color": "red",
+          "at": 1.2,
+          "below": true
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "chapter": "THE RESULT",
+      "title": [
+        "HIGH RISK.",
+        "HIGH REWARD."
+      ],
+      "say": "High risk, high reward. And that season, this line helped Barcelona win La Liga.",
+      "camera": {
+        "preset": "broadcast",
+        "focus": [
+          -5,
+          -38
+        ],
+        "span": 30
+      },
+      "moves": [
+        {
+          "p": "r10",
+          "to": [
+            -4,
+            -45
+          ],
+          "at": 0.1,
+          "dur": 1.5
+        },
+        {
+          "p": "b1",
+          "to": [
+            -3.5,
+            -47
+          ],
+          "at": 0.2,
+          "dur": 1.2
+        },
+        {
+          "p": "b5",
+          "to": [
+            -9,
+            -40
+          ],
+          "at": 0.1,
+          "dur": 1.7
+        }
+      ],
+      "passes": [
+        {
+          "from": "r10",
+          "to": "b1",
+          "at": 1.6,
+          "dur": 0.35,
+          "arrow": false
+        }
+      ],
+      "labels": [
+        {
+          "p": "b1",
+          "text": "SAVED",
+          "color": "green",
+          "at": 2.0
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "chapter": "YOUR TAKE",
+      "title": [
+        "WOULD YOU",
+        "PLAY THIS HIGH?"
+      ],
+      "say": "Would you play a line this high? Tell me in the comments.",
+      "camera": {
+        "preset": "broadcast",
+        "focus": [
+          0,
+          -20
+        ],
+        "span": 48,
+        "orbit": 0.4,
+        "dur": 1.4
+      },
+      "moves": [
+        {
+          "p": "B",
+          "by": [
+            0,
+            3
+          ],
+          "at": 0.3,
+          "dur": 2.2,
+          "jitter": 1.5
+        },
+        {
+          "p": "R",
+          "by": [
+            0,
+            2
+          ],
+          "at": 0.3,
+          "dur": 2.2,
+          "jitter": 1.5
+        }
+      ],
+      "hold": 1.0
+    }
+  ]
+}
