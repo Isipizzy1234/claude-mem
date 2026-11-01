@@ -270,6 +270,8 @@ const world = {
 // ---------------- copy engine + assets ----------------
 fs.copyFileSync(path.join(ENGINE, "three.module.min.js"), path.join(outDir, "assets/lib/three.module.min.js"));
 fs.copyFileSync(path.join(ENGINE, "pitch3d.js"), path.join(outDir, "assets/lib/pitch3d.js"));
+// GSAP is bundled locally: renders must never depend on a CDN fetch
+fs.copyFileSync(path.join(ENGINE, "gsap.min.js"), path.join(outDir, "assets/lib/gsap.min.js"));
 for (const f of fs.readdirSync(path.join(ENGINE, "fonts"))) fs.copyFileSync(path.join(ENGINE, "fonts", f), path.join(outDir, "assets/fonts", f));
 let musicRel = null;
 if (spec.music) {
@@ -387,7 +389,7 @@ const index = `<!doctype html>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=${W}, height=${H}" />
     <title>${esc(spec.title || "Pitch explainer")}</title>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="assets/lib/gsap.min.js"></script>
     <style>
       @font-face { font-family: "PX Display"; src: url("assets/fonts/Anton.woff2") format("woff2"); font-weight: 400; }
       @font-face { font-family: "PX Mono"; src: url("assets/fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; }

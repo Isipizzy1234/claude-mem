@@ -21,7 +21,7 @@ contract and CLI. This skill only adds the format, the engine and the workflow.
 | --- | --- |
 | `scripts/build.mjs` | `node build.mjs <video.json> <outDir> [--no-voice] [--voice id] [--speed n]` |
 | `engine/pitch3d.js` | Deterministic Three.js pitch/figures/ball/camera/arrows/labels renderer |
-| `engine/three.module.min.js`, `engine/fonts/` | Vendored Three.js r170, Anton + JetBrains Mono (OFL) |
+| `engine/three.module.min.js`, `engine/gsap.min.js`, `engine/fonts/` | Vendored Three.js r170, GSAP 3.15, Anton + JetBrains Mono (OFL). Everything is local: the renderer's compiler can't always reach a CDN, so never switch these to CDN URLs |
 | `references/style.md` | The visual bible: colours, type, layout px, what the frames look like |
 | `references/spec.md` | Every field of `video.json` (lineups, beats, moves, passes, cameras …) |
 | `references/script.md` | How to write the English script: hook, chapters, beat rhythm, wording |
