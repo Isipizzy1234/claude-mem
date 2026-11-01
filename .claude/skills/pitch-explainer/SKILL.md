@@ -96,8 +96,8 @@ contract and CLI. This skill only adds the format, the engine and the workflow.
 
 - **Original concepts only.** The style is a format; never copy another
   creator's handle, watermark, exact titles or video ideas one-to-one. The
-  handle is the user's own (`"handle"` in the spec - ask once and remember it in
-  the spec of every new video).
+  handle is the user's own. The user has **no username yet**: leave
+  `"handle": ""` (no watermark) until they give one.
 - Real player/club names are fine as labels in tactics breakdowns (factual).
   No club crests or logos (not drawn, not downloaded).
 - English only on screen and in the voiceover. Keep titles ≤ 5 words per line,

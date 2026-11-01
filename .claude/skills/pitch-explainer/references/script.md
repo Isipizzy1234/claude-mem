@@ -28,6 +28,16 @@
 - Avoid claims about real people that you can't back; keep what-ifs clearly
   hypothetical.
 
+## Tone: hyped + a little Gen-Z
+
+Talk like a hyped young football creator, not a TV pundit. Sprinkle English
+youth slang lightly - about one phrase every 2-3 beats, never two in a row:
+"bro", "lowkey", "no cap", "nah", "cooked", "built different", "chilling",
+"unhinged", "insane", "drop it in the comments". Write them out in full so the
+voice can say them ("for real", not "fr"; no "W"/"L"/"fr"/"ngl"). Facts and
+numbers stay clear; slang never replaces the information. Titles may borrow one
+slang punchline ("BUILT DIFFERENT.", "NOPE. OFFSIDE.") but stay ≤ 5 words.
+
 ## Niche ideas (what-if football)
 
 - Can a pro team beat 11 blindfolded players / 11 kids / 22 amateurs?

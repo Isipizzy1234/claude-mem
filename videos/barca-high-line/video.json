@@ -1,6 +1,6 @@
 {
   "title": "Flick's Barcelona high line (Nov 2026)",
-  "handle": "@yourhandle",
+  "handle": "",
   "voice": {
     "id": "am_puck",
     "speed": 1.2,
@@ -72,7 +72,7 @@
         "THE MOST DANGEROUS",
         "DEFENSIVE LINE"
       ],
-      "say": "This is the craziest defensive line in Europe! Hansi Flick's Barcelona... and on paper? It should not work.",
+      "say": "Bro, this is the most unhinged defensive line in Europe! Hansi Flick's Barcelona... and on paper? It should not work. At all.",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -102,7 +102,7 @@
         "FOUR-TWO-",
         "THREE-ONE."
       ],
-      "say": "Here's the setup. Four, two, three, one. Cubarsi at the back. Pedri pulling the strings. Yamal and Raphinha up top!",
+      "say": "Quick setup. Four, two, three, one. Cubarsi holding it down at the back, Pedri cooking in midfield, Yamal and Raphinha up top!",
       "badge": "4-2-3-1",
       "camera": {
         "preset": "top",
@@ -152,7 +152,7 @@
         "THE BACK FOUR",
         "STANDS HERE."
       ],
-      "say": "Now look at the back four. Not in their own box... no! They're standing almost on the halfway line!",
+      "say": "Now look at the back four. Not in their own box... nah! They're chilling on the halfway line!",
       "camera": {
         "preset": "high",
         "focus": [
@@ -285,10 +285,10 @@
     {
       "id": "step",
       "title": [
-        "ALL FOUR",
-        "STEP UP. TOGETHER."
+        "ALL FOUR STEP UP.",
+        "LOWKEY GENIUS."
       ],
-      "say": "Watch this! The second the passer lifts his head... all four step up. Together!",
+      "say": "Watch this! The second the passer looks up... all four step up. Together. Lowkey genius!",
       "moves": [
         {
           "p": "b2",
@@ -387,10 +387,10 @@
     {
       "id": "pass",
       "title": [
-        "THE PASS COMES…",
-        "TOO LATE."
+        "HE'S THROUGH…",
+        "NOPE. OFFSIDE."
       ],
-      "say": "Here comes the ball over the top! He's through... he's free... offside!",
+      "say": "Ball over the top! He's through... he's free... offside! Absolutely cooked!",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -440,7 +440,7 @@
         "100 WINS.",
         "76% WIN RATE."
       ],
-      "say": "And it works! On Halloween, Barcelona smashed Alaves six-one... and Flick hit one hundred wins! The best win rate of any Barcelona coach. Ever!",
+      "say": "And no cap, it works! On Halloween, Barcelona smashed Alaves six-one, and Flick hit one hundred wins! Best win rate of any Barcelona coach. Ever!",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -555,9 +555,9 @@
       "id": "stars",
       "title": [
         "YAMAL & RAPHINHA:",
-        "TWO GOALS EACH."
+        "BUILT DIFFERENT."
       ],
-      "say": "Yamal? Two goals. Raphinha? Two goals!",
+      "say": "Yamal? Two goals. Raphinha? Two goals. Built different!",
       "min": 2.8,
       "camera": {
         "preset": "high",
@@ -705,7 +705,7 @@
         "NO TIME",
         "= NO PERFECT PASS."
       ],
-      "say": "No time on the ball means no perfect pass. And boom... Barcelona win it back!",
+      "say": "No time on the ball? No perfect pass. And just like that... Barcelona win it back!",
       "passes": [
         {
           "from": "r7",
@@ -739,7 +739,7 @@
         "ONE DEFENDER",
         "SLEEPS…"
       ],
-      "say": "The danger? One defender switches off... just one... and the striker is onside and gone!",
+      "say": "The catch? One defender switches off... just one... and the striker is onside and gone!",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -826,7 +826,7 @@
         "HIGH RISK.",
         "HIGH REWARD."
       ],
-      "say": "High risk. High reward. Back-to-back defeats against PSG and Real Madrid? That's the risk. Six goals against Alaves? That's the reward!",
+      "say": "High risk. High reward. Losing to PSG and Real Madrid back to back? That's the risk. Six goals against Alaves? That's the reward!",
       "camera": {
         "preset": "broadcast",
         "focus": [
@@ -889,7 +889,7 @@
         "WOULD YOU",
         "PLAY THIS HIGH?"
       ],
-      "say": "So... would you play a line this high? Tell me in the comments!",
+      "say": "So be honest... would you play a line this high? Drop it in the comments!",
       "camera": {
         "preset": "broadcast",
         "focus": [

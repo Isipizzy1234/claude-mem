@@ -389,7 +389,8 @@ if (statTimeline.length) {
   });
 }
 
-const handle = spec.handle || "@yourhandle";
+// empty / missing handle = no watermark at all
+const handle = (spec.handle || "").trim();
 const audioTags = beats.filter((b) => b.vo).map((b, i) =>
   `      <audio id="vo-${slug(b.id)}" class="clip" src="${b.vo.rel}" data-start="${r2(b.start + LEAD)}" data-duration="${r2(b.vo.dur)}" data-track-index="${20 + (i % 2)}" data-volume="1"></audio>`,
 ).join("\n");
@@ -496,7 +497,7 @@ const index = `<!doctype html>
       </div>
 ${clipHtml}
 ${statsHtml}
-      <div id="handle" class="clip handle" data-start="0" data-duration="${DURATION}" data-track-index="6" data-var-text="handle">${esc(handle)}</div>
+${handle ? `      <div id="handle" class="clip handle" data-start="0" data-duration="${DURATION}" data-track-index="6" data-var-text="handle">${esc(handle)}</div>` : ""}
 ${audioTags}
 ${musicTag}
 ${sfxTags.join("\n")}

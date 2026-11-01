@@ -11,7 +11,7 @@ start**. Angles: radians, `0` = facing the top goal, `3.1416` = facing down.
 ```jsonc
 {
   "title": "Why man-marking gets you killed",   // project name only
-  "handle": "@yourhandle",                      // watermark (the user's own)
+  "handle": "",                                 // watermark; empty = none (user has no username yet)
   "voice": { "id": "am_puck", "speed": 1.2, "fx": "hype" },
                                                 // id or blend "a:0.6,b:0.4"; fx none|punch|hype; null = silent
   "music": "music.mp3",                         // optional, path relative to video.json
