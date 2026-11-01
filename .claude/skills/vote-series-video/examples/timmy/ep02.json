@@ -1,0 +1,142 @@
+{
+  "series": "series.json",
+  "episode": 2,
+  "daysLeft": 29,
+  "progress": 0,
+  "progressText": "2,13 €",
+  "scenes": [
+    {
+      "kind": "recap",
+      "say": ["Letzte Folge habt ihr entschieden.", "Timmy sucht sich einen Minijob!"],
+      "face": "grin",
+      "a": { "text": "Minijob suchen", "icon": "cart", "pct": 62 },
+      "b": { "text": "Jessi die Wahrheit", "icon": "heart", "pct": 38 },
+      "winner": "a",
+      "winnerAt": "L1"
+    },
+    {
+      "say": "Neunundzwanzig Tage. Timmy bewirbt sich im Supermarkt.",
+      "text": "29 Tage. Timmy bewirbt sich im Supermarkt.",
+      "bg": { "type": "shop", "sign": "SUPERMARKT", "signColor": "#2f9e5b" },
+      "cast": [{ "who": "timmy", "x": 540, "y": 1640, "face": "grin", "enter": "slideRight" }],
+      "props": [{ "type": "sticker", "text": "BEWERBUNG", "x": 270, "y": 820, "rot": -8, "at": "w:bewirbt" }]
+    },
+    {
+      "say": "Sein Lebenslauf: Discord-Moderator und Level neunundneunzig.",
+      "text": "Sein Lebenslauf: Discord-Moderator und Level 99.",
+      "bg": { "type": "grid", "color": "#cdeee6" },
+      "camera": "push",
+      "props": [
+        { "type": "photo", "x": 540, "y": 900, "w": 620, "h": 780, "tilt": -3, "color": "#ffffff", "caption": "LEBENSLAUF" },
+        { "type": "chip", "text": "Discord-Moderator", "x": 540, "y": 760, "size": 40, "at": "w:discord" },
+        { "type": "chip", "text": "Level 99", "x": 540, "y": 900, "size": 40, "at": "w:level" },
+        { "type": "sticker", "text": "SONST NIX", "x": 560, "y": 1040, "rot": 6, "size": 52, "at": "w:neunundneunzig+0.3" }
+      ]
+    },
+    {
+      "say": "Die Chefin hält sich die Nase zu. Und stellt ihn trotzdem ein.",
+      "bg": { "type": "shop", "sign": "SUPERMARKT", "signColor": "#2f9e5b" },
+      "cast": [
+        { "who": "chefin", "x": 780, "y": 1640, "scale": 0.9, "flip": true, "face": "angry", "pose": "facepalm", "faces": [["w:stellt", "smug"]], "poses": [["w:stellt", "point"]] },
+        { "who": "timmy", "x": 270, "y": 1660, "scale": 0.78, "face": "neutral", "faces": [["w:trotzdem", "joy"]] }
+      ],
+      "props": [
+        { "type": "burst", "text": "BÄH!", "shape": "none", "x": 790, "y": 560, "rot": 8, "size": 90, "at": "w:nase" },
+        { "type": "sticker", "text": "EINGESTELLT!", "x": 300, "y": 640, "rot": -7, "color": "#36c26b", "at": "w:trotzdem", "sfx": "chime" }
+      ]
+    },
+    {
+      "say": "Erster Auftrag: Regale einräumen.",
+      "bg": { "type": "shop", "sign": "SUPERMARKT", "signColor": "#2f9e5b" },
+      "cast": [{ "who": "timmy", "x": 540, "y": 1640, "face": "tired", "pose": "hold", "lookOverride": { "shirt": "#2f9e5b", "print": "text", "printText": "AUSHILFE" } }],
+      "props": [{ "type": "label", "text": "Arbeitskleidung", "x": 820, "y": 700, "toX": -150, "toY": 320, "at": "w:regale" }]
+    },
+    {
+      "say": "Im Lager findet er eine Palette Energy-Drinks.",
+      "bg": { "type": "garage", "wall": "#4a5160", "boxes": true },
+      "cast": [{ "who": "timmy", "x": 300, "y": 1640, "scale": 0.82, "face": "neutral", "faces": [["w:energy", "love"]], "lookOverride": { "shirt": "#2f9e5b", "print": "text", "printText": "AUSHILFE" } }],
+      "props": [
+        {
+          "type": "svg", "x": 760, "y": 1260, "at": "w:palette", "anim": "slideLeft", "z": "back",
+          "markup": "<rect x='-230' y='150' width='460' height='40' fill='#b8763e' stroke='#1d1b2f' stroke-width='7'/><g fill='#3fd16b' stroke='#1d1b2f' stroke-width='6'><rect x='-210' y='-30' width='80' height='180' rx='14'/><rect x='-110' y='-30' width='80' height='180' rx='14'/><rect x='-10' y='-30' width='80' height='180' rx='14'/><rect x='90' y='-30' width='80' height='180' rx='14'/><rect x='-160' y='-230' width='80' height='180' rx='14'/><rect x='-60' y='-230' width='80' height='180' rx='14'/><rect x='40' y='-230' width='80' height='180' rx='14'/></g><g fill='#ffd23f' stroke='#1d1b2f' stroke-width='3'><path d='M -165 30 l -20 45 h 20 l -10 40 l 35 -55 h -20 l 10 -30 z'/><path d='M -65 30 l -20 45 h 20 l -10 40 l 35 -55 h -20 l 10 -30 z'/><path d='M 35 30 l -20 45 h 20 l -10 40 l 35 -55 h -20 l 10 -30 z'/><path d='M 135 30 l -20 45 h 20 l -10 40 l 35 -55 h -20 l 10 -30 z'/><path d='M -115 -170 l -20 45 h 20 l -10 40 l 35 -55 h -20 l 10 -30 z'/><path d='M -15 -170 l -20 45 h 20 l -10 40 l 35 -55 h -20 l 10 -30 z'/><path d='M 85 -170 l -20 45 h 20 l -10 40 l 35 -55 h -20 l 10 -30 z'/></g>"
+        }
+      ]
+    },
+    {
+      "say": "Nach einer Stunde hat er zwölf davon getrunken.",
+      "text": "Nach einer Stunde hat er 12 davon getrunken.",
+      "bg": { "type": "sunburst", "color": "#2f9e5b" },
+      "shake": ["w:zwölf"],
+      "cast": [{ "who": "timmy", "x": 540, "y": 1700, "scale": 1.05, "face": "neutral", "faces": [["w:zwölf", "panic"]], "lookOverride": { "shirt": "#2f9e5b", "print": "text", "printText": "AUSHILFE" } }],
+      "props": [{ "type": "bigText", "text": "12", "x": 540, "y": 560, "size": 200, "at": "w:zwölf", "sfx": "impact-bass-1" }]
+    },
+    {
+      "say": "Jetzt räumt Timmy den ganzen Laden in zehn Minuten ein.",
+      "text": "Jetzt räumt Timmy den ganzen Laden in 10 Minuten ein.",
+      "bg": { "type": "shop", "sign": "SUPERMARKT", "signColor": "#2f9e5b" },
+      "camera": "punch",
+      "shake": ["w:laden"],
+      "cast": [{
+        "who": "timmy", "x": 300, "y": 1640, "scale": 0.85, "face": "grin", "pose": "armsUp",
+        "lookOverride": { "shirt": "#2f9e5b", "print": "text", "printText": "AUSHILFE" },
+        "moves": [{ "at": "w:ganzen", "x": 780, "dur": 0.35 }, { "at": "w:zehn", "x": 300, "dur": 0.35 }, { "at": "w:minuten", "x": 760, "dur": 0.35 }]
+      }],
+      "props": [
+        { "type": "burst", "text": "TURBO!", "x": 540, "y": 560, "rot": -8, "at": "w:jetzt" },
+        { "type": "chip", "text": "10:00 min", "x": 540, "y": 780, "size": 40, "at": "w:zehn" }
+      ]
+    },
+    {
+      "say": "Am Abend gibt es einundfünfzig Euro bar auf die Hand.",
+      "text": "Am Abend gibt es 51 € bar auf die Hand.",
+      "bg": { "type": "sunburst", "color": "#2f9e5b" },
+      "camera": "punch",
+      "hudProgress": [{ "at": "w:einundfünfzig", "to": 1, "text": "53,13 €", "pop": "+51 €" }],
+      "cast": [{ "who": "timmy", "x": 540, "y": 1700, "scale": 1.05, "face": "joy", "pose": "armsUp", "lookOverride": { "shirt": "#2f9e5b", "print": "text", "printText": "AUSHILFE" } }],
+      "props": [{ "type": "money", "x": 540, "y": 560, "at": "w:einundfünfzig", "anim": "drop", "sfx": "chime" }]
+    },
+    {
+      "say": "Dann vibriert sein Handy. Jessi schreibt.",
+      "bg": { "type": "plain", "color": "#1d1834" },
+      "camera": "none",
+      "props": [{
+        "type": "phone", "screen": "chat", "name": "Jessi", "clock": "20:41", "avatarColor": "#ff6b9a",
+        "x": 540, "y": 1010, "scale": 0.8,
+        "messages": [
+          { "from": "them", "text": "Lass heute Abend videotelefonieren!", "at": "w:jessi" },
+          { "from": "them", "text": "Ich will dich endlich sehen", "at": "end-0.5" }
+        ]
+      }]
+    },
+    {
+      "say": "Das Problem: Auf dem Foto ist gar nicht Timmy. Sondern sein Cousin Marco.",
+      "bg": { "type": "sunburst", "color": "#2f9e8f" },
+      "cast": [{ "who": "model", "x": 540, "y": 1120, "scale": 0.55, "face": "smug", "pose": "hips" }],
+      "props": [
+        { "type": "photo", "x": 540, "y": 860, "w": 560, "h": 760, "tilt": 0, "color": "#8fd0ff", "caption": "Ich :)", "z": "back" },
+        { "type": "sticker", "text": "COUSIN MARCO", "x": 560, "y": 1010, "rot": -10, "size": 60, "at": "w:marco", "sfx": "error" }
+      ]
+    },
+    {
+      "say": "Wenn Jessi sein echtes Gesicht sieht, ist alles vorbei.",
+      "bg": { "type": "sunburst", "color": "#5a1f2a" },
+      "camera": "pull",
+      "cast": [{ "who": "timmy", "x": 540, "y": 1780, "scale": 1.15, "face": "shock", "faces": [["w:vorbei", "cry"]] }],
+      "props": [{ "type": "burst", "text": "!!!", "shape": "none", "color": "#e8414b", "x": 540, "y": 560, "size": 140, "at": "w:vorbei" }]
+    },
+    {
+      "kind": "vote",
+      "say": [
+        "Was soll Timmy tun?",
+        "Option A: Er sagt, seine Kamera ist kaputt.",
+        "Option B: Cousin Marco macht den Videoanruf.",
+        "Schreib A oder B in die Kommentare. Dein Kommentar zählt!"
+      ],
+      "face": "panic",
+      "questionAt": "w:was",
+      "a": { "text": "Kamera kaputt vortäuschen", "icon": "phone", "at": "L1" },
+      "b": { "text": "Cousin Marco ruft an", "icon": "suit", "at": "L2" },
+      "ctaAt": "L3"
+    }
+  ]
+}
