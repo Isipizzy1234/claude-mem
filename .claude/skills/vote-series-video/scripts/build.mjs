@@ -12,7 +12,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { C, W, H, esc, rng, hashStr, fitFont, r2 } from "./lib/util.mjs";
+import { C, W, H, esc, rng, hashStr, fitFont, r2, S as STR, setLang, fmt } from "./lib/util.mjs";
 import { character, EXPRESSIONS, POSES } from "./lib/character.mjs";
 import { background, prop, icon, sunburst } from "./lib/art.mjs";
 
@@ -36,6 +36,8 @@ const OUT = path.resolve(opt("out", path.join(path.dirname(epPath), `ep${String(
 fs.mkdirSync(path.join(OUT, "compositions"), { recursive: true });
 fs.mkdirSync(path.join(OUT, "assets", "sfx"), { recursive: true });
 
+const LANG = series.lang || "en";
+setLang(LANG, series.strings || {});
 const castLooks = series.cast || {};
 const hero = series.hero || Object.keys(castLooks)[0];
 const heroName = series.heroName || (hero ? hero[0].toUpperCase() + hero.slice(1) : "HERO");
@@ -58,7 +60,8 @@ for (const s of scenes) {
 }
 
 // ------------------------------------------------------------------ 2. voice
-const voice = { id: "am_michael", speed: 1.12, ...(series.voice || {}), ...(ep.voice || {}) };
+const voice = { provider: "kokoro", id: "am_michael", speed: 1.12, lang: LANG === "en" ? "en-us" : LANG, ...(series.voice || {}), ...(ep.voice || {}) };
+if (opt("voice-provider")) voice.provider = opt("voice-provider");
 const voiceIn = lines.map(({ id, text, pauseAfter, voice: v, speed }) => ({ id, text, pauseAfter, ...(v ? { voice: v } : {}), ...(speed ? { speed } : {}) }));
 const hash = crypto.createHash("sha1").update(JSON.stringify({ voiceIn, voice })).digest("hex").slice(0, 12);
 const timingPath = path.join(OUT, "assets", "timing.json");
@@ -67,9 +70,9 @@ const cached = fs.existsSync(timingPath) && fs.existsSync(hashPath) && fs.readFi
 if (!cached || flag("force-voice")) {
   const lp = path.join(OUT, "assets", "lines.json");
   fs.writeFileSync(lp, JSON.stringify(voiceIn, null, 1));
-  console.error(`voice: synthesising ${lines.length} lines with ${voice.id} @ ${voice.speed}x`);
+  console.error(`voice: ${voice.provider} ${voice.id} @ ${voice.speed}x, ${lines.length} lines`);
   const py = process.env.HYPERFRAMES_PYTHON || "python3";
-  const r = spawnSync(py, ["-I", path.join(HERE, "voice.py"), "--lines", lp, "--out-dir", path.join(OUT, "assets"), "--voice", voice.id, "--speed", String(voice.speed), "--lang", voice.lang || "en-us"], { stdio: "inherit" });
+  const r = spawnSync(py, ["-I", path.join(HERE, "voice.py"), "--lines", lp, "--out-dir", path.join(OUT, "assets"), "--provider", voice.provider, "--voice", voice.id, "--speed", String(voice.speed), "--lang", voice.lang], { stdio: "inherit" });
   if (r.status !== 0) process.exit(r.status || 1);
   fs.writeFileSync(hashPath, hash);
 } else console.error("voice: cached");
@@ -315,7 +318,7 @@ function voteMarkup(s, A) {
   let svg = sunburst(v.color || "#2a2152", 22);
   svg += character(`${s.sid}-bgc`, heroLook, { x: 540, y: 2780, scale: 1.75, pose: "stand", initial: v.face || "sad" });
   svg += `<rect width="${W}" height="${H}" fill="#0d0a1e" opacity="0.58"/>`;
-  const q = v.question || `WHAT SHOULD ${heroName.toUpperCase()} DO?`;
+  const q = v.question || fmt(STR.question, { hero: heroName.toUpperCase() });
   const [q1, q2] = (() => {
     const w = q.split(" ");
     const cut = Math.ceil(w.length / 2) - (w.length > 3 ? 0 : 0);
@@ -342,7 +345,7 @@ function voteMarkup(s, A) {
     return `<g id="${id}" transform="${popT(540, y, 0, 1)}" opacity="0">${g}</g>`;
   };
   svg += card("a", C.blue, 790) + card("b", C.orange, 1010);
-  const cta = v.cta || `Write A or B in the comments!`;
+  const cta = v.cta || STR.cta;
   const tc = at(s, v.ctaAt ?? "L3");
   const cw = cta.length * 24 + 80;
   svg += `<g id="${s.sid}-cta" transform="${popT(540, 1175, 0, 1)}" opacity="0"><rect x="${-cw / 2}" y="-44" width="${cw}" height="88" rx="44" fill="#fff" stroke="${C.ink}" stroke-width="6"/><text x="0" y="14" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="40" fill="${C.ink}">${esc(cta)}</text></g>`;
@@ -355,8 +358,8 @@ function recapMarkup(s, A) {
   let svg = sunburst(v.color || "#2a2152", 22);
   svg += character(`${s.sid}-bgc`, castLooks[v.heroWho || hero] || {}, { x: 540, y: 2250, scale: 1.6, initial: v.face || "grin" });
   svg += `<rect width="${W}" height="${H}" fill="#0d0a1e" opacity="0.35"/>`;
-  svg += `<text x="540" y="440" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="58" fill="#fff" stroke="${C.ink}" stroke-width="10" paint-order="stroke">${esc(v.title1 || "LAST EPISODE")}</text>`;
-  svg += `<text x="540" y="515" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="66" fill="${C.yellow}" stroke="${C.ink}" stroke-width="10" paint-order="stroke">${esc(v.title2 || "YOU DECIDED")}</text>`;
+  svg += `<text x="540" y="440" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="${fitFont(v.title1 || STR.recap1, 940, 58)}" fill="#fff" stroke="${C.ink}" stroke-width="10" paint-order="stroke">${esc(v.title1 || STR.recap1)}</text>`;
+  svg += `<text x="540" y="515" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="${fitFont(v.title2 || STR.recap2, 940, 66)}" fill="${C.yellow}" stroke="${C.ink}" stroke-width="10" paint-order="stroke">${esc(v.title2 || STR.recap2)}</text>`;
   const row = (key, color, y) => {
     const o = v[key];
     const id = `${s.sid}-${key}`;
@@ -371,7 +374,7 @@ function recapMarkup(s, A) {
     let tag = "";
     if (v.winner === key) {
       const tw = at(s, v.winnerAt ?? "L1");
-      tag = `<g id="${id}-win" transform="${popT(830, y - 80, 8, 1)}" opacity="0"><rect x="-130" y="-34" width="260" height="68" rx="12" fill="${C.green}" stroke="${C.ink}" stroke-width="6"/><text x="0" y="14" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="38" fill="#fff">${esc(v.winnerText || "WINNER!")}</text></g>`;
+      tag = `<g id="${id}-win" transform="${popT(830, y - 80, 8, 1)}" opacity="0"><rect x="-130" y="-34" width="260" height="68" rx="12" fill="${C.green}" stroke="${C.ink}" stroke-width="6"/><text x="0" y="14" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="38" fill="#fff">${esc(v.winnerText || STR.winner)}</text></g>`;
       animProp(A, `${id}-win`, "pop", tw, 830, y - 80, 8, 1);
       sfx("chime", s.start + tw, 0.35);
     }
@@ -449,7 +452,7 @@ for (const s of scenes) {
 }
 
 // ------------------------------------------------------------------ HUD
-const hud = { countdownLabel: "DAYS LEFT", countdownIcon: "heart", ...(series.hud || {}), ...(ep.hud || {}) };
+const hud = { countdownIcon: "heart", ...(series.hud || {}), ...(ep.hud || {}) };
 const daysLeft = ep.daysLeft ?? 30;
 const prog = ep.progress ?? null;
 const hudEvents = [];
@@ -472,7 +475,7 @@ const hudHtml = `<template>
   </style>
   <div id="root" data-composition-id="hud" data-width="${W}" data-height="${H}">
     <div id="hud">
-      <div class="row"><div class="ep" id="hud-ep">${esc((hud.episodeLabel || "EPISODE").toUpperCase())} ${ep.episode}</div><div class="days" id="hud-days">${icons[hud.countdownIcon] || ""}<span>${esc(hud.countdownText || `${daysLeft} ${hud.countdownLabel}`)}</span></div></div>
+      <div class="row"><div class="ep" id="hud-ep">${esc((hud.episodeLabel || STR.episode).toUpperCase())} ${ep.episode}</div><div class="days" id="hud-days">${icons[hud.countdownIcon] || ""}<span>${esc(hud.countdownText || (hud.countdownLabel ? `${daysLeft} ${hud.countdownLabel}` : fmt(STR.countdown, { n: daysLeft })))}</span></div></div>
       ${hud.progressLabel ? `<div class="bar"><span class="lbl">✦ ${esc(hud.progressLabel)}</span><div class="track"><div id="hud-fill"></div></div><span id="hud-val">${esc(ep.progressText ?? `${prog ?? 0}%`)}</span></div>` : ""}
       <div id="hud-plus"></div>
     </div>
@@ -584,7 +587,7 @@ const audio = sfxOut
   })
   .join("\n");
 const index = `<!doctype html>
-<html lang="en">
+<html lang="${LANG}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=${W}, height=${H}" />

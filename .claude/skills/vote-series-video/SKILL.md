@@ -1,6 +1,6 @@
 ---
 name: vote-series-video
-description: Make English TikTok/Reels/Shorts episodes of an interactive "the comments decide" cartoon series (flat 2D characters, karaoke captions, Episode/Days-left HUD, A/B vote ending) entirely in code with HyperFrames. Use when the user asks for a new episode, a new series in this format, a script for one, or changes to the look.
+description: Make German or English TikTok/Reels/Shorts episodes of an interactive "the comments decide" cartoon series (flat 2D characters, karaoke captions, Episode/Days-left HUD, A/B vote ending) entirely in code with HyperFrames. Use when the user asks for a new episode, a new series in this format, a script for one, or changes to the look.
 ---
 
 # Vote-series video (HyperFrames)
@@ -11,7 +11,17 @@ Read first: `references/format.md` (the format bible and writing rules). Read wh
 
 ## Language
 
-Videos are in **English** (international audience): narration, captions, on-screen text, vote cards. Talk to the user in their own language.
+Set `"lang": "de"` or `"en"` in `series.json`: narration, captions, HUD ("FOLGE 1 · NOCH 30 TAGE"), vote and recap texts and phone UI follow it (string table in `scripts/lib/util.mjs`, override any key with `"strings"` in series.json). Pick the language of the audience the account is shown to (country of SIM/account, phone language) — a German account does better in German. Talk to the user in their own language.
+
+## Voice providers (`series.json` → `voice.provider`)
+
+| provider | languages | word timings | needs |
+| --- | --- | --- | --- |
+| `heygen` | all, incl. German | from the API (exact) | HeyGen sign-in: `npx hyperframes auth status`; if not signed in ask the user to type `! npx hyperframes auth login` (free) or set `HEYGEN_API_KEY`. `voice.id`: `auto` or a Starfish voice id (`node .claude/skills/media-use/audio/scripts/heygen-tts.mjs --list`) |
+| `kokoro` | English (+ es, fr, it, pt-br, hi, ja, zh) — **no German** | estimated from phonemes + pauses | `pip install kokoro-onnx soundfile`, offline |
+| `silent` | any | estimated from word length | nothing; draft timing for a picture preview before the voice exists |
+
+`node build.mjs <ep.json> --voice-provider silent` overrides the series setting for a preview. Never ship a silent render as the episode.
 
 ## Pipeline
 
@@ -57,7 +67,7 @@ Need something that does not exist? Prefer a raw `svg` prop in the episode for a
 
 ## Sound
 
-- Voice: Kokoro on device (`am_michael` 1.12× narrator by default; other characters can get their own voice per scene, e.g. `bf_emma`). Narrator speaks fast and dry.
+- Voice: see the provider table. Narrator speaks fast and dry. A second character can get its own voice per scene (`"voice": {"id": …}` in the scene, an id of the same provider).
 - SFX from the HyperFrames bundled library, placed automatically on visible actions (bursts, stickers, phone notifications, vote cards) — override per prop with `"sfx": "<name>"` or `false`.
 - No music by default (no free offline source). If the user is signed in to HeyGen (`npx hyperframes auth status`), a bed can be added with `/media-use` (`bgm`, upbeat quirky, ~0.12 volume under the voice). Otherwise tell them they can add a trending TikTok sound in the app — that is usually better for reach anyway.
 

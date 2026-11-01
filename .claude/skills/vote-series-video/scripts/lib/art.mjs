@@ -2,7 +2,7 @@
 // Every function returns an SVG string in the 1080x1920 scene space (or centred
 // at 0,0 for props). Timed sub-parts register animations through `ctx`.
 
-import { C, esc, rng, hashStr, shade, fitFont, W, H } from "./util.mjs";
+import { C, esc, rng, hashStr, shade, fitFont, W, H, S } from "./util.mjs";
 
 const ink = (w = 8) => `stroke="${C.ink}" stroke-width="${w}" stroke-linejoin="round" stroke-linecap="round"`;
 const T = (x, y, txt, size, o = {}) =>
@@ -348,6 +348,19 @@ function calendar(p) {
     <rect x="-90" y="-176" width="24" height="56" rx="10" fill="#9aa1b2" ${ink(5)}/><rect x="66" y="-176" width="24" height="56" rx="10" fill="#9aa1b2" ${ink(5)}/></g>`;
 }
 
+function ring(p) {
+  return `<circle cx="0" cy="40" r="120" fill="none" stroke="${C.ink}" stroke-width="44"/><circle cx="0" cy="40" r="120" fill="none" stroke="${p.color || "#f2c94c"}" stroke-width="30"/>
+    <path d="M 0 -70 L -70 -150 L -40 -200 L 40 -200 L 70 -150 Z" fill="#bfeaff" ${ink(7)}/><path d="M -70 -150 L 70 -150 M -40 -200 L 0 -150 L 40 -200 M 0 -150 L 0 -70" stroke="#7cc8f0" stroke-width="5" fill="none"/>
+    <path d="M -110 -210 l 10 -26 l 10 26 l 26 10 l -26 10 l -10 26 l -10 -26 l -26 -10 Z M 100 -120 l 7 -18 l 7 18 l 18 7 l -18 7 l -7 18 l -7 -18 l -18 -7 Z" fill="#fff" ${ink(3)}/>`;
+}
+
+function photo(p) {
+  const w = p.w || 520, h = p.h || 640;
+  return `<g transform="rotate(${p.tilt ?? -4})"><rect x="${-w / 2}" y="${-h / 2}" width="${w}" height="${h}" rx="10" fill="#fff" ${ink(8)}/>
+    <rect x="${-w / 2 + 30}" y="${-h / 2 + 30}" width="${w - 60}" height="${h - 160}" fill="${p.color || "#8fd0ff"}" ${ink(5)}/>
+    ${p.caption ? T(0, h / 2 - 50, p.caption, fitFont(p.caption, w - 60, 46, 24), { fill: C.ink, weight: 800 }) : ""}</g>`;
+}
+
 function wallet(p) {
   return `<rect x="-200" y="-130" width="400" height="260" rx="36" fill="#7a4b2a" ${ink(8)}/><path d="M -200 -40 L 200 -40" ${ink(7)}/>
     <rect x="60" y="-20" width="140" height="80" rx="20" fill="#5e3920" ${ink(7)}/><circle cx="110" cy="20" r="14" fill="${C.yellow}" ${ink(5)}/>
@@ -414,7 +427,7 @@ function phone(p, id, ctx) {
         <circle cx="${sx + 92}" cy="${y + 75}" r="34" fill="${n.color || C.pink}"/>${T(sx + 92, y + 90, (n.app || "N")[0], 40, { fill: "#fff" })}
         ${T(sx + 146, y + 62, n.title || "", 34, { fill: C.ink, anchor: "start", weight: 800, font: "Montserrat" })}
         ${T(sx + 146, y + 110, n.text || "", 30, { fill: "#3a3a4a", anchor: "start", weight: 600, font: "Montserrat" })}
-        ${T(sx + sw - 50, y + 50, "now", 24, { fill: "#888", anchor: "end", weight: 600, font: "Montserrat" })}</g></g>`;
+        ${T(sx + sw - 50, y + 50, S.now, 24, { fill: "#888", anchor: "end", weight: 600, font: "Montserrat" })}</g></g>`;
       ctx.anim(nid, n.at ?? 0.2, "slideDown");
     });
   } else if (screen === "chat") {
@@ -422,7 +435,7 @@ function phone(p, id, ctx) {
     s += T(sx + 60, sy + 70, p.clock || "21:47", 28, { fill: "#fff", anchor: "start", weight: 700, font: "Montserrat" });
     s += `<circle cx="${sx + 110}" cy="${sy + 145}" r="40" fill="${p.avatarColor || C.pink}" stroke="#fff" stroke-width="5"/>` + T(sx + 110, sy + 160, (p.name || "?")[0], 40, { fill: "#fff" });
     s += T(sx + 170, sy + 140, p.name || "", 40, { fill: "#fff", anchor: "start", weight: 800, font: "Montserrat" });
-    s += `<circle cx="${sx + 178}" cy="${sy + 170}" r="8" fill="#5cff8a"/>` + T(sx + 194, sy + 179, p.status || "online", 26, { fill: "#e6e0ff", anchor: "start", weight: 600, font: "Montserrat" });
+    s += `<circle cx="${sx + 178}" cy="${sy + 170}" r="8" fill="#5cff8a"/>` + T(sx + 194, sy + 179, p.status || S.online, 26, { fill: "#e6e0ff", anchor: "start", weight: 600, font: "Montserrat" });
     let y = sy + 260;
     (p.messages || []).forEach((m, i) => {
       const mid = `${id}-m${i}`;
@@ -440,11 +453,11 @@ function phone(p, id, ctx) {
       ctx.anim(mid, m.at ?? 0.2 + i * 0.6, "slideUp");
       y += bh + 30;
     });
-    s += `<rect x="${sx + 30}" y="${sy + sh - 120}" width="${sw - 150}" height="80" rx="40" fill="#fff" stroke="#d9d4ec" stroke-width="3"/>` + T(sx + 70, sy + sh - 68, "Message", 28, { fill: "#aaa", anchor: "start", weight: 600, font: "Montserrat" });
+    s += `<rect x="${sx + 30}" y="${sy + sh - 120}" width="${sw - 150}" height="80" rx="40" fill="#fff" stroke="#d9d4ec" stroke-width="3"/>` + T(sx + 70, sy + sh - 68, S.message, 28, { fill: "#aaa", anchor: "start", weight: 600, font: "Montserrat" });
     s += `<circle cx="${sx + sw - 70}" cy="${sy + sh - 80}" r="40" fill="${C.purple}"/><path d="M ${sx + sw - 86} ${sy + sh - 100} L ${sx + sw - 50} ${sy + sh - 80} L ${sx + sw - 86} ${sy + sh - 60} Z" fill="#fff"/>`;
   } else if (screen === "call") {
     s += `<rect x="${sx}" y="${sy}" width="${sw}" height="${sh}" fill="#1f2b3f"/>`;
-    s += T(0, sy + 200, p.label || "incoming call", 34, { fill: "#cfd7e6", weight: 600, font: "Montserrat" });
+    s += T(0, sy + 200, p.label || S.incoming, 34, { fill: "#cfd7e6", weight: 600, font: "Montserrat" });
     s += T(0, sy + 290, p.name || "MOM", 80, { fill: "#fff", weight: 800, font: "Montserrat" });
     s += `<circle id="${id}-ring" cx="0" cy="${sy + 560}" r="150" fill="none" stroke="#fff" stroke-width="6" opacity=".35"/><circle cx="0" cy="${sy + 560}" r="120" fill="${p.avatarColor || C.pink}" stroke="#fff" stroke-width="8"/>${T(0, sy + 595, (p.name || "M")[0], 100, { fill: "#fff" })}`;
     s += `<circle cx="-160" cy="${sy + sh - 200}" r="70" fill="${C.red}"/><path d="M -200 ${sy + sh - 200} Q -160 ${sy + sh - 230} -120 ${sy + sh - 200}" stroke="#fff" stroke-width="16" fill="none" stroke-linecap="round"/>`;
@@ -458,7 +471,7 @@ function phone(p, id, ctx) {
     wrapLines(p.text || "", 22).forEach((l, k) => (s += T(sx + 50, sy + 360 + k * 56, l, 40, { fill: C.ink, anchor: "start", weight: 700, font: "Montserrat" })));
     s += `<rect x="${sx + 40}" y="${sy + 560}" width="${sw - 80}" height="380" rx="20" fill="${p.imgColor || "#ffe2a8"}"/>`;
     if (p.imgIcon) s += `<g transform="translate(0 ${sy + 750}) scale(2.4)">${icon(p.imgIcon)}</g>`;
-    s += `<g id="${id}-likes" opacity="0"><g data-anim-inner="1">${T(sx + 50, sy + 1010, `♥ ${p.likes || "0"}  ·  ${p.comments || "0"} comments`, 34, { fill: C.red, anchor: "start", weight: 800, font: "Montserrat" })}</g></g>`;
+    s += `<g id="${id}-likes" opacity="0"><g data-anim-inner="1">${T(sx + 50, sy + 1010, `♥ ${p.likes || "0"}  ·  ${p.comments || "0"} ${S.comments}`, 34, { fill: C.red, anchor: "start", weight: 800, font: "Montserrat" })}</g></g>`;
     ctx.anim(`${id}-likes`, p.likesAt ?? 0.6, "slideUp");
   } else if (screen === "app") {
     s += `<rect x="${sx}" y="${sy}" width="${sw}" height="${sh}" fill="${p.color || "#1f2b3f"}"/>`;
@@ -473,7 +486,7 @@ function phone(p, id, ctx) {
 
 // ---------------------------------------------------------------- dispatcher
 
-export const PROP_TYPES = ["burst", "bubble", "thought", "label", "sticker", "bigText", "chip", "sign", "calendar", "wallet", "scale", "bike", "stand", "hanger", "trash", "door", "money", "phone", "icon", "svg"];
+export const PROP_TYPES = ["ring", "photo", "burst", "bubble", "thought", "label", "sticker", "bigText", "chip", "sign", "calendar", "wallet", "scale", "bike", "stand", "hanger", "trash", "door", "money", "phone", "icon", "svg"];
 
 export function prop(p, id, ctx) {
   switch (p.type) {
@@ -487,6 +500,8 @@ export function prop(p, id, ctx) {
     case "sign": return sign(p);
     case "calendar": return calendar(p);
     case "wallet": return wallet(p);
+    case "ring": return ring(p);
+    case "photo": return photo(p);
     case "scale": return scale(p);
     case "bike": return bike(p);
     case "stand": return stand(p);

@@ -84,3 +84,23 @@ export function fitFont(text, maxWidth, base, min = 36) {
   const em = textWidthEm(String(text).toUpperCase());
   return Math.max(min, Math.min(base, Math.floor(maxWidth / Math.max(em, 0.1))));
 }
+
+// UI strings per language. series.json "lang" picks the table; any key can be
+// overridden in series.json "strings".
+export const STRINGS = {
+  en: {
+    episode: "EPISODE", countdown: "{n} DAYS LEFT", question: "WHAT SHOULD {hero} DO?",
+    cta: "Write A or B in the comments!", recap1: "LAST EPISODE", recap2: "YOU DECIDED", winner: "WINNER!",
+    now: "now", message: "Message", online: "online", incoming: "incoming call", comments: "comments",
+  },
+  de: {
+    episode: "FOLGE", countdown: "NOCH {n} TAGE", question: "WAS SOLL {hero} TUN?",
+    cta: "Schreib A oder B in die Kommentare!", recap1: "LETZTE FOLGE", recap2: "HABT IHR ENTSCHIEDEN", winner: "GEWONNEN!",
+    now: "jetzt", message: "Nachricht", online: "online", incoming: "eingehender Anruf", comments: "Kommentare",
+  },
+};
+export const S = { ...STRINGS.en };
+export function setLang(lang = "en", overrides = {}) {
+  Object.assign(S, STRINGS.en, STRINGS[lang] || {}, overrides);
+}
+export const fmt = (t, vars) => String(t).replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");

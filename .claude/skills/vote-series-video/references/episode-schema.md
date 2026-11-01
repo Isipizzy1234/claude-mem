@@ -1,16 +1,18 @@
 # series.json / epNN.json
 
-Full working example: `examples/doug/series.json`, `examples/doug/ep01.json`, `examples/doug/ep02.json`.
+Full working examples: `examples/doug/` (English, Kokoro) and `examples/timmy/` (German, HeyGen).
 
 ## series.json
 
 ```jsonc
 {
   "title": "Doug's Comeback",
+  "lang": "en",                   // "de" | "en": UI strings + caption language
+  "strings": {},                  // optional overrides of the UI string table
   "handle": "@dougs.comeback",
   "hero": "doug",                 // key in cast
   "heroName": "Doug",             // used in the default vote question
-  "voice": { "id": "am_michael", "speed": 1.12 },   // Kokoro voice (am_adam, am_michael, bm_george, af_heart, af_nova, af_sky, bf_emma, bf_isabella)
+  "voice": { "provider": "kokoro", "id": "am_michael", "speed": 1.12 },   // provider kokoro|heygen|silent; Kokoro voice (am_adam, am_michael, bm_george, af_heart, af_nova, af_sky, bf_emma, bf_isabella)
   "hud": { "episodeLabel": "EPISODE", "countdownIcon": "heart", "countdownLabel": "DAYS LEFT", "progressLabel": "RICH LEVEL" },
   "cast": { "doug": { /* look, see SKILL.md */ }, "mom": { } }
 }
@@ -84,6 +86,8 @@ Seconds from the scene's cut, or: `"L1"` start of line 1 (0-based) · `"w:pedal"
 | chip / sign | text, size, (sign) color |
 | calendar | month, day |
 | wallet / scale | text |
+| ring | color |
+| photo | w, h, tilt, color, caption (polaroid; put a cast member inside it) |
 | stand | text, closed, closedText, color |
 | hanger | small, tag |
 | trash / money | n |

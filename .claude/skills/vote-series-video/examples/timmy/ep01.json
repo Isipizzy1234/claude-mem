@@ -1,0 +1,134 @@
+{
+  "series": "series.json",
+  "episode": 1,
+  "daysLeft": 30,
+  "progress": 0,
+  "progressText": "2,13 €",
+  "scenes": [
+    {
+      "say": "Dreißig Tage.",
+      "text": "30 Tage.",
+      "bg": { "type": "room", "poster": "LVL 99", "posterColor": "#e8414b", "boxes": true, "window": true },
+      "cast": [{ "who": "timmy", "x": 540, "y": 1620, "face": "neutral" }]
+    },
+    {
+      "say": "So lange hat Timmy noch bis zum ersten Date mit seiner Discord-Freundin Jessi.",
+      "bg": { "type": "plain", "color": "#1d1834" },
+      "camera": "none",
+      "props": [{
+        "type": "phone", "screen": "chat", "name": "Jessi", "clock": "23:14", "avatarColor": "#ff6b9a",
+        "x": 540, "y": 1010, "scale": 0.8,
+        "messages": [
+          { "from": "them", "text": "Noch 30 Tage bis wir uns sehen!", "at": "w:date" },
+          { "from": "them", "text": "Ich freu mich sooo", "at": "w:jessi" }
+        ]
+      }]
+    },
+    {
+      "say": ["Das Problem: Er hat ihr ein Foto von sich geschickt.", "Nur ist das gar nicht er."],
+      "bg": { "type": "sunburst", "color": "#2f9e8f" },
+      "camera": "push",
+      "cast": [{ "who": "model", "x": 540, "y": 1120, "scale": 0.55, "face": "smug", "pose": "hips" }],
+      "props": [
+        { "type": "photo", "x": 540, "y": 860, "w": 560, "h": 760, "tilt": 0, "color": "#8fd0ff", "caption": "Ich :)", "z": "back" },
+        { "type": "sticker", "text": "NICHT TIMMY", "x": 560, "y": 1010, "rot": -10, "size": 64, "at": "L1+0.6", "sfx": "error" }
+      ]
+    },
+    {
+      "say": "Außerdem hat er ihr einen Ring versprochen. Für zehntausend Euro.",
+      "text": "Außerdem hat er ihr einen Ring versprochen. Für 10.000 Euro.",
+      "bg": { "type": "sunburst", "color": "#6b4ff0" },
+      "props": [
+        { "type": "ring", "x": 540, "y": 820, "scale": 1.15, "at": "w:ring" },
+        { "type": "bigText", "text": "10.000 €", "x": 540, "y": 1110, "size": 150, "at": "w:zehntausend", "sfx": "impact-bass-1" }
+      ]
+    },
+    {
+      "say": "Dabei ist Timmy dreißig, wohnt bei Mama und Papa und hat keinen Job.",
+      "text": "Dabei ist Timmy 30, wohnt bei Mama und Papa und hat keinen Job.",
+      "bg": { "type": "room", "poster": "LVL 99", "posterColor": "#e8414b", "boxes": true },
+      "cast": [{ "who": "timmy", "x": 540, "y": 1620, "face": "smug", "faces": [["w:job", "sad"]] }],
+      "props": [
+        { "type": "sticker", "text": "30 JAHRE", "x": 230, "y": 640, "rot": -8, "at": "w:dreißig" },
+        { "type": "label", "text": "Kinderzimmer", "x": 820, "y": 560, "at": "w:mama" },
+        { "type": "sticker", "text": "KEIN JOB", "x": 820, "y": 760, "rot": 7, "color": "#e8414b", "at": "w:job" }
+      ]
+    },
+    {
+      "say": "Auf seinem Konto: zwei Euro dreizehn.",
+      "text": "Auf seinem Konto: 2,13 €",
+      "bg": { "type": "plain", "color": "#1d1834" },
+      "camera": "none",
+      "props": [
+        { "type": "phone", "screen": "app", "title": "Kontostand", "big": "2,13 €", "bigColor": "#ff5a64", "sub": "verfügbar", "color": "#1f2b3f", "x": 540, "y": 1010, "scale": 0.8 },
+        { "type": "sticker", "text": "RING: 10.000 €", "x": 540, "y": 560, "rot": -5, "size": 54, "at": "w:dreizehn", "sfx": "error" }
+      ]
+    },
+    {
+      "say": "Und so sieht Timmy gerade aus.",
+      "pauseAfter": 0.5,
+      "bg": { "type": "room", "poster": "LVL 99", "posterColor": "#e8414b", "boxes": true },
+      "cast": [{ "who": "timmy", "x": 540, "y": 1620, "face": "grin" }],
+      "props": [
+        { "type": "label", "text": "Pickel", "x": 190, "y": 760, "toX": 200, "toY": 190, "at": "w:timmy" },
+        { "type": "label", "text": "Fliegen", "x": 880, "y": 640, "toX": -90, "toY": 160, "at": "w:gerade" },
+        { "type": "label", "text": "Fleck seit 2021", "x": 790, "y": 1090, "toX": -150, "toY": 100, "at": "w:aus" }
+      ]
+    },
+    {
+      "say": "Sein letztes Bad? War an Ostern.",
+      "bg": { "type": "bathroom" },
+      "cast": [{ "who": "timmy", "x": 600, "y": 1620, "face": "smug" }],
+      "props": [{ "type": "sticker", "text": "LETZTES BAD: OSTERN", "x": 540, "y": 600, "rot": -6, "size": 52, "at": "w:ostern" }]
+    },
+    {
+      "say": "Also beschließt Timmy: Heute wird geduscht.",
+      "bg": { "type": "bathroom" },
+      "cast": [{ "who": "timmy", "x": 600, "y": 1620, "face": "neutral", "faces": [["w:heute", "grin"]], "poses": [["w:heute", "armsUp"]] }],
+      "props": [{ "type": "burst", "text": "PLAN!", "x": 260, "y": 580, "rot": -10, "at": "w:beschließt" }]
+    },
+    {
+      "say": ["Er dreht das Wasser auf.", "Nach zwei Minuten ist der Abfluss verstopft."],
+      "text": ["Er dreht das Wasser auf.", "Nach 2 Minuten ist der Abfluss verstopft."],
+      "pauseAfter": 0.5,
+      "bg": { "type": "bathroom" },
+      "shake": ["w:verstopft"],
+      "cast": [{ "who": "timmy", "x": 600, "y": 1620, "face": "squint", "faces": [["w:verstopft", "shock"]] }],
+      "props": [
+        { "type": "icon", "name": "shower", "size": 280, "x": 760, "y": 560, "at": "w:wasser", "sfx": "pop" },
+        { "type": "burst", "text": "BLUBB!", "x": 300, "y": 640, "rot": -8, "at": "w:verstopft" },
+        { "type": "sticker", "text": "INHALT: CHIPS", "x": 760, "y": 820, "rot": 8, "size": 46, "at": "w:verstopft+0.5" }
+      ]
+    },
+    {
+      "say": "Und Mama schreit: Timmy! Warum steht das Bad unter Wasser?!",
+      "bg": { "type": "bathroom" },
+      "shake": ["w:timmy"],
+      "cast": [
+        { "who": "mama", "x": 790, "y": 1640, "scale": 0.88, "face": "angry", "pose": "point", "flip": true, "enter": "slideLeft" },
+        { "who": "timmy", "x": 260, "y": 1660, "scale": 0.72, "face": "shock" }
+      ],
+      "props": [{ "type": "bubble", "text": "TIMMY!!! DAS BAD!", "maxChars": 12, "size": 56, "x": 600, "y": 560, "tailX": 140, "at": "w:timmy" }]
+    },
+    {
+      "say": "Timmy merkt: Allein schafft er das nie.",
+      "bg": { "type": "sunburst", "color": "#3a2d72" },
+      "camera": "pull",
+      "cast": [{ "who": "timmy", "x": 540, "y": 1780, "scale": 1.15, "face": "sad", "faces": [["w:allein", "cry"]] }]
+    },
+    {
+      "kind": "vote",
+      "say": [
+        "Und jetzt kommst du ins Spiel. Was soll Timmy tun?",
+        "Option A: Minijob im Supermarkt suchen.",
+        "Option B: Jessi die Wahrheit über das Foto sagen.",
+        "Schreib A oder B in die Kommentare. Dein Kommentar zählt!"
+      ],
+      "face": "sad",
+      "questionAt": "w:was",
+      "a": { "text": "Minijob im Supermarkt", "icon": "cart", "at": "L1" },
+      "b": { "text": "Jessi die Wahrheit sagen", "icon": "heart", "at": "L2" },
+      "ctaAt": "L3"
+    }
+  ]
+}

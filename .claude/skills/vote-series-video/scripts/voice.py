@@ -96,11 +96,11 @@ def distribute(words, weights, t0, t1):
     return res
 
 
-def time_words(kokoro, text, lang, v0, v1, pauses):
+def time_words_w(eng, text, v0, v1, pauses):
     words = text.split()
     if not words:
         return []
-    weights = word_weights(kokoro, words, lang)
+    weights = eng.weights(words)
     # groups split at punctuation
     groups, cur = [], []
     for i, w in enumerate(words):
@@ -124,10 +124,94 @@ def time_words(kokoro, text, lang, v0, v1, pauses):
     return distribute(words, adj, v0, v1)
 
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def heygen_script():
+    cands = [os.path.join(HERE, "..", "..", "media-use", "audio", "scripts", "heygen-tts.mjs")]
+    npx = os.path.expanduser("~/.npm/_npx")
+    if os.path.isdir(npx):
+        for d in os.listdir(npx):
+            cands.append(os.path.join(npx, d, "node_modules", "hyperframes", "dist", "skills", "media-use", "audio", "scripts", "heygen-tts.mjs"))
+    for c in cands:
+        if os.path.exists(c):
+            return os.path.abspath(c)
+    sys.exit("heygen-tts.mjs not found: install the HyperFrames skills (npx skills add heygen-com/hyperframes --agent claude-code -y)")
+
+
+def read_wav_any(path, sr=24000):
+    """Decode any audio file to mono float32 at sr via ffmpeg."""
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-ac", "1", "-ar", str(sr), "-f", "s16le", "-"], check=True, capture_output=True).stdout
+    return np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0, sr
+
+
+class Kokoro_:
+    def __init__(self, lang):
+        ensure_model()
+        from kokoro_onnx import Kokoro
+        self.k = Kokoro(MODEL, VOICES)
+        self.lang = lang
+
+    def synth(self, text, voice, speed, tmpdir, idx):
+        samples, sr = self.k.create(text, voice=voice, speed=speed, lang=self.lang)
+        return np.asarray(samples, dtype=np.float32), sr, None
+
+    def weights(self, words):
+        return word_weights(self.k, words, self.lang)
+
+
+class HeyGen_:
+    """HeyGen Starfish voices: any language, word timestamps from the API."""
+
+    def __init__(self, lang):
+        self.script = heygen_script()
+        self.lang = lang.split("-")[0]
+
+    def synth(self, text, voice, speed, tmpdir, idx):
+        wav = os.path.join(tmpdir, f"line{idx:03d}.wav")
+        wj = os.path.join(tmpdir, f"line{idx:03d}.words.json")
+        cmd = ["node", self.script, text, "-o", wav, "--words", wj, "--lang", self.lang, "--speed", str(speed)]
+        if voice and voice not in ("auto", "default"):
+            cmd += ["--voice", voice]
+        subprocess.run(cmd, check=True)
+        samples, sr = read_wav_any(wav)
+        words = None
+        if os.path.exists(wj):
+            raw = json.load(open(wj))
+            raw = raw.get("words", raw) if isinstance(raw, dict) else raw
+            words = [{"text": w["text"], "start": float(w["start"]), "end": float(w["end"])} for w in raw if str(w.get("text", "")).strip()]
+        return samples, sr, words
+
+    def weights(self, words):
+        return [max(2, len(clean_word(w))) for w in words]
+
+
+class Silent_:
+    """Draft timing without audio (for previews before a voice is available)."""
+
+    def __init__(self, lang):
+        self.lang = lang
+
+    def synth(self, text, voice, speed, tmpdir, idx):
+        sr = 24000
+        words = text.split()
+        dur, t, out = 0.0, 0.05, []
+        for w in words:
+            d = (0.07 * len(clean_word(w)) + 0.09) / speed
+            out.append({"text": w, "start": t, "end": t + d})
+            t += d + (0.22 / speed if PUNCT_END.search(w) else 0.0)
+        dur = t + 0.05
+        return np.zeros(int(dur * sr), dtype=np.float32), sr, out
+
+    def weights(self, words):
+        return [max(2, len(clean_word(w))) for w in words]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--lines", required=True)
     ap.add_argument("--out-dir", required=True)
+    ap.add_argument("--provider", default="kokoro", choices=["kokoro", "heygen", "silent"])
     ap.add_argument("--voice", default="am_michael")
     ap.add_argument("--speed", type=float, default=1.1)
     ap.add_argument("--lang", default="en-us")
@@ -135,26 +219,33 @@ def main():
     ap.add_argument("--lead", type=float, default=0.15)
     a = ap.parse_args()
 
-    ensure_model()
-    from kokoro_onnx import Kokoro
-
-    kokoro = Kokoro(MODEL, VOICES)
+    eng = {"kokoro": Kokoro_, "heygen": HeyGen_, "silent": Silent_}[a.provider](a.lang)
     lines = json.load(open(a.lines))
+    tmpdir = os.path.join(a.out_dir, ".voice-lines")
+    os.makedirs(tmpdir, exist_ok=True)
     sr_out = None
     chunks = []
     t = a.lead
     out_lines = []
     pad = 0.03
-    for ln in lines:
+    for i, ln in enumerate(lines):
         text = ln["text"].strip()
-        samples, sr = kokoro.create(text, voice=ln.get("voice", a.voice), speed=ln.get("speed", a.speed), lang=a.lang)
-        samples = np.asarray(samples, dtype=np.float32)
+        samples, sr, api_words = eng.synth(text, ln.get("voice", a.voice), ln.get("speed", a.speed), tmpdir, i)
+        if sr_out and sr != sr_out:
+            samples = np.interp(np.arange(0, len(samples), sr / sr_out), np.arange(len(samples)), samples).astype(np.float32)
+            sr = sr_out
         sr_out = sr_out or sr
-        v0, v1, pauses = voiced_regions(samples, sr)
+        if a.provider == "silent":
+            v0, v1, pauses = api_words[0]["start"], api_words[-1]["end"], []
+        else:
+            v0, v1, pauses = voiced_regions(samples, sr)
         s0 = max(0.0, v0 - pad)
         s1 = min(len(samples) / sr, v1 + pad)
         clip = samples[int(s0 * sr): int(s1 * sr)]
-        words = time_words(kokoro, text, a.lang, v0 - s0, v1 - s0, [(p0 - s0, p1 - s0) for p0, p1 in pauses])
+        if api_words:
+            words = [{"text": w["text"], "start": round(w["start"] - s0, 3), "end": round(w["end"] - s0, 3)} for w in api_words]
+        else:
+            words = time_words_w(eng, text, v0 - s0, v1 - s0, [(p0 - s0, p1 - s0) for p0, p1 in pauses])
         for w in words:
             w["start"] = round(w["start"] + t, 3)
             w["end"] = round(w["end"] + t, 3)
@@ -168,6 +259,7 @@ def main():
 
     audio = np.concatenate([np.zeros(int(a.lead * sr_out), dtype=np.float32)] + chunks)
     peak = float(np.max(np.abs(audio))) or 1.0
+    silent = a.provider == "silent"
     audio = audio / peak * 0.89  # about -1 dBFS peak
     os.makedirs(a.out_dir, exist_ok=True)
     wav_path = os.path.join(a.out_dir, "voice.wav")
@@ -179,12 +271,12 @@ def main():
     # Loudness for social video: about -15 LUFS integrated, true peak <= -1.5 dBTP.
     # Linear gain only (dynamic=false) so the word timings stay valid.
     tmp = wav_path + ".norm.wav"
-    r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", wav_path, "-af", "loudnorm=I=-15:TP=-1.5:LRA=11:linear=true", "-ar", str(sr_out), tmp])
+    r = subprocess.CompletedProcess([], 1) if silent else subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", wav_path, "-af", "loudnorm=I=-15:TP=-1.5:LRA=11:linear=true", "-ar", str(sr_out), tmp])
     if r.returncode == 0 and os.path.exists(tmp):
         os.replace(tmp, wav_path)
-    else:
+    elif not silent:
         print("  ! ffmpeg loudnorm failed; voice left at peak-normalised level", file=sys.stderr)
-    timing = {"sampleRate": sr_out, "total": round(len(audio) / sr_out, 3), "voice": a.voice, "speed": a.speed, "lines": out_lines}
+    timing = {"provider": a.provider, "sampleRate": sr_out, "total": round(len(audio) / sr_out, 3), "voice": a.voice, "speed": a.speed, "lines": out_lines}
     json.dump(timing, open(os.path.join(a.out_dir, "timing.json"), "w"), indent=1)
     print(f"voice.wav {timing['total']}s, {len(out_lines)} lines", file=sys.stderr)
 
