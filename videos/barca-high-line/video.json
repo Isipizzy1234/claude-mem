@@ -2,9 +2,9 @@
   "title": "Flick's Barcelona high line (Nov 2026)",
   "handle": "@yourhandle",
   "voice": {
-    "id": "am_puck:0.6,am_fenrir:0.4",
-    "speed": 1.12,
-    "fx": "punch"
+    "id": "am_puck",
+    "speed": 1.2,
+    "fx": "hype"
   },
   "teams": {
     "B": {

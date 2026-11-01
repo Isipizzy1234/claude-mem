@@ -35,9 +35,9 @@ const opt = (name) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1
 
 const spec = JSON.parse(fs.readFileSync(specPath, "utf8"));
 const voiceCfg = spec.voice === null || flag("--no-voice") ? null : {
-  id: opt("--voice") || spec.voice?.id || "am_michael",
-  speed: Number(opt("--speed") || spec.voice?.speed || 1.1),
-  fx: opt("--fx") || spec.voice?.fx || "punch",
+  id: opt("--voice") || spec.voice?.id || "am_puck",
+  speed: Number(opt("--speed") || spec.voice?.speed || 1.2),
+  fx: opt("--fx") || spec.voice?.fx || "hype",
 };
 
 fs.mkdirSync(path.join(outDir, "assets", "lib"), { recursive: true });

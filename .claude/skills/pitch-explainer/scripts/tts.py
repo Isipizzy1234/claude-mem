@@ -6,7 +6,7 @@
 
 --voice   one voice id, or a blend "id:weight,id:weight" (weights are normalised)
 --speed   speaking rate (1.0 = normal)
---fx      none | punch  (punch = presence EQ + compression + limiter, sounds
+--fx      none | punch | hype  (punch = presence EQ + compression + limiter, sounds
           like a hyped commentator mic instead of a flat read)
 
 Uses the Kokoro model that `npx hyperframes tts` downloads to
@@ -31,6 +31,18 @@ FX = {
         "equalizer=f=8500:t=q:w=1.0:g=2.5",
         "acompressor=threshold=-22dB:ratio=4:attack=4:release=70:makeup=5",
         "alimiter=limit=0.89:attack=2:release=40",
+    ]),
+    # hype = punch + slightly higher, brighter and denser: an excited commentator
+    "hype": ",".join([
+        "highpass=f=85",
+        "rubberband=pitch=1.035:formant=preserved",
+        "equalizer=f=250:t=q:w=1.2:g=-3",
+        "equalizer=f=2800:t=q:w=1.2:g=5",
+        "equalizer=f=9000:t=q:w=1.0:g=3",
+        "aexciter=amount=1.5:drive=6:blend=0:freq=3500",
+        "acompressor=threshold=-26dB:ratio=6:attack=3:release=60:makeup=7",
+        "asoftclip=type=tanh:threshold=0.9",
+        "alimiter=limit=0.8:attack=2:release=40",
     ]),
 }
 

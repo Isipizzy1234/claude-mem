@@ -61,8 +61,9 @@ contract and CLI. This skill only adds the format, the engine and the workflow.
    change is instant. `timing.json` in the project lists each beat's start/end -
    use it to pick snapshot times.
    **The voice must sound alive, never like a flat read** (`scripts/tts.py`):
-   default is a blend `am_puck:0.6,am_fenrir:0.4` at 1.12× with the `punch`
-   broadcast chain (presence EQ, compression, limiter). Other male voices:
+   default is `am_puck` (the user's pick) at 1.2× with the `hype` chain: +0.6
+   semitone pitch, presence EQ, exciter, hard compression, soft clip, limiter
+   - an excited commentator that sells the story. `punch` is the calmer chain. Other male voices:
    am_michael, am_puck, am_fenrir, am_echo, am_eric, am_liam, am_onyx, bm_george,
    bm_fable, bm_lewis, bm_daniel; blend any with `id:weight,id:weight`. Write `say`
    like a hyped commentator: short bursts, `!`, `?`, `...` for dramatic pauses,

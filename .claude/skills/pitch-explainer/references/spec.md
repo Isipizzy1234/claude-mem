@@ -12,8 +12,8 @@ start**. Angles: radians, `0` = facing the top goal, `3.1416` = facing down.
 {
   "title": "Why man-marking gets you killed",   // project name only
   "handle": "@yourhandle",                      // watermark (the user's own)
-  "voice": { "id": "am_puck:0.6,am_fenrir:0.4", "speed": 1.12, "fx": "punch" },
-                                                // id or blend; fx none|punch; null = silent
+  "voice": { "id": "am_puck", "speed": 1.2, "fx": "hype" },
+                                                // id or blend "a:0.6,b:0.4"; fx none|punch|hype; null = silent
   "music": "music.mp3",                         // optional, path relative to video.json
   "musicVolume": 0.14,
   "sound": { "ambience": 0.09, "whoosh": 0.2, "kick": 0.32, "net": 0.38, "cheer": 0.2 },
