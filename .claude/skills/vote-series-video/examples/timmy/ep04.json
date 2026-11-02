@@ -397,21 +397,21 @@
       "kind": "vote",
       "say": [
         "Timmy muss besser aussehen. Was soll er tun?",
-        "Option A: Er wird Looksmaxxer. Skincare, Jawline, das volle Programm.",
-        "Option B: Er geht jeden Tag ins Fitnessstudio.",
+        "Option A: Er geht jeden Tag ins Fitnessstudio.",
+        "Option B: Mama macht ihm ein komplettes Makeover.",
         "Schreib A oder B in die Kommentare. Dein Kommentar zählt!",
         "Bis morgen!"
       ],
       "face": "sad",
       "questionAt": "w:was",
       "a": {
-        "text": "Looksmaxxer werden",
-        "icon": "star",
+        "text": "Jeden Tag ins Gym",
+        "icon": "dumbbell",
         "at": "L1"
       },
       "b": {
-        "text": "Jeden Tag ins Gym",
-        "icon": "dumbbell",
+        "text": "Mama macht ein Makeover",
+        "icon": "heart",
         "at": "L2"
       },
       "ctaAt": "L3",
