@@ -1,0 +1,126 @@
+{
+  "series": "series.json",
+  "episode": 3,
+  "daysLeft": 28,
+  "progress": 1,
+  "progressText": "53,13 €",
+  "scenes": [
+    {
+      "kind": "recap",
+      "say": ["Letzte Folge habt ihr entschieden.", "Timmys Kamera ist ab jetzt kaputt!"],
+      "face": "smug",
+      "a": { "text": "Kamera kaputt", "icon": "phone", "pct": 80 },
+      "b": { "text": "Cousin Marco ruft an", "icon": "suit", "pct": 20 },
+      "winner": "a",
+      "winnerAt": "L1"
+    },
+    {
+      "say": "Achtundzwanzig Tage. Abends ruft Jessi per Video an.",
+      "text": "28 Tage. Abends ruft Jessi per Video an.",
+      "bg": { "type": "plain", "color": "#1d1834" },
+      "camera": "none",
+      "sfx": [{ "name": "notification", "at": "w:ruft", "vol": 0.4 }],
+      "props": [{ "type": "phone", "screen": "call", "name": "Jessi", "label": "Videoanruf", "avatarColor": "#ff6b9a", "x": 540, "y": 1010, "scale": 0.8 }]
+    },
+    {
+      "say": "Timmy klebt schnell Klebeband über die Kamera.",
+      "bg": { "type": "room", "poster": "LVL 99", "posterColor": "#e8414b", "boxes": true },
+      "cast": [{ "who": "timmy", "x": 540, "y": 1620, "face": "smug", "pose": "hold" }],
+      "props": [
+        { "type": "svg", "x": 540, "y": 1250, "at": "w:klebeband", "anim": "drop",
+          "markup": "<rect x='-90' y='-150' width='180' height='300' rx='26' fill='#2b2b3a' stroke='#1d1b2f' stroke-width='8'/><rect x='-75' y='-125' width='150' height='250' fill='#8fb6ff'/><circle cx='0' cy='-132' r='8' fill='#111'/><rect x='-50' y='-150' width='100' height='34' fill='#d9c39a' stroke='#1d1b2f' stroke-width='4' transform='rotate(-8)'/>" },
+        { "type": "sticker", "text": "KAMERA: KAPUTT", "x": 540, "y": 620, "rot": -6, "size": 56, "at": "w:kamera" }
+      ]
+    },
+    {
+      "say": "Jessi sieht nur Schwarz. Und hört ihn schmatzen.",
+      "bg": { "type": "plain", "color": "#1d1834" },
+      "camera": "none",
+      "props": [
+        { "type": "phone", "screen": "app", "title": "Jessi · Videoanruf", "big": "", "sub": "Kamera aus", "color": "#000000", "x": 540, "y": 1010, "scale": 0.8 },
+        { "type": "burst", "text": "SCHMATZ!", "x": 540, "y": 900, "rot": -8, "size": 90, "at": "w:schmatzen" }
+      ]
+    },
+    {
+      "say": "Er isst nämlich gerade seine dritte Tiefkühlpizza.",
+      "text": "Er isst nämlich gerade seine 3. Tiefkühlpizza.",
+      "bg": { "type": "room", "poster": "LVL 99", "posterColor": "#e8414b", "boxes": true },
+      "cast": [{ "who": "timmy", "x": 540, "y": 1620, "face": "grin", "pose": "hold" }],
+      "props": [
+        { "type": "icon", "name": "pizza", "size": 260, "x": 540, "y": 1180, "at": "w:isst", "sfx": "pop" },
+        { "type": "bigText", "text": "3", "x": 820, "y": 600, "size": 190, "at": "w:dritte" }
+      ]
+    },
+    {
+      "say": "Nach dem Anruf schreibt Jessi: Du bist so lustig!",
+      "bg": { "type": "plain", "color": "#1d1834" },
+      "camera": "none",
+      "props": [{
+        "type": "phone", "screen": "chat", "name": "Jessi", "clock": "22:08", "avatarColor": "#ff6b9a",
+        "x": 540, "y": 1010, "scale": 0.8,
+        "messages": [{ "from": "them", "text": "Du bist so lustig!", "at": "w:du" }, { "from": "them", "text": "Morgen wieder?", "at": "end-0.4" }]
+      }]
+    },
+    {
+      "say": "Timmy ist so glücklich, dass er sogar duscht. Freiwillig.",
+      "bg": { "type": "bathroom" },
+      "cast": [{ "who": "timmy", "x": 600, "y": 1620, "face": "love", "faces": [["w:freiwillig", "joy"]], "poses": [["w:freiwillig", "armsUp"]] }],
+      "props": [
+        { "type": "icon", "name": "shower", "size": 280, "x": 760, "y": 560, "at": "w:duscht", "sfx": "pop" },
+        { "type": "sticker", "text": "FREIWILLIG!", "x": 300, "y": 640, "rot": -8, "color": "#36c26b", "at": "w:freiwillig" }
+      ]
+    },
+    {
+      "say": "Am nächsten Tag arbeitet er wieder im Supermarkt. Plus einundfünfzig Euro.",
+      "text": "Am nächsten Tag arbeitet er wieder im Supermarkt. Plus 51 Euro.",
+      "bg": { "type": "shop", "sign": "SUPERMARKT", "signColor": "#2f9e5b" },
+      "hudProgress": [{ "at": "w:einundfünfzig", "to": 1, "text": "104,13 €", "pop": "+51 €" }],
+      "cast": [{ "who": "timmy", "x": 540, "y": 1640, "face": "grin", "faces": [["w:plus", "joy"]], "poses": [["w:plus", "armsUp"]], "lookOverride": { "shirt": "#2f9e5b", "print": "text", "printText": "AUSHILFE" } }],
+      "props": [{ "type": "money", "x": 540, "y": 600, "at": "w:einundfünfzig", "anim": "drop", "sfx": "chime" }]
+    },
+    {
+      "say": "Doch dann schickt Jessi ein Foto. Sie steht vor seinem Supermarkt.",
+      "bg": { "type": "plain", "color": "#1d1834" },
+      "camera": "none",
+      "props": [{
+        "type": "phone", "screen": "chat", "name": "Jessi", "clock": "16:52", "avatarColor": "#ff6b9a",
+        "x": 540, "y": 1010, "scale": 0.8,
+        "messages": [{ "from": "them", "img": true, "at": "w:foto" }, { "from": "them", "text": "Überraschung! Bin in deiner Stadt!", "at": "w:supermarkt" }]
+      }]
+    },
+    {
+      "say": "Sie will ihn in zehn Minuten treffen.",
+      "text": "Sie will ihn in 10 Minuten treffen.",
+      "bg": { "type": "sunburst", "color": "#5a1f2a" },
+      "shake": ["w:zehn"],
+      "cast": [{ "who": "timmy", "x": 540, "y": 1760, "scale": 1.15, "face": "shock", "faces": [["w:treffen", "panic"]], "lookOverride": { "shirt": "#2f9e5b", "print": "text", "printText": "AUSHILFE" } }],
+      "props": [{ "type": "bigText", "text": "10 MIN", "x": 540, "y": 560, "size": 170, "at": "w:zehn", "sfx": "impact-bass-1" }]
+    },
+    {
+      "say": "Und Timmy steht im Aushilfe-Shirt da. Und riecht nach Pizza.",
+      "bg": { "type": "shop", "sign": "SUPERMARKT", "signColor": "#2f9e5b" },
+      "cast": [{ "who": "timmy", "x": 540, "y": 1640, "face": "cry", "lookOverride": { "shirt": "#2f9e5b", "print": "text", "printText": "AUSHILFE" } }],
+      "props": [
+        { "type": "label", "text": "Aushilfe-Shirt", "x": 830, "y": 760, "toX": -160, "toY": 300, "at": "w:aushilfe" },
+        { "type": "sticker", "text": "RIECHT NACH PIZZA", "x": 400, "y": 600, "rot": -6, "size": 50, "at": "w:pizza" }
+      ]
+    },
+    {
+      "kind": "vote",
+      "say": [
+        "Was soll Timmy tun?",
+        "Option A: Er versteckt sich im Kühlraum.",
+        "Option B: Er schickt Cousin Marco raus.",
+        "Schreib A oder B in die Kommentare. Dein Kommentar zählt!",
+        "Und jeder neue Follower bringt Timmy einen Euro fürs Ring-Geld.",
+        "Bis morgen!"
+      ],
+      "face": "panic",
+      "questionAt": "w:was",
+      "a": { "text": "Im Kühlraum verstecken", "icon": "house", "at": "L1" },
+      "b": { "text": "Cousin Marco rausschicken", "icon": "suit", "at": "L2" },
+      "ctaAt": "L3",
+      "props": [{ "type": "chip", "text": "1 neuer Follower = 1 € für den Ring", "x": 540, "y": 650, "size": 34, "at": "L4" }]
+    }
+  ]
+}
