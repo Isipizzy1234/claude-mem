@@ -1,0 +1,430 @@
+{
+  "series": "series.json",
+  "episode": 4,
+  "daysLeft": 27,
+  "progress": 1,
+  "progressText": "104,13 €",
+  "scenes": [
+    {
+      "say": "Seine Discord-Freundin steht vor der Tür. Und Timmy versteckt sich im Kühlraum.",
+      "bg": {
+        "type": "grid",
+        "color": "#d8f1ff"
+      },
+      "camera": "push",
+      "shake": [
+        "w:kühlraum"
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1660,
+          "face": "panic",
+          "faces": [
+            [
+              "w:kühlraum",
+              "shock"
+            ]
+          ],
+          "lookOverride": {
+            "shirt": "#2f9e5b",
+            "print": "text",
+            "printText": "AUSHILFE"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "sign",
+          "text": "SIE STEHT VOR DER TÜR!",
+          "x": 540,
+          "y": 560,
+          "rot": -4,
+          "size": 62,
+          "color": "#e8414b"
+        },
+        {
+          "type": "burst",
+          "text": "BRRR!",
+          "shape": "none",
+          "x": 840,
+          "y": 820,
+          "rot": 10,
+          "size": 80,
+          "color": "#5cc8ff",
+          "at": "w:kühlraum"
+        }
+      ]
+    },
+    {
+      "say": "Denn Timmy hat ihr ein Fake-Foto geschickt. Sie darf ihn auf keinen Fall sehen.",
+      "bg": {
+        "type": "sunburst",
+        "color": "#2f9e8f"
+      },
+      "cast": [
+        {
+          "who": "model",
+          "x": 540,
+          "y": 1120,
+          "scale": 0.55,
+          "face": "smug",
+          "pose": "hips"
+        }
+      ],
+      "props": [
+        {
+          "type": "photo",
+          "x": 540,
+          "y": 860,
+          "w": 560,
+          "h": 760,
+          "tilt": 0,
+          "color": "#8fd0ff",
+          "caption": "Ich :)",
+          "z": "back"
+        },
+        {
+          "type": "sticker",
+          "text": "FAKE",
+          "x": 560,
+          "y": 1010,
+          "rot": -10,
+          "size": 80,
+          "at": "w:fake",
+          "sfx": "error"
+        }
+      ]
+    },
+    {
+      "kind": "recap",
+      "say": [
+        "Ihr habt entschieden: ab in den Kühlraum!"
+      ],
+      "face": "tired",
+      "a": {
+        "text": "Im Kühlraum verstecken",
+        "icon": "house",
+        "pct": 61,
+        "at": "L0"
+      },
+      "b": {
+        "text": "Cousin Marco rausschicken",
+        "icon": "suit",
+        "pct": 39,
+        "at": "L0"
+      },
+      "winner": "a",
+      "winnerAt": "w:kühlraum"
+    },
+    {
+      "say": "Und ihr habt achtundachtzig neue Follower gebracht. Achtundachtzig Euro für den Ring!",
+      "text": "Und ihr habt 88 neue Follower gebracht. 88 € für den Ring!",
+      "bg": {
+        "type": "sunburst",
+        "color": "#2f9e5b"
+      },
+      "camera": "punch",
+      "hudProgress": [
+        {
+          "at": "w:achtundachtzig#2",
+          "to": 2,
+          "text": "192,13 €",
+          "pop": "+88 €"
+        }
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1700,
+          "scale": 1.05,
+          "face": "love",
+          "faces": [
+            [
+              "w:achtundachtzig#2",
+              "joy"
+            ]
+          ],
+          "pose": "armsUp",
+          "lookOverride": {
+            "shirt": "#2f9e5b",
+            "print": "text",
+            "printText": "AUSHILFE"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "bigText",
+          "text": "+88 €",
+          "x": 540,
+          "y": 560,
+          "size": 170,
+          "color": "#36c26b",
+          "at": "w:achtundachtzig",
+          "sfx": "impact-bass-1"
+        },
+        {
+          "type": "money",
+          "x": 540,
+          "y": 760,
+          "at": "w:euro",
+          "anim": "drop",
+          "sfx": "chime"
+        }
+      ]
+    },
+    {
+      "say": "Minus achtzehn Grad. Seine Pickel frieren ein.",
+      "text": "-18 Grad. Seine Pickel frieren ein.",
+      "bg": {
+        "type": "grid",
+        "color": "#d8f1ff"
+      },
+      "shake": [
+        "w:frieren"
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1660,
+          "face": "tired",
+          "faces": [
+            [
+              "w:frieren",
+              "shock"
+            ]
+          ],
+          "lookOverride": {
+            "shirt": "#2f9e5b",
+            "print": "text",
+            "printText": "AUSHILFE"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "bigText",
+          "text": "-18°C",
+          "x": 540,
+          "y": 540,
+          "size": 160,
+          "color": "#3466f0",
+          "at": "w:minus"
+        },
+        {
+          "type": "label",
+          "text": "Pickel: gefroren",
+          "x": 820,
+          "y": 760,
+          "toX": -250,
+          "toY": 160,
+          "at": "w:frieren"
+        }
+      ]
+    },
+    {
+      "say": "Durch das Fenster sieht er Jessi. Zum ersten Mal in echt.",
+      "bg": {
+        "type": "shop",
+        "sign": "SUPERMARKT",
+        "signColor": "#2f9e5b"
+      },
+      "camera": "push",
+      "cast": [
+        {
+          "who": "jessi",
+          "x": 540,
+          "y": 1640,
+          "face": "happy",
+          "enter": "pop"
+        }
+      ],
+      "props": [
+        {
+          "type": "sticker",
+          "text": "JESSI",
+          "x": 820,
+          "y": 640,
+          "rot": 8,
+          "color": "#ff6b9a",
+          "at": "w:jessi"
+        },
+        {
+          "type": "burst",
+          "text": "WOW...",
+          "shape": "none",
+          "x": 260,
+          "y": 640,
+          "rot": -8,
+          "size": 80,
+          "color": "#ff6b9a",
+          "at": "w:echt"
+        }
+      ]
+    },
+    {
+      "say": "Dann fragt sie die Chefin: Arbeitet hier ein Timmy?",
+      "bg": {
+        "type": "shop",
+        "sign": "SUPERMARKT",
+        "signColor": "#2f9e5b"
+      },
+      "cast": [
+        {
+          "who": "jessi",
+          "x": 280,
+          "y": 1660,
+          "scale": 0.82,
+          "face": "happy"
+        },
+        {
+          "who": "chefin",
+          "x": 800,
+          "y": 1660,
+          "scale": 0.86,
+          "flip": true,
+          "face": "neutral",
+          "faces": [
+            [
+              "w:timmy",
+              "smug"
+            ]
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "bubble",
+          "text": "Arbeitet hier ein Timmy?",
+          "maxChars": 14,
+          "size": 52,
+          "x": 420,
+          "y": 580,
+          "tailX": -120,
+          "at": "w:arbeitet"
+        }
+      ]
+    },
+    {
+      "say": "Die Chefin zeigt auf den Kühlraum.",
+      "bg": {
+        "type": "shop",
+        "sign": "SUPERMARKT",
+        "signColor": "#2f9e5b"
+      },
+      "camera": "punch",
+      "shake": [
+        "w:kühlraum"
+      ],
+      "cast": [
+        {
+          "who": "chefin",
+          "x": 540,
+          "y": 1660,
+          "face": "smug",
+          "pose": "stand",
+          "poses": [
+            [
+              "w:zeigt",
+              "point"
+            ]
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "burst",
+          "text": "!!!",
+          "shape": "none",
+          "color": "#e8414b",
+          "x": 800,
+          "y": 600,
+          "size": 150,
+          "at": "w:kühlraum"
+        }
+      ]
+    },
+    {
+      "say": "Timmy flieht durch den Hinterausgang. Knapp!",
+      "bg": {
+        "type": "street"
+      },
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 150,
+          "y": 1640,
+          "scale": 0.8,
+          "face": "panic",
+          "pose": "armsUp",
+          "lookOverride": {
+            "shirt": "#2f9e5b",
+            "print": "text",
+            "printText": "AUSHILFE"
+          },
+          "faces": [
+            [
+              "w:knapp",
+              "tired"
+            ]
+          ],
+          "moves": [
+            {
+              "at": "w:flieht",
+              "x": 760,
+              "dur": 0.9
+            }
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "sticker",
+          "text": "KNAPP!",
+          "x": 540,
+          "y": 640,
+          "rot": -8,
+          "size": 80,
+          "at": "w:knapp"
+        }
+      ]
+    },
+    {
+      "kind": "vote",
+      "say": [
+        "Timmy muss besser aussehen. Was soll er tun?",
+        "Option A: Er wird Looksmaxxer. Skincare, Jawline, das volle Programm.",
+        "Option B: Er geht jeden Tag ins Fitnessstudio.",
+        "Schreib A oder B in die Kommentare. Dein Kommentar zählt!",
+        "Bis morgen!"
+      ],
+      "face": "sad",
+      "questionAt": "w:was",
+      "a": {
+        "text": "Looksmaxxer werden",
+        "icon": "star",
+        "at": "L1"
+      },
+      "b": {
+        "text": "Jeden Tag ins Gym",
+        "icon": "dumbbell",
+        "at": "L2"
+      },
+      "ctaAt": "L3",
+      "props": [
+        {
+          "type": "chip",
+          "text": "1 neuer Follower = 1 € für den Ring",
+          "x": 540,
+          "y": 650,
+          "size": 34,
+          "at": "L3"
+        }
+      ]
+    }
+  ]
+}
