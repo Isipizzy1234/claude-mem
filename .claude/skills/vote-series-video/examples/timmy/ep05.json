@@ -162,11 +162,12 @@
         },
         {
           "type": "money",
-          "x": 540,
-          "y": 900,
+          "x": 830,
+          "y": 1180,
           "at": "w:euro",
           "anim": "drop",
-          "sfx": "chime"
+          "sfx": "chime",
+          "scale": 0.65
         }
       ]
     },
