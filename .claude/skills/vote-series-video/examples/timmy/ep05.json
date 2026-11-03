@@ -1,0 +1,134 @@
+{
+  "series": "series.json",
+  "episode": 5,
+  "daysLeft": 26,
+  "progress": 2,
+  "progressText": "192,13 €",
+  "scenes": [
+    {
+      "say": "Timmy steckt unter einer Hantel fest. Und kommt nicht mehr hoch.",
+      "bg": { "type": "gym" },
+      "camera": "push",
+      "shake": ["w:fest"],
+      "cast": [{ "who": "timmy", "x": 540, "y": 1660, "face": "panic", "pose": "armsUp", "faces": [["w:hoch", "cry"]], "lookOverride": { "print": "stain" } }],
+      "props": [
+        { "type": "barbell", "text": "20 KG", "x": 540, "y": 860, "scale": 1 },
+        { "type": "burst", "text": "HILFE!", "x": 540, "y": 560, "rot": -6, "size": 110 }
+      ]
+    },
+    {
+      "say": "Er hat seiner Discord-Freundin ein Fake-Foto geschickt. Jetzt muss er dringend fit werden.",
+      "bg": { "type": "sunburst", "color": "#2f9e8f" },
+      "cast": [{ "who": "model", "x": 540, "y": 1120, "scale": 0.55, "face": "smug", "pose": "hips" }],
+      "props": [
+        { "type": "photo", "x": 540, "y": 860, "w": 560, "h": 760, "tilt": 0, "color": "#8fd0ff", "caption": "Ich :)", "z": "back" },
+        { "type": "sticker", "text": "FAKE", "x": 560, "y": 1010, "rot": -10, "size": 80, "at": "w:fake", "sfx": "error" }
+      ]
+    },
+    {
+      "kind": "recap",
+      "say": ["Siebenundsiebzig Prozent von euch haben gesagt: ab ins Gym!"],
+      "face": "tired",
+      "a": { "text": "Jeden Tag ins Gym", "icon": "dumbbell", "pct": 77 },
+      "b": { "text": "Mama macht ein Makeover", "icon": "heart", "pct": 23 },
+      "winner": "a",
+      "winnerAt": "w:gym"
+    },
+    {
+      "say": "Timmy kommt in Jogginghose und Badelatschen.",
+      "bg": { "type": "gym" },
+      "cast": [{ "who": "timmy", "x": 540, "y": 1660, "face": "grin" }],
+      "props": [
+        { "type": "label", "text": "Jogginghose", "x": 210, "y": 1080, "toX": 210, "toY": 300, "at": "w:jogginghose" },
+        { "type": "label", "text": "Badelatschen", "x": 860, "y": 1120, "toX": -200, "toY": 460, "at": "w:badelatschen" }
+      ]
+    },
+    {
+      "say": "Sein Trainer heißt Kalle. Und hat Arme wie Baumstämme.",
+      "bg": { "type": "gym" },
+      "camera": "push",
+      "cast": [{ "who": "kalle", "x": 540, "y": 1660, "scale": 1.05, "face": "smug", "pose": "hips", "enter": "pop" }],
+      "props": [
+        { "type": "sticker", "text": "KALLE", "x": 260, "y": 640, "rot": -8, "at": "w:kalle" },
+        { "type": "label", "text": "Baumstämme", "x": 860, "y": 760, "toX": -100, "toY": 240, "at": "w:baumstämme" }
+      ]
+    },
+    {
+      "say": "Kalle sagt: Wir fangen leicht an. Zwanzig Kilo.",
+      "text": "Kalle sagt: Wir fangen leicht an. 20 Kilo.",
+      "bg": { "type": "gym" },
+      "cast": [
+        { "who": "kalle", "x": 790, "y": 1660, "scale": 0.9, "flip": true, "face": "happy", "pose": "point" },
+        { "who": "timmy", "x": 260, "y": 1670, "scale": 0.78, "face": "neutral", "faces": [["w:zwanzig", "shock"]] }
+      ],
+      "props": [
+        { "type": "bubble", "text": "Wir fangen leicht an!", "maxChars": 12, "size": 52, "x": 640, "y": 560, "tailX": 120, "at": "w:wir" },
+        { "type": "bigText", "text": "20 KG", "x": 300, "y": 880, "size": 120, "at": "w:zwanzig" }
+      ]
+    },
+    {
+      "say": "Timmy schafft genau eine Wiederholung. Dann liegt er fest.",
+      "bg": { "type": "gym" },
+      "shake": ["w:fest"],
+      "cast": [{ "who": "timmy", "x": 540, "y": 1660, "face": "gritted", "pose": "armsUp", "faces": [["w:fest", "panic"]] }],
+      "props": [
+        { "type": "barbell", "x": 540, "y": 860, "scale": 1, "at": "w:timmy", "anim": "drop", "sfx": "impact-bass-1" },
+        { "type": "chip", "text": "1 Wiederholung", "x": 540, "y": 560, "size": 40, "at": "w:eine" }
+      ]
+    },
+    {
+      "say": "Kalle muss ihn befreien. Und das ganze Gym filmt mit.",
+      "bg": { "type": "gym" },
+      "cast": [
+        { "who": "kalle", "x": 780, "y": 1660, "scale": 0.9, "flip": true, "face": "gritted", "pose": "armsUp" },
+        { "who": "timmy", "x": 270, "y": 1670, "scale": 0.78, "face": "cry" }
+      ],
+      "props": [
+        { "type": "icon", "name": "phone", "size": 150, "x": 150, "y": 620, "rot": -12, "at": "w:filmt", "sfx": "click" },
+        { "type": "icon", "name": "phone", "size": 150, "x": 540, "y": 560, "rot": 6, "at": "w:filmt+0.15", "sfx": false },
+        { "type": "icon", "name": "phone", "size": 150, "x": 930, "y": 620, "rot": 14, "at": "w:filmt+0.3", "sfx": false }
+      ]
+    },
+    {
+      "say": "Am Abend ist das Video überall. Fünfzigtausend Aufrufe.",
+      "text": "Am Abend ist das Video überall. 50.000 Aufrufe.",
+      "bg": { "type": "plain", "color": "#1d1834" },
+      "camera": "none",
+      "props": [{
+        "type": "phone", "screen": "post", "app": "Clipster", "name": "gymfails.de", "meta": "vor 3 Std.",
+        "text": "Typ steckt unter 20 Kilo fest", "imgIcon": "dumbbell", "imgColor": "#ffd9d9",
+        "likes": "50.000", "comments": "2.381", "likesAt": "w:fünfzigtausend",
+        "x": 540, "y": 1010, "scale": 0.8
+      }]
+    },
+    {
+      "say": "Dann schreibt Jessi: Der Typ hat das gleiche Headset wie du.",
+      "bg": { "type": "plain", "color": "#1d1834" },
+      "camera": "none",
+      "props": [{
+        "type": "phone", "screen": "chat", "name": "Jessi", "clock": "21:12", "avatarColor": "#ff6b9a",
+        "x": 540, "y": 1010, "scale": 0.8,
+        "messages": [
+          { "from": "them", "text": "Hahaha hast du das gesehen?", "at": "w:jessi" },
+          { "from": "them", "text": "Der Typ hat das gleiche Headset wie du", "at": "w:gleiche" }
+        ]
+      }]
+    },
+    {
+      "kind": "vote",
+      "say": [
+        "Was soll Timmy tun?",
+        "Option A: Alles abstreiten. Das Headset hat doch jeder.",
+        "Option B: Er sagt, das ist sein Zwillingsbruder.",
+        "Schreib A oder B in die Kommentare. Dein Kommentar zählt!",
+        "Bis morgen!"
+      ],
+      "face": "panic",
+      "questionAt": "w:was",
+      "a": { "text": "Alles abstreiten", "icon": "phone", "at": "L1" },
+      "b": { "text": "Das war mein Zwillingsbruder", "icon": "star", "at": "L2" },
+      "ctaAt": "L3",
+      "props": [{ "type": "chip", "text": "1 neuer Follower = 1 € für den Ring", "x": 540, "y": 650, "size": 34, "at": "L3" }]
+    }
+  ]
+}

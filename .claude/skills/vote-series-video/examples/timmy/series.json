@@ -81,6 +81,21 @@
       "accessory": [
         "bow"
       ]
+    },
+    "kalle": {
+      "skin": "#d9a073",
+      "hair": "#3a2a1e",
+      "hairStyle": "bald",
+      "outfit": "tank",
+      "shirt": "#1b1b28",
+      "pants": "#3a3f52",
+      "shoes": "#e8414b",
+      "build": "chubby",
+      "stubble": true,
+      "facialHair": "beard",
+      "accessory": [
+        "headband"
+      ]
     }
   }
 }

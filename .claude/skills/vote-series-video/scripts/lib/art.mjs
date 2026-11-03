@@ -182,6 +182,18 @@ export function background(bg = {}) {
       s += `<path d="M 150 1500 Q 170 1100 230 850" fill="none" stroke="#8a5a3a" stroke-width="40"/><path d="M 230 850 Q 100 800 20 900 M 230 850 Q 360 780 440 880 M 230 850 Q 200 720 110 700 M 230 850 Q 300 720 400 730" fill="none" stroke="#3fae5a" stroke-width="34" stroke-linecap="round"/>`;
       return s;
     }
+    case "gym": {
+      const w = wall || "#2b2d3f";
+      let s = `<rect width="${W}" height="${H}" fill="${w}"/>`;
+      s += `<rect x="0" y="300" width="${W}" height="40" fill="${C.yellow}"/><rect x="0" y="340" width="${W}" height="14" fill="${C.ink}"/>`;
+      s += `<rect x="70" y="420" width="380" height="520" fill="#9fc6dd" ${ink()}/><path d="M 110 470 L 220 600" stroke="#fff" stroke-width="14" opacity=".6"/>`;
+      s += `<rect x="560" y="420" width="440" height="120" rx="16" fill="${C.red}" ${ink()}/>` + T(780, 502, bg.sign || "GYM", fitFont(bg.sign || "GYM", 380, 76), { fill: "#fff" });
+      s += `<rect x="560" y="1220" width="440" height="22" fill="#5d6070" ${ink(6)}/><rect x="560" y="1340" width="440" height="22" fill="#5d6070" ${ink(6)}/>`;
+      for (let i = 0; i < 5; i++) for (const y of [1200, 1320]) s += `<rect x="${585 + i * 85}" y="${y - 36}" width="56" height="40" rx="10" fill="#1b1b28" ${ink(5)}/>`;
+      s += floor(1480, "#3a3c4c", false);
+      for (let x = 0; x < W; x += 180) s += `<path d="M ${x} 1480 L ${x} 1920" stroke="#2f3140" stroke-width="6"/>`;
+      return s;
+    }
     case "night": {
       const r = rng(7);
       let s = `<rect width="${W}" height="${H}" fill="#151238"/>`;
@@ -361,6 +373,14 @@ function photo(p) {
     ${p.caption ? T(0, h / 2 - 50, p.caption, fitFont(p.caption, w - 60, 46, 24), { fill: C.ink, weight: 800 }) : ""}</g>`;
 }
 
+function barbell(p) {
+  const w = p.w || 760;
+  return `<rect x="${-w / 2}" y="-12" width="${w}" height="24" rx="12" fill="#c9ccd6" ${ink(6)}/>
+    <rect x="${-w / 2 + 20}" y="-110" width="60" height="220" rx="14" fill="#1b1b28" ${ink(6)}/><rect x="${-w / 2 + 90}" y="-80" width="44" height="160" rx="12" fill="${C.red}" ${ink(6)}/>
+    <rect x="${w / 2 - 80}" y="-110" width="60" height="220" rx="14" fill="#1b1b28" ${ink(6)}/><rect x="${w / 2 - 134}" y="-80" width="44" height="160" rx="12" fill="${C.red}" ${ink(6)}/>
+    ${p.text ? T(0, -40, p.text, 54, { fill: C.yellow, stroke: C.ink, sw: 9 }) : ""}`;
+}
+
 function wallet(p) {
   return `<rect x="-200" y="-130" width="400" height="260" rx="36" fill="#7a4b2a" ${ink(8)}/><path d="M -200 -40 L 200 -40" ${ink(7)}/>
     <rect x="60" y="-20" width="140" height="80" rx="20" fill="#5e3920" ${ink(7)}/><circle cx="110" cy="20" r="14" fill="${C.yellow}" ${ink(5)}/>
@@ -486,7 +506,7 @@ function phone(p, id, ctx) {
 
 // ---------------------------------------------------------------- dispatcher
 
-export const PROP_TYPES = ["ring", "photo", "burst", "bubble", "thought", "label", "sticker", "bigText", "chip", "sign", "calendar", "wallet", "scale", "bike", "stand", "hanger", "trash", "door", "money", "phone", "icon", "svg"];
+export const PROP_TYPES = ["barbell", "ring", "photo", "burst", "bubble", "thought", "label", "sticker", "bigText", "chip", "sign", "calendar", "wallet", "scale", "bike", "stand", "hanger", "trash", "door", "money", "phone", "icon", "svg"];
 
 export function prop(p, id, ctx) {
   switch (p.type) {
@@ -501,6 +521,7 @@ export function prop(p, id, ctx) {
     case "calendar": return calendar(p);
     case "wallet": return wallet(p);
     case "ring": return ring(p);
+    case "barbell": return barbell(p);
     case "photo": return photo(p);
     case "scale": return scale(p);
     case "bike": return bike(p);
