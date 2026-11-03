@@ -1,0 +1,453 @@
+{
+  "series": "series.json",
+  "episode": 6,
+  "daysLeft": 25,
+  "progress": 4,
+  "progressText": "445,13 €",
+  "scenes": [
+    {
+      "say": "Timmy wirft sein Headset in den Müll. Nach elf Jahren.",
+      "bg": {
+        "type": "room",
+        "poster": "LVL 99",
+        "posterColor": "#e8414b",
+        "boxes": true
+      },
+      "camera": "push",
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 420,
+          "y": 1640,
+          "face": "cry",
+          "pose": "point",
+          "lookOverride": {
+            "accessory": []
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "sign",
+          "text": "RIP HEADSET 2015 – 2026",
+          "x": 540,
+          "y": 560,
+          "rot": -4,
+          "size": 54,
+          "color": "#1d1b2f"
+        },
+        {
+          "type": "icon",
+          "name": "trash",
+          "size": 300,
+          "x": 840,
+          "y": 1330,
+          "z": "back"
+        },
+        {
+          "type": "chip",
+          "text": "11 Jahre",
+          "x": 840,
+          "y": 1080,
+          "size": 40,
+          "at": "w:elf"
+        },
+        {
+          "type": "svg",
+          "x": 840,
+          "y": 1200,
+          "rot": -15,
+          "markup": "<path d='M -90 40 C -100 -90, 100 -90, 90 40' fill='none' stroke='#1d1b2f' stroke-width='20'/><rect x='-120' y='10' width='50' height='90' rx='22' fill='#2b2b3a' stroke='#1d1b2f' stroke-width='6'/><rect x='70' y='10' width='50' height='90' rx='22' fill='#2b2b3a' stroke='#1d1b2f' stroke-width='6'/><circle cx='-95' cy='55' r='9' fill='#36c26b'/><circle cx='95' cy='55' r='9' fill='#36c26b'/>"
+        }
+      ]
+    },
+    {
+      "say": "Denn seine Discord-Freundin darf nie erfahren, dass er der Typ aus dem Gym-Video ist.",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "props": [
+        {
+          "type": "phone",
+          "screen": "post",
+          "app": "Clipster",
+          "name": "gymfails.de",
+          "meta": "vor 1 Tag",
+          "text": "Typ steckt unter 20 Kilo fest",
+          "imgIcon": "dumbbell",
+          "imgColor": "#ffd9d9",
+          "likes": "50.000",
+          "comments": "2.381",
+          "likesAt": 0.2,
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8
+        },
+        {
+          "type": "sticker",
+          "text": "DAS IST TIMMY",
+          "x": 540,
+          "y": 1080,
+          "rot": -8,
+          "size": 64,
+          "at": "w:typ",
+          "sfx": "error"
+        }
+      ]
+    },
+    {
+      "kind": "recap",
+      "say": [
+        "Sechsundachtzig Prozent von euch sagen: alles abstreiten!"
+      ],
+      "face": "smug",
+      "a": {
+        "text": "Alles abstreiten",
+        "icon": "phone",
+        "pct": 86
+      },
+      "b": {
+        "text": "Zwillingsbruder",
+        "icon": "star",
+        "pct": 14
+      },
+      "winner": "a",
+      "winnerAt": "w:abstreiten"
+    },
+    {
+      "say": "Und ihr seid jetzt sechshundertzwölf Follower. Plus zweihunderteinundsiebzig Euro für den Ring!",
+      "text": "Und ihr seid jetzt 612 Follower. Plus 271 € für den Ring!",
+      "bg": {
+        "type": "sunburst",
+        "color": "#2f9e5b"
+      },
+      "camera": "punch",
+      "hudProgress": [
+        {
+          "at": "w:zweihunderteinundsiebzig",
+          "to": 7,
+          "text": "716,13 €",
+          "pop": "+271 €"
+        }
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1700,
+          "scale": 1.05,
+          "face": "love",
+          "faces": [
+            [
+              "w:zweihunderteinundsiebzig",
+              "joy"
+            ]
+          ],
+          "pose": "armsUp"
+        }
+      ],
+      "props": [
+        {
+          "type": "chip",
+          "text": "612 Follower",
+          "x": 540,
+          "y": 560,
+          "size": 44,
+          "at": "w:sechshundertzwölf"
+        },
+        {
+          "type": "bigText",
+          "text": "+271 €",
+          "x": 540,
+          "y": 720,
+          "size": 160,
+          "color": "#36c26b",
+          "at": "w:zweihunderteinundsiebzig",
+          "sfx": "impact-bass-1"
+        },
+        {
+          "type": "money",
+          "x": 830,
+          "y": 1180,
+          "scale": 0.65,
+          "at": "w:euro",
+          "anim": "drop",
+          "sfx": "chime"
+        }
+      ]
+    },
+    {
+      "say": "Timmy schreibt: Das Headset hat doch jeder. Und Jessi glaubt ihm.",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "props": [
+        {
+          "type": "phone",
+          "screen": "chat",
+          "name": "Jessi",
+          "clock": "22:31",
+          "avatarColor": "#ff6b9a",
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8,
+          "messages": [
+            {
+              "from": "me",
+              "text": "Das Headset hat doch jeder",
+              "at": "w:headset"
+            },
+            {
+              "from": "them",
+              "text": "Stimmt haha, sorry!",
+              "at": "w:glaubt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Aber zur Sicherheit muss das Headset weg.",
+      "bg": {
+        "type": "room",
+        "poster": "LVL 99",
+        "posterColor": "#e8414b",
+        "boxes": true
+      },
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 420,
+          "y": 1640,
+          "face": "sad",
+          "pose": "point",
+          "faces": [
+            [
+              "w:weg",
+              "cry"
+            ]
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "icon",
+          "name": "trash",
+          "size": 300,
+          "x": 840,
+          "y": 1330,
+          "z": "back"
+        },
+        {
+          "type": "burst",
+          "text": "NEIN!",
+          "shape": "none",
+          "x": 280,
+          "y": 640,
+          "rot": -8,
+          "size": 90,
+          "at": "w:weg"
+        }
+      ]
+    },
+    {
+      "say": "Ohne Headset bleibt ihm nur noch eins: trainieren.",
+      "bg": {
+        "type": "gym"
+      },
+      "shake": [
+        "w:trainieren"
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1660,
+          "face": "gritted",
+          "pose": "armsUp",
+          "lookOverride": {
+            "accessory": []
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "barbell",
+          "text": "25 KG",
+          "x": 540,
+          "y": 860,
+          "at": "w:trainieren",
+          "anim": "drop",
+          "sfx": "impact-bass-1"
+        }
+      ]
+    },
+    {
+      "say": "Und Kalle ist stolz: minus drei Kilo!",
+      "text": "Und Kalle ist stolz: -3 Kilo!",
+      "bg": {
+        "type": "gym"
+      },
+      "cast": [
+        {
+          "who": "kalle",
+          "x": 790,
+          "y": 1660,
+          "scale": 0.9,
+          "flip": true,
+          "face": "grin",
+          "pose": "armsUp"
+        },
+        {
+          "who": "timmy",
+          "x": 270,
+          "y": 1670,
+          "scale": 0.8,
+          "face": "joy",
+          "lookOverride": {
+            "accessory": []
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "bigText",
+          "text": "-3 KG",
+          "x": 540,
+          "y": 600,
+          "size": 170,
+          "color": "#36c26b",
+          "at": "w:minus",
+          "sfx": "chime"
+        }
+      ]
+    },
+    {
+      "say": "Dann schreibt Jessi: Nächste Woche gehen wir schwimmen!",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "props": [
+        {
+          "type": "phone",
+          "screen": "chat",
+          "name": "Jessi",
+          "clock": "19:04",
+          "avatarColor": "#ff6b9a",
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8,
+          "messages": [
+            {
+              "from": "them",
+              "text": "Nächste Woche gehen wir schwimmen!",
+              "at": "w:nächste"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Schwimmen. Ohne T-Shirt.",
+      "bg": {
+        "type": "beach"
+      },
+      "camera": "punch",
+      "shake": [
+        "w:ohne"
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1700,
+          "face": "shock",
+          "faces": [
+            [
+              "w:ohne",
+              "cry"
+            ]
+          ],
+          "lookOverride": {
+            "outfit": "tank",
+            "shirt": "#f6c7a1",
+            "print": "none",
+            "accessory": []
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "label",
+          "text": "Bauch",
+          "x": 860,
+          "y": 1060,
+          "toX": -170,
+          "toY": 160,
+          "at": "w:ohne"
+        },
+        {
+          "type": "label",
+          "text": "Pickel überall",
+          "x": 230,
+          "y": 700,
+          "toX": 190,
+          "toY": 220,
+          "at": "w:ohne+0.3"
+        },
+        {
+          "type": "burst",
+          "text": "!!!",
+          "shape": "none",
+          "color": "#e8414b",
+          "x": 540,
+          "y": 560,
+          "size": 140,
+          "at": "w:schwimmen"
+        }
+      ]
+    },
+    {
+      "kind": "vote",
+      "say": [
+        "Was soll Timmy tun?",
+        "Option A: Ab jetzt zweimal am Tag ins Gym.",
+        "Option B: Er sagt, er hat eine Chlor-Allergie.",
+        "Schreib A oder B in die Kommentare. Dein Kommentar zählt!",
+        "Bis morgen!"
+      ],
+      "face": "panic",
+      "questionAt": "w:was",
+      "a": {
+        "text": "2x am Tag ins Gym",
+        "icon": "dumbbell",
+        "at": "L1"
+      },
+      "b": {
+        "text": "Chlor-Allergie vortäuschen",
+        "icon": "shower",
+        "at": "L2"
+      },
+      "ctaAt": "L3",
+      "props": [
+        {
+          "type": "chip",
+          "text": "1 neuer Follower = 1 € für den Ring",
+          "x": 540,
+          "y": 650,
+          "size": 34,
+          "at": "L3"
+        }
+      ],
+      "lookOverride": {
+        "accessory": []
+      }
+    }
+  ]
+}

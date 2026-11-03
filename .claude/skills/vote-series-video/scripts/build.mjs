@@ -329,7 +329,7 @@ function propsMarkup(s, list, A, z) {
 // ------------------------------------------------------------------ special scenes
 function voteMarkup(s, A) {
   const v = s;
-  const heroLook = castLooks[v.heroWho || hero] || {};
+  const heroLook = { ...(castLooks[v.heroWho || hero] || {}), ...(v.lookOverride || {}) };
   let svg = sunburst(v.color || "#2a2152", 22);
   svg += character(`${s.sid}-bgc`, heroLook, { x: 540, y: 2780, scale: 1.75, pose: "stand", initial: v.face || "sad" });
   svg += `<rect width="${W}" height="${H}" fill="#0d0a1e" opacity="0.58"/>`;
@@ -371,7 +371,7 @@ function voteMarkup(s, A) {
 function recapMarkup(s, A) {
   const v = s;
   let svg = sunburst(v.color || "#2a2152", 22);
-  svg += character(`${s.sid}-bgc`, castLooks[v.heroWho || hero] || {}, { x: 540, y: 2250, scale: 1.6, initial: v.face || "grin" });
+  svg += character(`${s.sid}-bgc`, { ...(castLooks[v.heroWho || hero] || {}), ...(v.lookOverride || {}) }, { x: 540, y: 2250, scale: 1.6, initial: v.face || "grin" });
   svg += `<rect width="${W}" height="${H}" fill="#0d0a1e" opacity="0.35"/>`;
   svg += `<text x="540" y="440" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="${fitFont(v.title1 || STR.recap1, 940, 58)}" fill="#fff" stroke="${C.ink}" stroke-width="10" paint-order="stroke">${esc(v.title1 || STR.recap1)}</text>`;
   svg += `<text x="540" y="515" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="${fitFont(v.title2 || STR.recap2, 940, 66)}" fill="${C.yellow}" stroke="${C.ink}" stroke-width="10" paint-order="stroke">${esc(v.title2 || STR.recap2)}</text>`;
