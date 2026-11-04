@@ -1,0 +1,458 @@
+{
+  "series": "series.json",
+  "episode": 8,
+  "daysLeft": 23,
+  "progress": 18,
+  "progressText": "1.804,13 €",
+  "scenes": [
+    {
+      "say": "Timmy zahlt Marco hundert Euro. Aus dem Ring-Geld.",
+      "bg": {
+        "type": "street"
+      },
+      "camera": "push",
+      "hudProgress": [
+        {
+          "at": "w:hundert",
+          "to": 17,
+          "text": "1.704,13 €",
+          "pop": "-100 €"
+        }
+      ],
+      "cast": [
+        {
+          "who": "model",
+          "x": 770,
+          "y": 1660,
+          "scale": 0.9,
+          "flip": true,
+          "face": "grin",
+          "pose": "hold"
+        },
+        {
+          "who": "timmy",
+          "x": 270,
+          "y": 1670,
+          "scale": 0.82,
+          "face": "cry",
+          "pose": "point",
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "sign",
+          "text": "-100 € FÜR MARCO",
+          "x": 540,
+          "y": 560,
+          "rot": -4,
+          "size": 64,
+          "color": "#e8414b"
+        },
+        {
+          "type": "money",
+          "x": 540,
+          "y": 1180,
+          "scale": 0.55,
+          "at": "w:hundert",
+          "sfx": "error"
+        }
+      ]
+    },
+    {
+      "say": "Damit er Jessi nicht verrät, dass Timmy ihr ein Fake-Foto geschickt hat.",
+      "bg": {
+        "type": "sunburst",
+        "color": "#2f9e8f"
+      },
+      "cast": [
+        {
+          "who": "model",
+          "x": 540,
+          "y": 1120,
+          "scale": 0.55,
+          "face": "smug",
+          "pose": "hips"
+        }
+      ],
+      "props": [
+        {
+          "type": "photo",
+          "x": 540,
+          "y": 860,
+          "w": 560,
+          "h": 760,
+          "tilt": 0,
+          "color": "#8fd0ff",
+          "caption": "Ich :)",
+          "z": "back"
+        },
+        {
+          "type": "sticker",
+          "text": "FAKE",
+          "x": 560,
+          "y": 1010,
+          "rot": -10,
+          "size": 80,
+          "at": "w:fake",
+          "sfx": "error"
+        }
+      ]
+    },
+    {
+      "kind": "recap",
+      "say": [
+        "Achtundfünfzig Prozent von euch haben gesagt: zahlen!"
+      ],
+      "face": "sad",
+      "lookOverride": {
+        "build": "regular",
+        "belly": true,
+        "flies": false,
+        "accessory": [],
+        "print": "none",
+        "shirt": "#ffffff"
+      },
+      "a": {
+        "text": "Marco 100 € zahlen",
+        "icon": "money",
+        "pct": 58
+      },
+      "b": {
+        "text": "Marco ignorieren",
+        "icon": "phone",
+        "pct": 42
+      },
+      "winner": "a",
+      "winnerAt": "w:zahlen"
+    },
+    {
+      "say": "Aber ihr habt das locker wieder reingeholt. Zweitausendvierhundertsechsundsiebzig Follower! Plus siebenhundertsechsundsiebzig Euro!",
+      "text": "Aber ihr habt das locker wieder reingeholt. 2.476 Follower! Plus 776 €!",
+      "bg": {
+        "type": "sunburst",
+        "color": "#2f9e5b"
+      },
+      "camera": "punch",
+      "hudProgress": [
+        {
+          "at": "w:siebenhundertsechsundsiebzig",
+          "to": 25,
+          "text": "2.480,13 €",
+          "pop": "+776 €"
+        }
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1720,
+          "scale": 0.85,
+          "face": "love",
+          "pose": "armsUp",
+          "faces": [
+            [
+              "w:siebenhundertsechsundsiebzig",
+              "joy"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "chip",
+          "text": "2.476 Follower",
+          "x": 540,
+          "y": 560,
+          "size": 44,
+          "at": "w:zweitausendvierhundertsechsundsiebzig"
+        },
+        {
+          "type": "bigText",
+          "text": "+776 €",
+          "x": 540,
+          "y": 740,
+          "size": 140,
+          "color": "#36c26b",
+          "at": "w:siebenhundertsechsundsiebzig",
+          "sfx": "impact-bass-1"
+        },
+        {
+          "type": "money",
+          "x": 830,
+          "y": 1180,
+          "scale": 0.65,
+          "at": "w:euro",
+          "anim": "drop",
+          "sfx": "chime"
+        }
+      ]
+    },
+    {
+      "say": "Marco zählt das Geld. Und grinst.",
+      "bg": {
+        "type": "street"
+      },
+      "cast": [
+        {
+          "who": "model",
+          "x": 540,
+          "y": 1660,
+          "face": "smug",
+          "pose": "hold",
+          "faces": [
+            [
+              "w:grinst",
+              "grin"
+            ]
+          ]
+        }
+      ],
+      "props": [
+        {
+          "type": "money",
+          "x": 540,
+          "y": 1130,
+          "scale": 0.6
+        },
+        {
+          "type": "burst",
+          "text": "HEHE",
+          "shape": "none",
+          "x": 800,
+          "y": 620,
+          "rot": 8,
+          "size": 80,
+          "at": "w:grinst"
+        }
+      ]
+    },
+    {
+      "say": "Am nächsten Tag postet Marco ein Foto. Aus einem Café. Mit Jessi.",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "props": [
+        {
+          "type": "phone",
+          "screen": "post",
+          "app": "Friendbook",
+          "name": "Marco",
+          "meta": "vor 10 Min.",
+          "text": "Kaffee mit einer ganz Süßen",
+          "imgIcon": "heart",
+          "imgColor": "#ffd6e6",
+          "likes": "312",
+          "comments": "41",
+          "likesAt": "w:café",
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8
+        },
+        {
+          "type": "sticker",
+          "text": "JESSI?!",
+          "x": 540,
+          "y": 1100,
+          "rot": -8,
+          "size": 80,
+          "at": "w:jessi",
+          "sfx": "impact-bass-1"
+        }
+      ]
+    },
+    {
+      "say": "Sie hat ihn auf der Straße erkannt. Und denkt, er ist Timmy.",
+      "bg": {
+        "type": "shop",
+        "sign": "CAFÉ",
+        "signColor": "#8a5a3a"
+      },
+      "cast": [
+        {
+          "who": "jessi",
+          "x": 300,
+          "y": 1660,
+          "scale": 0.85,
+          "face": "love"
+        },
+        {
+          "who": "model",
+          "x": 780,
+          "y": 1660,
+          "scale": 0.9,
+          "flip": true,
+          "face": "smug",
+          "pose": "wave"
+        }
+      ],
+      "props": [
+        {
+          "type": "bubble",
+          "text": "Timmy?! Du bist es!",
+          "maxChars": 11,
+          "size": 52,
+          "x": 420,
+          "y": 760,
+          "tailX": -120,
+          "at": "w:erkannt"
+        }
+      ]
+    },
+    {
+      "say": "Timmy lässt im Gym die Hantel fallen.",
+      "bg": {
+        "type": "gym"
+      },
+      "shake": [
+        "w:fallen"
+      ],
+      "flash": [
+        "w:fallen"
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1660,
+          "face": "neutral",
+          "faces": [
+            [
+              "w:fallen",
+              "shock"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "barbell",
+          "x": 540,
+          "y": 1500,
+          "rot": 12,
+          "at": "w:fallen",
+          "anim": "drop",
+          "z": "front"
+        },
+        {
+          "type": "burst",
+          "text": "KLONK!",
+          "x": 540,
+          "y": 600,
+          "rot": -6,
+          "at": "w:fallen",
+          "sfx": "impact-bass-1"
+        }
+      ]
+    },
+    {
+      "say": "Jessi hat gerade ein Date. Mit dem falschen Mann.",
+      "bg": {
+        "type": "sunburst",
+        "color": "#5a1f2a"
+      },
+      "camera": "pull",
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1780,
+          "scale": 1.1,
+          "face": "shock",
+          "faces": [
+            [
+              "w:falschen",
+              "cry"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "burst",
+          "text": "!!!",
+          "shape": "none",
+          "color": "#e8414b",
+          "x": 540,
+          "y": 560,
+          "size": 140,
+          "at": "w:falschen"
+        }
+      ]
+    },
+    {
+      "kind": "vote",
+      "lookOverride": {
+        "build": "regular",
+        "belly": true,
+        "flies": false,
+        "accessory": [],
+        "print": "none",
+        "shirt": "#ffffff"
+      },
+      "say": [
+        "Was soll Timmy tun?",
+        "Option A: Er rennt ins Café und geht dazwischen.",
+        "Option B: Er schreibt Jessi endlich die ganze Wahrheit.",
+        "Schreib A oder B in die Kommentare. Dein Kommentar zählt!",
+        "Bis morgen!"
+      ],
+      "face": "panic",
+      "questionAt": "w:was",
+      "a": {
+        "text": "Ins Café rennen",
+        "icon": "shoe",
+        "at": "L1"
+      },
+      "b": {
+        "text": "Jessi die Wahrheit schreiben",
+        "icon": "heart",
+        "at": "L2"
+      },
+      "ctaAt": "L3",
+      "props": [
+        {
+          "type": "chip",
+          "text": "1 neuer Follower = 1 € für den Ring",
+          "x": 540,
+          "y": 650,
+          "size": 34,
+          "at": "L3"
+        }
+      ]
+    }
+  ]
+}
