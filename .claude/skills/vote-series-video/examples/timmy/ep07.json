@@ -1,0 +1,496 @@
+{
+  "series": "series.json",
+  "episode": 7,
+  "daysLeft": 24,
+  "progress": 7,
+  "progressText": "716,13 €",
+  "scenes": [
+    {
+      "say": "Zweimal am Tag Gym. Und Timmy ist kaum wiederzuerkennen.",
+      "bg": {
+        "type": "gym"
+      },
+      "camera": "push",
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1660,
+          "face": "grin",
+          "pose": "armsUp",
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "sign",
+          "text": "MINUS 7 KILO!",
+          "x": 540,
+          "y": 560,
+          "rot": -4,
+          "size": 70,
+          "color": "#36c26b"
+        },
+        {
+          "type": "burst",
+          "text": "WOW!",
+          "shape": "none",
+          "x": 860,
+          "y": 820,
+          "rot": 10,
+          "size": 90,
+          "at": "w:kaum"
+        }
+      ]
+    },
+    {
+      "say": "Aber zuerst: Danke für euren Support! Ihr seid jetzt eintausendsiebenhundert Follower. Das sind eintausendachtundachtzig Euro mehr für den Ring!",
+      "text": "Aber zuerst: Danke für euren Support! Ihr seid jetzt 1.700 Follower. Das sind 1.088 € mehr für den Ring!",
+      "bg": {
+        "type": "sunburst",
+        "color": "#e8414b"
+      },
+      "camera": "punch",
+      "hudProgress": [
+        {
+          "at": "w:eintausendachtundachtzig",
+          "to": 18,
+          "text": "1.804,13 €",
+          "pop": "+1.088 €"
+        }
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1820,
+          "scale": 0.9,
+          "face": "love",
+          "pose": "wave",
+          "faces": [
+            [
+              "w:eintausendachtundachtzig",
+              "joy"
+            ]
+          ],
+          "poses": [
+            [
+              "w:eintausendachtundachtzig",
+              "armsUp"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "sign",
+          "text": "DANKE!",
+          "x": 540,
+          "y": 480,
+          "rot": -5,
+          "size": 90,
+          "color": "#ff6b9a",
+          "at": "w:danke",
+          "sfx": "chime"
+        },
+        {
+          "type": "chip",
+          "text": "1.700 Follower",
+          "x": 540,
+          "y": 640,
+          "size": 44,
+          "at": "w:eintausendsiebenhundert"
+        },
+        {
+          "type": "bigText",
+          "text": "+1.088 €",
+          "x": 540,
+          "y": 790,
+          "size": 120,
+          "color": "#36c26b",
+          "at": "w:eintausendachtundachtzig",
+          "sfx": "impact-bass-1"
+        },
+        {
+          "type": "money",
+          "x": 830,
+          "y": 1180,
+          "scale": 0.65,
+          "at": "w:ring",
+          "anim": "drop",
+          "sfx": "chime"
+        }
+      ]
+    },
+    {
+      "kind": "recap",
+      "say": [
+        "Siebenundachtzig Prozent von euch sagen: zweimal am Tag ins Gym!"
+      ],
+      "face": "grin",
+      "lookOverride": {
+        "build": "regular",
+        "belly": true,
+        "flies": false,
+        "accessory": [],
+        "print": "none",
+        "shirt": "#ffffff"
+      },
+      "a": {
+        "text": "2x am Tag ins Gym",
+        "icon": "dumbbell",
+        "pct": 87
+      },
+      "b": {
+        "text": "Chlor-Allergie",
+        "icon": "shower",
+        "pct": 13
+      },
+      "winner": "a",
+      "winnerAt": "w:gym"
+    },
+    {
+      "say": "Also trainiert Timmy morgens um fünf. Und abends um acht.",
+      "text": "Also trainiert Timmy morgens um 5. Und abends um 8.",
+      "bg": {
+        "type": "gym"
+      },
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1660,
+          "face": "sleepy",
+          "faces": [
+            [
+              "w:abends",
+              "gritted"
+            ]
+          ],
+          "poses": [
+            [
+              "w:abends",
+              "armsUp"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "chip",
+          "text": "05:00",
+          "x": 300,
+          "y": 620,
+          "size": 56,
+          "at": "w:fünf"
+        },
+        {
+          "type": "chip",
+          "text": "20:00",
+          "x": 780,
+          "y": 620,
+          "size": 56,
+          "at": "w:acht"
+        }
+      ]
+    },
+    {
+      "say": "Bei der ersten Kniebeuge reißt seine Hose.",
+      "bg": {
+        "type": "gym"
+      },
+      "shake": [
+        "w:reißt"
+      ],
+      "flash": [
+        "w:reißt"
+      ],
+      "cast": [
+        {
+          "who": "kalle",
+          "x": 800,
+          "y": 1660,
+          "scale": 0.88,
+          "flip": true,
+          "face": "grin",
+          "pose": "point"
+        },
+        {
+          "who": "timmy",
+          "x": 290,
+          "y": 1670,
+          "scale": 0.82,
+          "face": "gritted",
+          "faces": [
+            [
+              "w:reißt",
+              "shock"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "burst",
+          "text": "RATSCH!",
+          "x": 330,
+          "y": 620,
+          "rot": -8,
+          "at": "w:reißt",
+          "sfx": "impact-bass-1"
+        }
+      ]
+    },
+    {
+      "say": "Aber nach sieben Tagen zeigt die Waage: minus sieben Kilo!",
+      "text": "Aber nach 7 Tagen zeigt die Waage: -7 Kilo!",
+      "bg": {
+        "type": "bathroom"
+      },
+      "camera": "punch",
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1600,
+          "face": "neutral",
+          "faces": [
+            [
+              "w:minus",
+              "joy"
+            ]
+          ],
+          "poses": [
+            [
+              "w:minus",
+              "armsUp"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "scale",
+          "text": "-7 kg",
+          "x": 540,
+          "y": 1640,
+          "z": "back"
+        },
+        {
+          "type": "bigText",
+          "text": "-7 KG",
+          "x": 540,
+          "y": 560,
+          "size": 170,
+          "color": "#36c26b",
+          "at": "w:minus",
+          "sfx": "chime"
+        }
+      ]
+    },
+    {
+      "say": "Mama ist so stolz, dass sie sogar sein T-Shirt wäscht.",
+      "bg": {
+        "type": "kitchen"
+      },
+      "cast": [
+        {
+          "who": "mama",
+          "x": 780,
+          "y": 1640,
+          "scale": 0.9,
+          "flip": true,
+          "face": "love",
+          "pose": "wave"
+        },
+        {
+          "who": "timmy",
+          "x": 280,
+          "y": 1660,
+          "scale": 0.82,
+          "face": "grin",
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "sticker",
+          "text": "STOLZ!",
+          "x": 780,
+          "y": 620,
+          "rot": 8,
+          "color": "#ff6b9a",
+          "at": "w:stolz"
+        }
+      ]
+    },
+    {
+      "say": "Doch dann ruft Cousin Marco an.",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "sfx": [
+        {
+          "name": "notification",
+          "at": "w:ruft",
+          "vol": 0.4
+        }
+      ],
+      "props": [
+        {
+          "type": "phone",
+          "screen": "call",
+          "name": "MARCO",
+          "label": "eingehender Anruf",
+          "avatarColor": "#e6c27a",
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8
+        }
+      ]
+    },
+    {
+      "say": "Er hat sein Foto bei Jessi entdeckt. Und will hundert Euro. Sonst erzählt er ihr alles.",
+      "text": "Er hat sein Foto bei Jessi entdeckt. Und will 100 Euro. Sonst erzählt er ihr alles.",
+      "bg": {
+        "type": "street"
+      },
+      "shake": [
+        "w:alles"
+      ],
+      "cast": [
+        {
+          "who": "model",
+          "x": 760,
+          "y": 1660,
+          "scale": 0.9,
+          "flip": true,
+          "face": "smug",
+          "pose": "point"
+        },
+        {
+          "who": "timmy",
+          "x": 260,
+          "y": 1670,
+          "scale": 0.8,
+          "face": "shock",
+          "faces": [
+            [
+              "w:alles",
+              "panic"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "bubble",
+          "text": "100 € oder ich sag's ihr!",
+          "maxChars": 12,
+          "size": 50,
+          "x": 620,
+          "y": 560,
+          "tailX": 140,
+          "at": "w:hundert"
+        },
+        {
+          "type": "bigText",
+          "text": "100 €",
+          "x": 300,
+          "y": 880,
+          "size": 110,
+          "at": "w:hundert"
+        }
+      ]
+    },
+    {
+      "kind": "vote",
+      "lookOverride": {
+        "build": "regular",
+        "belly": true,
+        "flies": false,
+        "accessory": [],
+        "print": "none",
+        "shirt": "#ffffff"
+      },
+      "say": [
+        "Was soll Timmy tun?",
+        "Option A: Er zahlt Marco die hundert Euro. Aus dem Ring-Geld.",
+        "Option B: Er ignoriert Marco einfach.",
+        "Schreib A oder B in die Kommentare. Dein Kommentar zählt!",
+        "Bis morgen!"
+      ],
+      "face": "panic",
+      "questionAt": "w:was",
+      "a": {
+        "text": "Marco 100 € zahlen",
+        "icon": "money",
+        "at": "L1",
+        "tag": "vom Ring-Geld"
+      },
+      "b": {
+        "text": "Marco ignorieren",
+        "icon": "phone",
+        "at": "L2"
+      },
+      "ctaAt": "L3",
+      "props": []
+    }
+  ]
+}
