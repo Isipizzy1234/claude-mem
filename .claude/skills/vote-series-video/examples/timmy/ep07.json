@@ -70,8 +70,8 @@
         {
           "who": "timmy",
           "x": 540,
-          "y": 1820,
-          "scale": 0.9,
+          "y": 1720,
+          "scale": 0.85,
           "face": "love",
           "pose": "wave",
           "faces": [
