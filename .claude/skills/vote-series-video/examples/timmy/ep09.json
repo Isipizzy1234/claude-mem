@@ -1,0 +1,467 @@
+{
+  "series": "series.json",
+  "episode": 9,
+  "daysLeft": 22,
+  "progress": 25,
+  "progressText": "2.480,13 €",
+  "scenes": [
+    {
+      "say": "Timmy hat Jessi die ganze Wahrheit geschrieben. Und sie antwortet nicht.",
+      "bg": {
+        "type": "night"
+      },
+      "camera": "push",
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1660,
+          "face": "sad",
+          "pose": "hold",
+          "faces": [
+            [
+              "w:nicht",
+              "cry"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "sign",
+          "text": "GELESEN. KEINE ANTWORT.",
+          "x": 540,
+          "y": 560,
+          "rot": -4,
+          "size": 56,
+          "color": "#1d1b2f"
+        },
+        {
+          "type": "icon",
+          "name": "phone",
+          "size": 170,
+          "x": 540,
+          "y": 1230
+        }
+      ]
+    },
+    {
+      "say": "Dabei hatte er ihr ein Fake-Foto geschickt. Von seinem Cousin Marco.",
+      "bg": {
+        "type": "sunburst",
+        "color": "#2f9e8f"
+      },
+      "cast": [
+        {
+          "who": "model",
+          "x": 540,
+          "y": 1120,
+          "scale": 0.55,
+          "face": "smug",
+          "pose": "hips"
+        }
+      ],
+      "props": [
+        {
+          "type": "photo",
+          "x": 540,
+          "y": 860,
+          "w": 560,
+          "h": 760,
+          "tilt": 0,
+          "color": "#8fd0ff",
+          "caption": "Ich :)",
+          "z": "back"
+        },
+        {
+          "type": "sticker",
+          "text": "FAKE",
+          "x": 560,
+          "y": 1010,
+          "rot": -10,
+          "size": 80,
+          "at": "w:fake",
+          "sfx": "error"
+        }
+      ]
+    },
+    {
+      "kind": "recap",
+      "say": [
+        "Vierundneunzig Prozent von euch haben gesagt: Schreib ihr die Wahrheit!"
+      ],
+      "face": "sad",
+      "lookOverride": {
+        "build": "regular",
+        "belly": true,
+        "flies": false,
+        "accessory": [],
+        "print": "none",
+        "shirt": "#ffffff"
+      },
+      "a": {
+        "text": "Ins Café rennen",
+        "icon": "shoe",
+        "pct": 6
+      },
+      "b": {
+        "text": "Die Wahrheit schreiben",
+        "icon": "heart",
+        "pct": 94
+      },
+      "winner": "b",
+      "winnerAt": "w:wahrheit"
+    },
+    {
+      "say": "Und ihr seid jetzt zweitausendneunhundertdreiundvierzig Follower. Plus vierhundertsiebenundsechzig Euro!",
+      "text": "Und ihr seid jetzt 2.943 Follower. Plus 467 €!",
+      "bg": {
+        "type": "sunburst",
+        "color": "#2f9e5b"
+      },
+      "camera": "punch",
+      "hudProgress": [
+        {
+          "at": "w:vierhundertsiebenundsechzig",
+          "to": 29,
+          "text": "2.947,13 €",
+          "pop": "+467 €"
+        }
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1720,
+          "scale": 0.85,
+          "face": "love",
+          "pose": "armsUp",
+          "faces": [
+            [
+              "w:vierhundertsiebenundsechzig",
+              "joy"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "chip",
+          "text": "2.943 Follower",
+          "x": 540,
+          "y": 560,
+          "size": 44,
+          "at": "w:zweitausendneunhundertdreiundvierzig"
+        },
+        {
+          "type": "bigText",
+          "text": "+467 €",
+          "x": 540,
+          "y": 740,
+          "size": 140,
+          "color": "#36c26b",
+          "at": "w:vierhundertsiebenundsechzig",
+          "sfx": "impact-bass-1"
+        },
+        {
+          "type": "money",
+          "x": 830,
+          "y": 1180,
+          "scale": 0.65,
+          "at": "w:euro",
+          "anim": "drop",
+          "sfx": "chime"
+        }
+      ]
+    },
+    {
+      "say": "Er hat ihr alles geschrieben. Das Foto. Marco. Die Pizza. Sogar die Fliegen.",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "props": [
+        {
+          "type": "phone",
+          "screen": "chat",
+          "name": "Jessi",
+          "clock": "22:47",
+          "avatarColor": "#ff6b9a",
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8,
+          "messages": [
+            {
+              "from": "me",
+              "text": "Jessi, ich muss dir was sagen. Das Foto war nicht ich.",
+              "at": "w:alles"
+            },
+            {
+              "from": "me",
+              "text": "Das war mein Cousin Marco. Und ich hatte Fliegen.",
+              "at": "w:marco"
+            },
+            {
+              "from": "me",
+              "text": "Es tut mir leid.",
+              "at": "w:fliegen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Eine Stunde. Zwei Stunden. Keine Antwort.",
+      "bg": {
+        "type": "night"
+      },
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1660,
+          "face": "tired",
+          "pose": "hold",
+          "faces": [
+            [
+              "w:keine",
+              "cry"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "chip",
+          "text": "1 Stunde",
+          "x": 300,
+          "y": 620,
+          "size": 46,
+          "at": "w:eine"
+        },
+        {
+          "type": "chip",
+          "text": "2 Stunden",
+          "x": 780,
+          "y": 620,
+          "size": 46,
+          "at": "w:zwei"
+        },
+        {
+          "type": "icon",
+          "name": "phone",
+          "size": 170,
+          "x": 540,
+          "y": 1230
+        }
+      ]
+    },
+    {
+      "say": "Um drei Uhr nachts bringt Mama ihm einen Kakao.",
+      "text": "Um 3 Uhr nachts bringt Mama ihm einen Kakao.",
+      "bg": {
+        "type": "kitchen"
+      },
+      "cast": [
+        {
+          "who": "mama",
+          "x": 770,
+          "y": 1640,
+          "scale": 0.9,
+          "flip": true,
+          "face": "sad",
+          "pose": "hold"
+        },
+        {
+          "who": "timmy",
+          "x": 280,
+          "y": 1660,
+          "scale": 0.82,
+          "face": "sad",
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "chip",
+          "text": "03:00",
+          "x": 540,
+          "y": 560,
+          "size": 56,
+          "at": "w:drei"
+        },
+        {
+          "type": "svg",
+          "x": 640,
+          "y": 1140,
+          "at": "w:kakao",
+          "markup": "<rect x='-45' y='-50' width='90' height='100' rx='14' fill='#8a5a3a' stroke='#1d1b2f' stroke-width='7'/><path d='M 45 -25 Q 85 -20 80 15 Q 75 40 45 30' fill='none' stroke='#1d1b2f' stroke-width='9'/><path d='M -20 -70 q 10 -20 0 -40 M 10 -70 q 10 -20 0 -40' fill='none' stroke='#fff' stroke-width='6' stroke-linecap='round' opacity='.8'/>"
+        }
+      ]
+    },
+    {
+      "say": "Dann vibriert das Handy. Jessi schreibt: Ich weiß. Marco hat im Café nach zwei Minuten nach meiner Kreditkarte gefragt.",
+      "text": "Dann vibriert das Handy. Jessi schreibt: Ich weiß. Marco hat im Café nach 2 Minuten nach meiner Kreditkarte gefragt.",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "props": [
+        {
+          "type": "phone",
+          "screen": "chat",
+          "name": "Jessi",
+          "clock": "03:12",
+          "avatarColor": "#ff6b9a",
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8,
+          "messages": [
+            {
+              "from": "them",
+              "text": "Ich weiß.",
+              "at": "w:weiß"
+            },
+            {
+              "from": "them",
+              "text": "Marco hat nach 2 Minuten nach meiner Kreditkarte gefragt",
+              "at": "w:marco"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Und dann: Mein Foto ist übrigens auch nicht echt.",
+      "bg": {
+        "type": "sunburst",
+        "color": "#6b4ff0"
+      },
+      "camera": "punch",
+      "shake": [
+        "w:echt"
+      ],
+      "flash": [
+        "w:echt"
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1760,
+          "scale": 1.1,
+          "face": "neutral",
+          "faces": [
+            [
+              "w:echt",
+              "shock"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "bubble",
+          "text": "Mein Foto ist auch nicht echt.",
+          "maxChars": 14,
+          "size": 52,
+          "x": 540,
+          "y": 560,
+          "at": "w:mein"
+        },
+        {
+          "type": "burst",
+          "text": "WAS?!",
+          "x": 820,
+          "y": 860,
+          "rot": 10,
+          "size": 90,
+          "at": "w:echt",
+          "sfx": "impact-bass-1"
+        }
+      ]
+    },
+    {
+      "kind": "vote",
+      "lookOverride": {
+        "build": "regular",
+        "belly": true,
+        "flies": false,
+        "accessory": [],
+        "print": "none",
+        "shirt": "#ffffff"
+      },
+      "say": [
+        "Was soll Timmy tun?",
+        "Option A: Er will Jessis echtes Foto sehen.",
+        "Option B: Er sagt: Ist mir egal, wie du aussiehst.",
+        "Schreib A oder B in die Kommentare. Dein Kommentar zählt!",
+        "Bis morgen!"
+      ],
+      "face": "shock",
+      "questionAt": "w:was",
+      "a": {
+        "text": "Jessis echtes Foto sehen",
+        "icon": "phone",
+        "at": "L1"
+      },
+      "b": {
+        "text": "„Ist mir egal, wie du aussiehst“",
+        "icon": "heart",
+        "at": "L2"
+      },
+      "ctaAt": "L3",
+      "props": [
+        {
+          "type": "chip",
+          "text": "1 neuer Follower = 1 € für den Ring",
+          "x": 540,
+          "y": 650,
+          "size": 34,
+          "at": "L3"
+        }
+      ]
+    }
+  ]
+}
