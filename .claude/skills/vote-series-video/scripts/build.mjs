@@ -152,6 +152,8 @@ function sfx(name, absT, vol) {
   if (!fs.existsSync(path.join(sfxDir, file))) return console.warn(`  ! sfx "${name}" not in bundled library`);
   const dst = path.join(OUT, "assets", "sfx", file);
   if (!fs.existsSync(dst)) fs.copyFileSync(path.join(sfxDir, file), dst);
+  const tt = r2(Math.max(0, absT - 0.02));
+  if (sfxOut.some((x) => x.name === name && Math.abs(x.t - tt) < 0.08)) return; // same effect twice at once
   const dur = sfxManifest[name]?.duration ?? 1;
   sfxOut.push({ name, t: r2(Math.max(0, absT - 0.02)), dur: r2(dur), vol: vol ?? SFX_VOL[name] ?? 0.4 });
 }

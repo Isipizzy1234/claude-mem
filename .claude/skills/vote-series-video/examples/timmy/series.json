@@ -96,6 +96,17 @@
       "accessory": [
         "headband"
       ]
+    },
+    "bruder": {
+      "hair": "#e8a33d",
+      "hairStyle": "short",
+      "outfit": "hoodie",
+      "shirt": "#3466f0",
+      "pants": "#2c2f45",
+      "shoes": "#ffffff",
+      "build": "chubby",
+      "stubble": true,
+      "accessory": []
     }
   }
 }

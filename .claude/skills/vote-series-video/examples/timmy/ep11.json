@@ -1,0 +1,462 @@
+{
+  "series": "series.json",
+  "episode": 11,
+  "daysLeft": 20,
+  "progress": 31,
+  "progressText": "3.057,13 €",
+  "scenes": [
+    {
+      "say": "Timmy verkauft seine komplette Gaming-Sammlung.",
+      "bg": {
+        "type": "garage"
+      },
+      "camera": "push",
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1660,
+          "face": "cry",
+          "pose": "hold",
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "sign",
+          "text": "ALLES MUSS RAUS!",
+          "x": 540,
+          "y": 540,
+          "rot": -4,
+          "size": 72,
+          "color": "#e8414b"
+        },
+        {
+          "type": "svg",
+          "x": 540,
+          "y": 1200,
+          "scale": 0.8,
+          "markup": "<rect x='-150' y='-80' width='300' height='160' rx='70' fill='#2b2b3a' stroke='#1d1b2f' stroke-width='8'/><rect x='-95' y='-12' width='60' height='24' rx='6' fill='#9aa1b2'/><rect x='-77' y='-30' width='24' height='60' rx='6' fill='#9aa1b2'/><circle cx='60' cy='-20' r='14' fill='#e8414b'/><circle cx='95' cy='10' r='14' fill='#36c26b'/><circle cx='60' cy='38' r='14' fill='#3466f0'/><circle cx='25' cy='10' r='14' fill='#ffd23f'/>"
+        }
+      ]
+    },
+    {
+      "say": "Für den Ring, den er seiner Discord-Freundin versprochen hat. Für zehntausend Euro.",
+      "text": "Für den Ring, den er seiner Discord-Freundin versprochen hat. Für 10.000 Euro.",
+      "bg": {
+        "type": "sunburst",
+        "color": "#6b4ff0"
+      },
+      "props": [
+        {
+          "type": "ring",
+          "x": 540,
+          "y": 820,
+          "scale": 1.15
+        },
+        {
+          "type": "bigText",
+          "text": "10.000 €",
+          "x": 540,
+          "y": 1110,
+          "size": 150,
+          "at": "w:zehntausend"
+        }
+      ]
+    },
+    {
+      "kind": "recap",
+      "say": [
+        "Achtundsiebzig Prozent von euch haben gesagt: verkaufen!"
+      ],
+      "face": "sad",
+      "lookOverride": {
+        "build": "regular",
+        "belly": true,
+        "flies": false,
+        "accessory": [],
+        "print": "none",
+        "shirt": "#ffffff"
+      },
+      "a": {
+        "text": "Zweiten Job annehmen",
+        "icon": "briefcase",
+        "pct": 22
+      },
+      "b": {
+        "text": "Gaming-Sammlung verkaufen",
+        "icon": "phone",
+        "pct": 78
+      },
+      "winner": "b",
+      "winnerAt": "w:verkaufen"
+    },
+    {
+      "say": "Er stellt alles online. Konsolen. Spiele. Sogar seinen Gaming-Stuhl.",
+      "bg": {
+        "type": "garage"
+      },
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 250,
+          "y": 1670,
+          "scale": 0.8,
+          "face": "sad",
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "svg",
+          "x": 720,
+          "y": 760,
+          "scale": 0.7,
+          "at": "w:konsolen",
+          "markup": "<rect x='-150' y='-80' width='300' height='160' rx='70' fill='#2b2b3a' stroke='#1d1b2f' stroke-width='8'/><rect x='-95' y='-12' width='60' height='24' rx='6' fill='#9aa1b2'/><rect x='-77' y='-30' width='24' height='60' rx='6' fill='#9aa1b2'/><circle cx='60' cy='-20' r='14' fill='#e8414b'/><circle cx='95' cy='10' r='14' fill='#36c26b'/><circle cx='60' cy='38' r='14' fill='#3466f0'/><circle cx='25' cy='10' r='14' fill='#ffd23f'/>"
+        },
+        {
+          "type": "icon",
+          "name": "comic",
+          "size": 150,
+          "x": 880,
+          "y": 980,
+          "at": "w:spiele"
+        },
+        {
+          "type": "svg",
+          "x": 720,
+          "y": 1440,
+          "scale": 0.9,
+          "at": "w:gaming-stuhl",
+          "markup": "<rect x='-90' y='-260' width='180' height='240' rx='40' fill='#e8414b' stroke='#1d1b2f' stroke-width='8'/><rect x='-110' y='-30' width='220' height='60' rx='20' fill='#1b1b28' stroke='#1d1b2f' stroke-width='8'/><rect x='-12' y='30' width='24' height='90' fill='#9aa1b2' stroke='#1d1b2f' stroke-width='6'/><path d='M -90 130 L 90 130' stroke='#1d1b2f' stroke-width='14' stroke-linecap='round'/>",
+          "z": "back"
+        },
+        {
+          "type": "sticker",
+          "text": "ZU VERKAUFEN",
+          "x": 600,
+          "y": 560,
+          "rot": -6,
+          "size": 52,
+          "at": "w:online"
+        }
+      ]
+    },
+    {
+      "say": "Nach einer Stunde hat er dreiundachtzig Nachrichten.",
+      "text": "Nach einer Stunde hat er 83 Nachrichten.",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "props": [
+        {
+          "type": "phone",
+          "screen": "lock",
+          "time": "16:20",
+          "date": "Samstag",
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8,
+          "notifications": [
+            {
+              "app": "K",
+              "title": "Kleinanzeigen",
+              "text": "Ist der Stuhl noch da?",
+              "color": "#36c26b",
+              "at": "w:stunde"
+            },
+            {
+              "app": "K",
+              "title": "Kleinanzeigen",
+              "text": "Nehme alles!",
+              "color": "#36c26b",
+              "at": "w:dreiundachtzig"
+            },
+            {
+              "app": "K",
+              "title": "Kleinanzeigen",
+              "text": "Letzter Preis?",
+              "color": "#36c26b",
+              "at": "w:nachrichten"
+            }
+          ]
+        },
+        {
+          "type": "bigText",
+          "text": "83",
+          "x": 860,
+          "y": 440,
+          "size": 130,
+          "at": "w:dreiundachtzig",
+          "sfx": "notification"
+        }
+      ]
+    },
+    {
+      "say": "Ein Typ will alles nehmen. Für zwölfhundert Euro.",
+      "text": "Ein Typ will alles nehmen. Für 1.200 Euro.",
+      "bg": {
+        "type": "plain",
+        "color": "#1d1834"
+      },
+      "camera": "none",
+      "props": [
+        {
+          "type": "phone",
+          "screen": "chat",
+          "name": "Ben",
+          "clock": "16:41",
+          "avatarColor": "#3466f0",
+          "x": 540,
+          "y": 1010,
+          "scale": 0.8,
+          "messages": [
+            {
+              "from": "them",
+              "text": "Ich nehm alles. 1.200 €?",
+              "at": "w:alles"
+            },
+            {
+              "from": "me",
+              "text": "DEAL!!!",
+              "at": "w:euro"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Plus zwölfhundert Euro für den Ring!",
+      "text": "Plus 1.200 € für den Ring!",
+      "bg": {
+        "type": "sunburst",
+        "color": "#2f9e5b"
+      },
+      "camera": "punch",
+      "hudProgress": [
+        {
+          "at": "w:zwölfhundert",
+          "to": 43,
+          "text": "4.257,13 €",
+          "pop": "+1.200 €"
+        }
+      ],
+      "cast": [
+        {
+          "who": "timmy",
+          "x": 540,
+          "y": 1720,
+          "scale": 0.85,
+          "face": "joy",
+          "pose": "armsUp",
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "bigText",
+          "text": "+1.200 €",
+          "x": 540,
+          "y": 620,
+          "size": 140,
+          "color": "#36c26b",
+          "at": "w:zwölfhundert",
+          "sfx": "impact-bass-1"
+        },
+        {
+          "type": "money",
+          "x": 830,
+          "y": 1180,
+          "scale": 0.65,
+          "at": "w:ring",
+          "anim": "drop",
+          "sfx": "chime"
+        }
+      ]
+    },
+    {
+      "say": "Am Abend steht der Käufer vor der Tür. Und schaut Timmy komisch an.",
+      "bg": {
+        "type": "garage"
+      },
+      "cast": [
+        {
+          "who": "bruder",
+          "x": 780,
+          "y": 1660,
+          "scale": 0.95,
+          "flip": true,
+          "face": "angry",
+          "enter": "slideLeft"
+        },
+        {
+          "who": "timmy",
+          "x": 270,
+          "y": 1670,
+          "scale": 0.8,
+          "face": "happy",
+          "faces": [
+            [
+              "w:komisch",
+              "neutral"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "burst",
+          "text": "DING DONG",
+          "shape": "none",
+          "x": 540,
+          "y": 580,
+          "rot": -6,
+          "size": 80,
+          "at": "w:tür",
+          "sfx": "notification"
+        }
+      ]
+    },
+    {
+      "say": "Dann sagt er: Du bist also der Typ, der meiner Schwester schreibt. Ich bin Jessis Bruder.",
+      "bg": {
+        "type": "garage"
+      },
+      "camera": "punch",
+      "shake": [
+        "w:bruder"
+      ],
+      "flash": [
+        "w:bruder"
+      ],
+      "cast": [
+        {
+          "who": "bruder",
+          "x": 760,
+          "y": 1660,
+          "scale": 1.0,
+          "flip": true,
+          "face": "angry",
+          "pose": "point"
+        },
+        {
+          "who": "timmy",
+          "x": 250,
+          "y": 1670,
+          "scale": 0.78,
+          "face": "neutral",
+          "faces": [
+            [
+              "w:bruder",
+              "shock"
+            ]
+          ],
+          "lookOverride": {
+            "build": "regular",
+            "belly": true,
+            "flies": false,
+            "accessory": [],
+            "print": "none",
+            "shirt": "#ffffff"
+          }
+        }
+      ],
+      "props": [
+        {
+          "type": "bubble",
+          "text": "Ich bin Jessis Bruder.",
+          "maxChars": 12,
+          "size": 56,
+          "x": 600,
+          "y": 560,
+          "tailX": 140,
+          "at": "w:jessis"
+        },
+        {
+          "type": "burst",
+          "text": "!!!",
+          "shape": "none",
+          "color": "#e8414b",
+          "x": 250,
+          "y": 800,
+          "size": 120,
+          "at": "w:bruder",
+          "sfx": "impact-bass-1"
+        }
+      ]
+    },
+    {
+      "kind": "vote",
+      "lookOverride": {
+        "build": "regular",
+        "belly": true,
+        "flies": false,
+        "accessory": [],
+        "print": "none",
+        "shirt": "#ffffff"
+      },
+      "say": [
+        "Was soll Timmy tun?",
+        "Option A: Er tut so, als wäre er gar nicht Timmy.",
+        "Option B: Er sagt die Wahrheit und bittet ihn um Hilfe.",
+        "Schreib A oder B in die Kommentare. Dein Kommentar zählt!",
+        "Bis morgen!"
+      ],
+      "face": "panic",
+      "questionAt": "w:was",
+      "a": {
+        "text": "So tun, als wäre er nicht Timmy",
+        "icon": "star",
+        "at": "L1"
+      },
+      "b": {
+        "text": "Wahrheit sagen + um Hilfe bitten",
+        "icon": "heart",
+        "at": "L2"
+      },
+      "ctaAt": "L3",
+      "props": [
+        {
+          "type": "chip",
+          "text": "1 neuer Follower = 1 € für den Ring",
+          "x": 540,
+          "y": 650,
+          "size": 34,
+          "at": "L3"
+        }
+      ]
+    }
+  ]
+}
