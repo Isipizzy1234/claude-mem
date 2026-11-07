@@ -3,7 +3,7 @@
   "episode": 11,
   "daysLeft": 20,
   "progress": 31,
-  "progressText": "3.057,13 €",
+  "progressText": "3.085,13 €",
   "scenes": [
     {
       "say": "Timmy verkauft seine komplette Gaming-Sammlung.",
@@ -254,7 +254,7 @@
         {
           "at": "w:zwölfhundert",
           "to": 43,
-          "text": "4.257,13 €",
+          "text": "4.285,13 €",
           "pop": "+1.200 €"
         }
       ],
